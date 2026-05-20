@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>Danah Tarot</title>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
+}
+
+body{
+
+background:#FFF9F7;
+
+font-family:
+'Noto Serif KR',
+serif;
+
+overflow-x:hidden;
+
+color:#5B4338;
+
+}
+
+.container{
+
+max-width:1000px;
+
+margin:auto;
+
+padding-bottom:120px;
+
+}
+
+/* 메인 */
+
+.hero{
+
+text-align:center;
+
+}
+
+.hero img{
+
+width:100%;
+
+display:block;
+
+}
+
+.main-glow{
+
+animation:
+
+mainFloat 5s
+ease-in-out
+infinite,
+
+glow 3s
+ease-in-out
+infinite;
+
+}
+
+@keyframes mainFloat{
+
+0%{
+
+transform:
+translateY(0);
+
+}
+
+50%{
+
+transform:
+translateY(-8px);
+
+}
+
+100%{
+
+transform:
+translateY(0);
+
+}
+
+}
+
+@keyframes glow{
+
+0%{
+
+filter:
+
+drop-shadow(
+0 0 8px
+rgba(
+255,
+220,
+230,
+0.25
+)
+);
+
+}
+
+50%{
+
+filter:
+
+drop-shadow(
+0 0 18px
+rgba(
+255,
+210,
+220,
+0.55
+)
+);
+
+}
+
+100%{
+
+filter:
+
+drop-shadow(
+0 0 8px
+rgba(
+255,
+220,
+230,
+0.25
+)
+);
+
+}
+
+}
+
+/* 예약버튼 */
+
+.reserve-wrap{
+
+display:flex;
+
+justify-content:center;
+
+margin:
+
+60px 0
+100px;
+
+}
+
+.reserve-btn{
+
+background:#F8DDE3;
+
+padding:
+
+18px 56px;
+
+border-radius:12px;
+
+font-size:22px;
+
+font-weight:600;
+
+text-decoration:none;
+
+color:#6A4D45;
+
+transition:.3s;
+
+box-shadow:
+
+0 6px 18px
+rgba(
+220,
+180,
+190,
+0.18
+);
+
+}
+
+.reserve-btn:hover{
+
+transform:
+
+translateY(-4px);
+
+}
+
+/* 제목 */
+
+.section-title{
+
+text-align:center;
+
+font-size:54px;
+
+line-height:1.5;
+
+margin-bottom:100px;
+
+animation:
+
+titleFloat 6s
+ease-in-out
+infinite;
+
+}
+
+@keyframes titleFloat{
+
+0%{
+
+transform:
+
+translateY(0);
+
+}
+
+50%{
+
+transform:
+
+translateY(-5px);
+
+}
+
+100%{
+
+transform:
+
+translateY(0);
+
+}
+
+}
+
+/* 카드 */
+
+.card-section{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:70px;
+
+padding:0 30px;
+
+margin-bottom:150px;
+
+}
+
+.card-image{
+
+width:100%;
+
+max-width:390px;
+
+animation:
+
+cardFloat 5s
+ease-in-out
+infinite;
+
+transition:.4s;
+
+}
+
+.card-image:hover{
+
+transform:
+
+translateY(-10px)
+scale(1.03);
+
+}
+
+@keyframes cardFloat{
+
+0%{
+
+transform:
+
+translateY(0)
+rotate(-1deg);
+
+}
+
+50%{
+
+transform:
+
+translateY(-8px)
+rotate(1deg);
+
+}
+
+100%{
+
+transform:
+
+translateY(0)
+rotate(-1deg);
+
+}
+
+}
+
+.card-content{
+
+flex:1;
+
+}
+
+.card-content h2{
+
+font-size:52px;
+
+margin-bottom:20px;
+
+}
+
+.card-content p{
+
+font-size:28px;
+
+line-height:1.8;
+
+color:#7D6558;
+
+}
+
+/* 이미지 */
+
+.full-section{
+
+display:flex;
+
+justify-content:center;
+
+padding:0 20px;
+
+margin:120px 0;
+
+}
+
+.full-section img{
+
+width:100%;
+
+max-width:900px;
+
+display:block;
+
+}
+
+/* 마지막 */
+
+.ending{
+
+animation:
+
+endingFloat 5s
+ease-in-out
+infinite;
+
+}
+
+@keyframes endingFloat{
+
+0%{
+
+transform:
+
+translateY(0);
+
+}
+
+50%{
+
+transform:
+
+translateY(-5px);
+
+}
+
+100%{
+
+transform:
+
+translateY(0);
+
+}
+
+}
+
+/* 모바일 */
+
+@media(max-width:768px){
+
+.card-section{
+
+flex-direction:column;
+
+padding:0 20px;
+
+gap:35px;
+
+}
+
+.card-content{
+
+text-align:center;
+
+}
+
+.card-content h2{
+
+font-size:34px;
+
+}
+
+.card-content p{
+
+font-size:22px;
+
+}
+
+.section-title{
+
+font-size:38px;
+
+}
+
+.card-image{
+
+max-width:320px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<section class="hero">
+
+<img
+src="images/main.png"
+class="main-glow">
+
+</section>
+
+<div class="reserve-wrap">
+
+<a
+
+href="https://open.kakao.com/me/DanahsTarot"
+
+target="_blank"
+
+class="reserve-btn">
+
+문의예약하기
+
+</a>
+
+</div>
+
+<div class="section-title">
+
+어떤 이야기가<br>
+
+궁금하신가요?
+
+</div>
+
+<section class="card-section">
+
+<img src="images/love.png" class="card-image">
+
+</section>
+
+<section class="card-section">
+
+<img src="images/money.png" class="card-image">
+
+</section>
+
+<section class="card-section">
+
+<img src="images/family.png" class="card-image">
+
+</section>
+
+<section class="card-section">
+
+<img src="images/health.png" class="card-image">
+
+</section>
+
+<section class="card-section">
+
+<img src="images/psy.png" class="card-image">
+
+</section>
+
+<section class="full-section">
+
+<img src="images/consultation.png">
+
+</section>
+
+<section class="full-section">
+
+<img src="images/price.png">
+
+</section>
+
+<section class="full-section ending">
+
+<img src="images/end.png">
+
+</section>
+
+<div class="reserve-wrap">
+
+<a
+
+href="https://open.kakao.com/me/DanahsTarot"
+
+target="_blank"
+
+class="reserve-btn">
+
+문의예약하기
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
