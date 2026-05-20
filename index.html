@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 
 <meta charset="UTF-8">
 
 <meta
 name="viewport"
-content="width=device-width,initial-scale=1.0">
+content="width=device-width, initial-scale=1.0">
 
 <title>Danah Tarot</title>
 
@@ -108,7 +109,6 @@ translateY(0);
 0%{
 
 filter:
-
 drop-shadow(
 0 0 8px
 rgba(
@@ -116,15 +116,13 @@ rgba(
 220,
 230,
 0.25
-)
-);
+));
 
 }
 
 50%{
 
 filter:
-
 drop-shadow(
 0 0 18px
 rgba(
@@ -132,15 +130,13 @@ rgba(
 210,
 220,
 0.55
-)
-);
+));
 
 }
 
 100%{
 
 filter:
-
 drop-shadow(
 0 0 8px
 rgba(
@@ -148,14 +144,13 @@ rgba(
 220,
 230,
 0.25
-)
-);
+));
 
 }
 
 }
 
-/* 예약버튼 */
+/* 예약 */
 
 .reserve-wrap{
 
@@ -188,8 +183,6 @@ text-decoration:none;
 
 color:#6A4D45;
 
-transition:.3s;
-
 box-shadow:
 
 0 6px 18px
@@ -199,6 +192,8 @@ rgba(
 190,
 0.18
 );
+
+transition:.3s;
 
 }
 
@@ -224,13 +219,13 @@ margin-bottom:100px;
 
 animation:
 
-titleFloat 6s
+floatTitle 6s
 ease-in-out
 infinite;
 
 }
 
-@keyframes titleFloat{
+@keyframes floatTitle{
 
 0%{
 
@@ -264,23 +259,17 @@ translateY(0);
 
 display:flex;
 
-align-items:center;
-
 justify-content:center;
 
-gap:70px;
-
-padding:0 30px;
-
-margin-bottom:150px;
+margin-bottom:90px;
 
 }
 
 .card-image{
 
-width:100%;
+width:90%;
 
-max-width:390px;
+max-width:480px;
 
 animation:
 
@@ -297,6 +286,7 @@ transition:.4s;
 transform:
 
 translateY(-10px)
+
 scale(1.03);
 
 }
@@ -308,6 +298,7 @@ scale(1.03);
 transform:
 
 translateY(0)
+
 rotate(-1deg);
 
 }
@@ -317,6 +308,7 @@ rotate(-1deg);
 transform:
 
 translateY(-8px)
+
 rotate(1deg);
 
 }
@@ -326,37 +318,14 @@ rotate(1deg);
 transform:
 
 translateY(0)
+
 rotate(-1deg);
 
 }
 
 }
 
-.card-content{
-
-flex:1;
-
-}
-
-.card-content h2{
-
-font-size:52px;
-
-margin-bottom:20px;
-
-}
-
-.card-content p{
-
-font-size:28px;
-
-line-height:1.8;
-
-color:#7D6558;
-
-}
-
-/* 이미지 */
+/* 전체 이미지 */
 
 .full-section{
 
@@ -364,9 +333,9 @@ display:flex;
 
 justify-content:center;
 
-padding:0 20px;
+padding:0 15px;
 
-margin:120px 0;
+margin:100px 0;
 
 }
 
@@ -380,19 +349,17 @@ display:block;
 
 }
 
-/* 마지막 */
-
 .ending{
 
 animation:
 
-endingFloat 5s
+endFloat 5s
 ease-in-out
 infinite;
 
 }
 
-@keyframes endingFloat{
+@keyframes endFloat{
 
 0%{
 
@@ -424,43 +391,27 @@ translateY(0);
 
 @media(max-width:768px){
 
-.card-section{
-
-flex-direction:column;
-
-padding:0 20px;
-
-gap:35px;
-
-}
-
-.card-content{
-
-text-align:center;
-
-}
-
-.card-content h2{
-
-font-size:34px;
-
-}
-
-.card-content p{
-
-font-size:22px;
-
-}
-
 .section-title{
 
 font-size:38px;
+
+padding:0 20px;
 
 }
 
 .card-image{
 
-max-width:320px;
+width:95%;
+
+}
+
+.reserve-btn{
+
+font-size:18px;
+
+padding:
+
+16px 38px;
 
 }
 
@@ -477,7 +428,7 @@ max-width:320px;
 <section class="hero">
 
 <img
-src="images/main.png"
+src="main.png"
 class="main-glow">
 
 </section>
@@ -508,49 +459,62 @@ class="reserve-btn">
 
 <section class="card-section">
 
-<img src="images/love.png" class="card-image">
+<img
+src="love.png"
+class="card-image">
 
 </section>
 
 <section class="card-section">
 
-<img src="images/money.png" class="card-image">
+<img
+src="money.png"
+class="card-image">
 
 </section>
 
 <section class="card-section">
 
-<img src="images/family.png" class="card-image">
+<img
+src="family.png"
+class="card-image">
 
 </section>
 
 <section class="card-section">
 
-<img src="images/health.png" class="card-image">
+<img
+src="health.png"
+class="card-image">
 
 </section>
 
 <section class="card-section">
 
-<img src="images/psy.png" class="card-image">
+<img
+src="psy.png"
+class="card-image">
 
 </section>
 
 <section class="full-section">
 
-<img src="images/consultation.png">
+<img
+src="consultation.png">
 
 </section>
 
 <section class="full-section">
 
-<img src="images/price.png">
+<img
+src="price.png">
 
 </section>
 
 <section class="full-section ending">
 
-<img src="images/end.png">
+<img
+src="end.png">
 
 </section>
 
