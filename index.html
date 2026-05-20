@@ -7,7 +7,7 @@
 
 <meta
 name="viewport"
-content="width=device-width, initial-scale=1.0">
+content="width=device-width,initial-scale=1.0">
 
 <title>Danah Tarot</title>
 
@@ -63,10 +63,6 @@ width:100%;
 
 display:block;
 
-}
-
-.main-glow{
-
 animation:
 
 mainFloat 5s
@@ -84,7 +80,7 @@ infinite;
 0%{
 
 transform:
-translateY(0);
+translateY(0px);
 
 }
 
@@ -98,7 +94,7 @@ translateY(-8px);
 100%{
 
 transform:
-translateY(0);
+translateY(0px);
 
 }
 
@@ -115,8 +111,9 @@ rgba(
 255,
 220,
 230,
-0.25
-));
+0.2
+)
+);
 
 }
 
@@ -127,10 +124,11 @@ drop-shadow(
 0 0 18px
 rgba(
 255,
+190,
 210,
-220,
-0.55
-));
+0.5
+)
+);
 
 }
 
@@ -143,8 +141,9 @@ rgba(
 255,
 220,
 230,
-0.25
-));
+0.2
+)
+);
 
 }
 
@@ -161,7 +160,7 @@ justify-content:center;
 margin:
 
 60px 0
-100px;
+90px;
 
 }
 
@@ -183,6 +182,8 @@ text-decoration:none;
 
 color:#6A4D45;
 
+transition:.3s;
+
 box-shadow:
 
 0 6px 18px
@@ -192,8 +193,6 @@ rgba(
 190,
 0.18
 );
-
-transition:.3s;
 
 }
 
@@ -219,19 +218,27 @@ margin-bottom:100px;
 
 animation:
 
-floatTitle 6s
+titleFloat 6s
 ease-in-out
 infinite;
 
 }
 
-@keyframes floatTitle{
+@keyframes titleFloat{
 
 0%{
 
 transform:
 
-translateY(0);
+translateY(0px);
+
+}
+
+25%{
+
+transform:
+
+translateY(-2px);
 
 }
 
@@ -243,11 +250,19 @@ translateY(-5px);
 
 }
 
+75%{
+
+transform:
+
+translateY(-2px);
+
+}
+
 100%{
 
 transform:
 
-translateY(0);
+translateY(0px);
 
 }
 
@@ -259,17 +274,23 @@ translateY(0);
 
 display:flex;
 
+align-items:center;
+
 justify-content:center;
 
-margin-bottom:90px;
+gap:70px;
+
+padding:0 30px;
+
+margin-bottom:140px;
 
 }
 
 .card-image{
 
-width:90%;
+width:100%;
 
-max-width:480px;
+max-width:390px;
 
 animation:
 
@@ -285,7 +306,7 @@ transition:.4s;
 
 transform:
 
-translateY(-10px)
+translateY(-8px)
 
 scale(1.03);
 
@@ -297,7 +318,7 @@ scale(1.03);
 
 transform:
 
-translateY(0)
+translateY(0px)
 
 rotate(-1deg);
 
@@ -317,7 +338,7 @@ rotate(1deg);
 
 transform:
 
-translateY(0)
+translateY(0px)
 
 rotate(-1deg);
 
@@ -325,7 +346,65 @@ rotate(-1deg);
 
 }
 
-/* 전체 이미지 */
+.card-content{
+
+flex:1;
+
+animation:
+
+textFloat 5s
+ease-in-out
+infinite;
+
+}
+
+.card-content h2{
+
+font-size:52px;
+
+margin-bottom:20px;
+
+}
+
+.card-content p{
+
+font-size:28px;
+
+line-height:1.8;
+
+color:#7D6558;
+
+}
+
+@keyframes textFloat{
+
+0%{
+
+transform:
+
+translateY(0px);
+
+}
+
+50%{
+
+transform:
+
+translateY(-4px);
+
+}
+
+100%{
+
+transform:
+
+translateY(0px);
+
+}
+
+}
+
+/* 전체이미지 */
 
 .full-section{
 
@@ -353,19 +432,19 @@ display:block;
 
 animation:
 
-endFloat 5s
+endingFloat 5s
 ease-in-out
 infinite;
 
 }
 
-@keyframes endFloat{
+@keyframes endingFloat{
 
 0%{
 
 transform:
 
-translateY(0);
+translateY(0px);
 
 }
 
@@ -381,7 +460,7 @@ translateY(-5px);
 
 transform:
 
-translateY(0);
+translateY(0px);
 
 }
 
@@ -399,9 +478,37 @@ padding:0 20px;
 
 }
 
+.card-section{
+
+flex-direction:column;
+
+gap:35px;
+
+padding:0 20px;
+
+}
+
+.card-content{
+
+text-align:center;
+
+}
+
+.card-content h2{
+
+font-size:34px;
+
+}
+
+.card-content p{
+
+font-size:20px;
+
+}
+
 .card-image{
 
-width:95%;
+max-width:320px;
 
 }
 
@@ -411,7 +518,7 @@ font-size:18px;
 
 padding:
 
-16px 38px;
+16px 40px;
 
 }
 
@@ -427,20 +534,15 @@ padding:
 
 <section class="hero">
 
-<img
-src="main.png"
-class="main-glow">
+<img src="main.png">
 
 </section>
 
 <div class="reserve-wrap">
 
 <a
-
 href="https://open.kakao.com/me/DanahsTarot"
-
 target="_blank"
-
 class="reserve-btn">
 
 문의예약하기
@@ -459,73 +561,137 @@ class="reserve-btn">
 
 <section class="card-section">
 
-<img
-src="love.png"
-class="card-image">
+<img src="love.png" class="card-image">
+
+<div class="card-content">
+
+<h2>연애운 타로</h2>
+
+<p>
+
+썸 · 재회 · 속마음 · 미래 흐름
+
+<br>
+
+온마음으로 흐름을 읽어드립니다.
+
+</p>
+
+</div>
 
 </section>
 
 <section class="card-section">
 
-<img
-src="money.png"
-class="card-image">
+<img src="money.png" class="card-image">
+
+<div class="card-content">
+
+<h2>금전운 타로</h2>
+
+<p>
+
+재물 · 승진 · 이직 · 방향성
+
+<br>
+
+현실의 흐름을 함께 읽어드립니다.
+
+</p>
+
+</div>
 
 </section>
 
 <section class="card-section">
 
-<img
-src="family.png"
-class="card-image">
+<img src="family.png" class="card-image">
+
+<div class="card-content">
+
+<h2>가족운 타로</h2>
+
+<p>
+
+가족 관계 · 감정 흐름 · 미래 방향
+
+<br>
+
+온마음으로 함께 읽어드립니다.
+
+</p>
+
+</div>
 
 </section>
 
 <section class="card-section">
 
-<img
-src="health.png"
-class="card-image">
+<img src="health.png" class="card-image">
+
+<div class="card-content">
+
+<h2>건강운 타로</h2>
+
+<p>
+
+몸과 마음 · 에너지 · 균형
+
+<br>
+
+현재의 흐름을 함께 살펴봅니다.
+
+</p>
+
+</div>
 
 </section>
 
 <section class="card-section">
 
-<img
-src="psy.png"
-class="card-image">
+<img src="psy.png" class="card-image">
+
+<div class="card-content">
+
+<h2>심리 타로</h2>
+
+<p>
+
+내면 · 감정 · 심리 흐름
+
+<br>
+
+온마음으로 함께 들여다봅니다.
+
+</p>
+
+</div>
 
 </section>
 
 <section class="full-section">
 
-<img
-src="consultation.png">
+<img src="consultation.png">
 
 </section>
 
 <section class="full-section">
 
-<img
-src="price.png">
+<img src="price.png">
 
 </section>
 
 <section class="full-section ending">
 
-<img
-src="end.png">
+<img src="end.png">
 
 </section>
 
 <div class="reserve-wrap">
 
 <a
-
 href="https://open.kakao.com/me/DanahsTarot"
-
 target="_blank"
-
 class="reserve-btn">
 
 문의예약하기
