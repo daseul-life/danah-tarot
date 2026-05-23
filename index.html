@@ -701,7 +701,38 @@ class="reserve-btn">
 </div>
 
 </div>
+<div id="status"
+style="
+position:fixed;
+top:10px;
+left:50%;
+transform:translateX(-50%);
+background:white;
+padding:10px 20px;
+border-radius:20px;
+font-size:18px;
+font-weight:bold;
+z-index:9999;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+">
 
+🟢 상담 가능
+
+</div>
+
+<script>
+
+document
+.getElementById("status")
+.innerText=
+
+localStorage.getItem(
+"status"
+)
+
+||"🟢 상담 가능";
+
+</script>
 </body>
 
 </html>
