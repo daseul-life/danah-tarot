@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>Danah 관리자</title>
+
+<style>
+
+body{
+
+background:#FFF9F7;
+
+font-family:sans-serif;
+
+text-align:center;
+
+padding:50px;
+
+}
+
+h1{
+
+margin-bottom:40px;
+
+color:#5B4338;
+
+}
+
+button{
+
+width:220px;
+
+padding:18px;
+
+margin:12px;
+
+border:none;
+
+border-radius:14px;
+
+font-size:20px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+background:#F7DCE3;
+
+color:#5B4338;
+
+}
+
+#now{
+
+margin-top:40px;
+
+font-size:22px;
+
+font-weight:bold;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>
+
+Danah 관리자
+
+</h1>
+
+<button onclick="change('open')">
+
+🟢 상담 가능
+
+</button>
+
+<br>
+
+<button onclick="change('progress')">
+
+🟡 상담중
+
+</button>
+
+<br>
+
+<button onclick="change('close')">
+
+🔴 상담 종료
+
+</button>
+
+<div id="now">
+
+현재 상태 불러오는중...
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const supabase=
+
+window.supabase.createClient(
+
+"https://fuwojgjmgsvxenmydrfz.supabase.co",
+
+"sb_publishable_rzsuJsbir1oa5-vIiE_z-A_f6THK57w"
+
+)
+
+const map={
+
+open:"🟢 상담 가능",
+
+progress:"🟡 상담중",
+
+close:"🔴 상담 종료"
+
+}
+
+async function load(){
+
+const {data}=
+
+await supabase
+
+.from("status")
+
+.select("*")
+
+.single()
+
+if(!data)return
+
+document
+
+.getElementById("now")
+
+.innerText=
+
+"현재 상태 : "
+
++
+
+map[data.state]
+
+}
+
+async function change(state){
+
+await supabase
+
+.from("status")
+
+.update({
+
+state:state,
+
+updated_at:
+
+new Date()
+
+})
+
+.neq(
+
+"id",
+
+0
+
+)
+
+load()
+
+alert(
+
+"변경 완료"
+
+)
+
+}
+
+load()
+
+</script>
+
+</body>
+
+</html>
