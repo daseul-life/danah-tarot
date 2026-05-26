@@ -1,1 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Danah Tarot</title>
+
+<style>
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
+}
+
+body{
+
+background:#FFF9F7;
+
+font-family:sans-serif;
+
+text-align:center;
+
+color:#5B4338;
+
+}
+
+.container{
+
+max-width:900px;
+
+margin:auto;
+
+padding:30px;
+
+}
+
+#status{
+
+position:fixed;
+
+top:20px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+background:white;
+
+padding:12px 24px;
+
+border-radius:30px;
+
+box-shadow:
+
+0 0 10px
+rgba(
+0,
+0,
+0,
+0.1
+);
+
+font-size:18px;
+
+font-weight:bold;
+
+z-index:999;
+
+}
+
+.main-image{
+
+width:100%;
+
+max-width:700px;
+
+margin-top:80px;
+
+border-radius:20px;
+
+}
+
+.btn{
+
+display:inline-block;
+
+margin-top:40px;
+
+background:#F8DDE3;
+
+padding:
+
+18px 40px;
+
+border-radius:12px;
+
+text-decoration:none;
+
+font-size:22px;
+
+color:#5B4338;
+
+font-weight:bold;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="status">
+
+🟢 상담 가능
+
+</div>
+
+<div class="container">
+
+<img
+src="main.png"
+class="main-image">
+
+<br>
+
+<a
+href="https://open.kakao.com/me/DanahsTarot"
+target="_blank"
+class="btn">
+
+문의예약하기
+
+</a>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const supabase=
+
+window.supabase.createClient(
+
+"https://fuwojgjmgsvxenmydrfz.supabase.co",
+
+"sb_publishable_rzsuJsbir1oa5-vIiE_z-A_f6THK57w"
+
+)
+
+async function loadStatus(){
+
+const {data}=
+
+await supabase
+
+.from("status")
+
+.select("state")
+
+.single()
+
+if(!data)return
+
+const map={
+
+open:"🟢 상담 가능",
+
+progress:"🟡 상담중",
+
+close:"🔴 상담 종료"
+
+}
+
+document
+
+.getElementById(
+
+"status"
+
+)
+
+.innerText=
+
+map[data.state]
+
+||
+
+"🟢 상담 가능"
+
+}
+
+loadStatus()
+
+setInterval(
+
+loadStatus,
+
+3000
+
+)
+
+</script>
+
+</body>
+
+</html>
