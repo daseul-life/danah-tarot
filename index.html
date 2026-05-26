@@ -748,7 +748,6 @@ const { data } =
 await supabase
 .from("status")
 .select("*")
-..eq("id",6)
 .single()
 
 if(!data)return
