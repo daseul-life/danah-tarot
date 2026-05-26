@@ -722,17 +722,69 @@ box-shadow:0 0 10px rgba(0,0,0,0.1);
 
 <script>
 
+</div>
+
+<script type="module" src="./status.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const SUPABASE_URL =
+"https://fuwojgjmgsvxenmydrfz.supabase.co"
+
+
+const SUPABASE_KEY =
+"sb_publishable_sb_publishable_rzsuJsbir1oa5-vIiE_z-A_f6THK57w"
+
+const supabase =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+)
+
+async function loadStatus(){
+
+const { data } =
+await supabase
+.from("status")
+.select("*")
+.eq("id",1)
+.single()
+
+if(!data)return
+
+const map={
+
+open:"🟢 상담 가능",
+
+progress:"🟡 상담중",
+
+close:"🔴 상담 종료"
+
+}
+
 document
 .getElementById("status")
 .innerText=
+map[data.state]
 
-localStorage.getItem(
-"status"
+}
+
+loadStatus()
+
+setInterval(
+loadStatus,
+3000
 )
 
-||"🟢 상담 가능";
-
 </script>
+
+</body>
+
+</html>
+</body>
+
+</html>
 </body>
 
 </html>
