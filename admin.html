@@ -23,35 +23,35 @@ text-align:center;
 
 padding:50px;
 
+color:#5B4338;
+
 }
 
 h1{
 
 margin-bottom:40px;
 
-color:#5B4338;
-
 }
 
 button{
 
-width:220px;
+width:240px;
 
 padding:18px;
 
 margin:12px;
 
-border:none;
-
-border-radius:14px;
-
 font-size:20px;
 
 font-weight:bold;
 
-cursor:pointer;
+border:none;
+
+border-radius:14px;
 
 background:#F7DCE3;
+
+cursor:pointer;
 
 color:#5B4338;
 
@@ -59,7 +59,7 @@ color:#5B4338;
 
 #now{
 
-margin-top:40px;
+margin-top:35px;
 
 font-size:22px;
 
@@ -79,7 +79,7 @@ Danah 관리자
 
 </h1>
 
-<button onclick="change('open')">
+<button onclick="changeStatus('open')">
 
 🟢 상담 가능
 
@@ -87,7 +87,7 @@ Danah 관리자
 
 <br>
 
-<button onclick="change('progress')">
+<button onclick="changeStatus('progress')">
 
 🟡 상담중
 
@@ -95,7 +95,7 @@ Danah 관리자
 
 <br>
 
-<button onclick="change('close')">
+<button onclick="changeStatus('close')">
 
 🔴 상담 종료
 
@@ -103,7 +103,7 @@ Danah 관리자
 
 <div id="now">
 
-현재 상태 불러오는중...
+불러오는 중...
 
 </div>
 
@@ -133,21 +133,57 @@ close:"🔴 상담 종료"
 
 async function load(){
 
-const {data}=
+const {
+
+data,
+
+error
+
+}=
 
 await supabase
 
-.from("status")
+.from(
+
+"status"
+
+)
 
 .select("*")
 
+.order(
+
+"id",
+
+{
+
+ascending:false
+
+}
+
+)
+
+.limit(1)
+
 .single()
+
+if(error){
+
+console.log(error)
+
+return
+
+}
 
 if(!data)return
 
 document
 
-.getElementById("now")
+.getElementById(
+
+"now"
+
+)
 
 .innerText=
 
@@ -159,13 +195,27 @@ map[data.state]
 
 }
 
-async function change(state){
+async function changeStatus(
+
+state
+
+){
+
+const {
+
+error
+
+}=
 
 await supabase
 
-.from("status")
+.from(
 
-.update({
+"status"
+
+)
+
+.insert({
 
 state:state,
 
@@ -175,13 +225,17 @@ new Date()
 
 })
 
-.neq(
+if(error){
 
-"id",
+alert(
 
-0
+"변경 실패"
 
 )
+
+return
+
+}
 
 load()
 
