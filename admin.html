@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
 
 <meta charset="UTF-8">
 
-<meta
-name="viewport"
+<meta name="viewport"
 content="width=device-width,initial-scale=1">
 
 <title>Danah Admin</title>
@@ -31,21 +29,21 @@ sans-serif;
 
 background:#FFF8F8;
 
-padding:20px;
-
 max-width:700px;
 
 margin:auto;
+
+padding:20px;
 
 }
 
 .login{
 
-margin-top:100px;
+margin-top:90px;
 
 background:white;
 
-padding:28px;
+padding:30px;
 
 border-radius:28px;
 
@@ -81,9 +79,9 @@ rgba(0,0,0,.06);
 
 h2{
 
-color:#D86D93;
+color:#D96D93;
 
-margin-bottom:16px;
+margin-bottom:15px;
 
 }
 
@@ -121,13 +119,13 @@ width:100%;
 
 padding:14px;
 
-border:none;
-
-border-radius:16px;
-
 background:#E57EA1;
 
 color:white;
+
+border:none;
+
+border-radius:16px;
 
 font-size:15px;
 
@@ -139,7 +137,15 @@ cursor:pointer;
 
 button:hover{
 
-opacity:.92;
+opacity:.9;
+
+}
+
+.logout{
+
+background:#bbb;
+
+margin-top:10px;
 
 }
 
@@ -211,7 +217,7 @@ id="status">
 <button
 onclick="saveStatus()">
 
-저장
+상태 저장
 
 </button>
 
@@ -290,6 +296,14 @@ FAQ 저장
 
 </div>
 
+<button
+class="logout"
+onclick="logout()">
+
+로그아웃
+
+</button>
+
 </div>
 
 <script
@@ -324,19 +338,13 @@ pw==="danah1234"
 
 ){
 
-document
-.getElementById("loginBox")
-.style.display="none"
-
-document
-.getElementById("panel")
-.style.display="block"
-
 localStorage
 .setItem(
-"admin",
-"yes"
+"danahAdmin",
+"ok"
 )
+
+openAdmin()
 
 }
 
@@ -350,14 +358,7 @@ alert(
 
 }
 
-if(
-
-localStorage
-.getItem("admin")
-
-==="yes"
-
-){
+function openAdmin(){
 
 document
 .getElementById(
@@ -370,6 +371,32 @@ document
 "panel"
 )
 .style.display="block"
+
+}
+
+function logout(){
+
+localStorage
+.removeItem(
+"danahAdmin"
+)
+
+location.reload()
+
+}
+
+if(
+
+localStorage
+.getItem(
+"danahAdmin"
+)
+
+==="ok"
+
+){
+
+openAdmin()
 
 }
 
@@ -396,7 +423,7 @@ status:value
 .eq("id",1)
 
 alert(
-"상담상태 저장 완료"
+"저장 완료"
 )
 
 }
@@ -410,6 +437,7 @@ document
 "notice"
 )
 .value
+.trim()
 
 if(!value)return
 
@@ -422,6 +450,12 @@ await supabase
 content:value
 
 })
+
+document
+.getElementById(
+"notice"
+)
+.value=""
 
 alert(
 "공지 저장 완료"
@@ -438,6 +472,7 @@ document
 "review"
 )
 .value
+.trim()
 
 if(!value)return
 
@@ -450,6 +485,12 @@ await supabase
 content:value
 
 })
+
+document
+.getElementById(
+"review"
+)
+.value=""
 
 alert(
 "후기 저장 완료"
@@ -466,6 +507,7 @@ document
 "question"
 )
 .value
+.trim()
 
 const answer=
 
@@ -474,6 +516,7 @@ document
 "answer"
 )
 .value
+.trim()
 
 if(
 
@@ -493,6 +536,18 @@ answer
 
 })
 
+document
+.getElementById(
+"question"
+)
+.value=""
+
+document
+.getElementById(
+"answer"
+)
+.value=""
+
 alert(
 "FAQ 저장 완료"
 )
@@ -509,7 +564,7 @@ document
 
 "keydown",
 
-(e)=>{
+e=>{
 
 if(
 
@@ -528,5 +583,4 @@ login()
 </script>
 
 </body>
-
 </html>
