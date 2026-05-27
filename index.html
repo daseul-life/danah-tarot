@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
 
 <meta charset="UTF-8">
@@ -18,17 +17,13 @@ rel="stylesheet">
 <style>
 
 *{
-
 margin:0;
 padding:0;
 box-sizing:border-box;
-
 }
 
 html{
-
 scroll-behavior:smooth;
-
 }
 
 body{
@@ -55,22 +50,20 @@ position:sticky;
 
 top:0;
 
-z-index:999;
-
-padding:15px;
-
 background:
 
 rgba(
 255,
 255,
 255,
-0.92
+0.95
 );
 
 backdrop-filter:
 
-blur(10px);
+blur(12px);
+
+padding:16px;
 
 font-size:18px;
 
@@ -80,9 +73,11 @@ text-align:center;
 
 color:#D96C92;
 
+z-index:999;
+
 box-shadow:
 
-0 3px 15px
+0 4px 12px
 
 rgba(
 0,
@@ -131,8 +126,6 @@ border-radius:28px;
 
 height:auto;
 
-object-fit:cover;
-
 box-shadow:
 
 0 10px 30px
@@ -144,9 +137,7 @@ rgba(
 0.08
 );
 
-transition:
-
-0.35s;
+transition:.35s;
 
 }
 
@@ -170,14 +161,6 @@ floating
 
 @keyframes floating{
 
-0%{
-
-transform:
-
-translateY(0);
-
-}
-
 50%{
 
 transform:
@@ -185,165 +168,6 @@ transform:
 translateY(-5px);
 
 }
-
-100%{
-
-transform:
-
-translateY(0);
-
-}
-
-}
-
-.review-wrap{
-
-position:relative;
-
-}
-
-#reviews{
-
-position:absolute;
-
-top:28%;
-
-left:50%;
-
-transform:
-
-translateX(-50%);
-
-width:84%;
-
-display:flex;
-
-flex-direction:column;
-
-gap:12px;
-
-}
-
-.review-card{
-
-background:
-
-rgba(
-255,
-255,
-255,
-0.78
-);
-
-backdrop-filter:
-
-blur(12px);
-
-padding:15px;
-
-border-radius:18px;
-
-font-size:14px;
-
-box-shadow:
-
-0 5px 18px
-
-rgba(
-0,
-0,
-0,
-0.08
-);
-
-}
-
-.faq-wrap{
-
-position:relative;
-
-}
-
-#faqBox{
-
-position:absolute;
-
-top:22%;
-
-left:50%;
-
-transform:
-
-translateX(-50%);
-
-width:84%;
-
-display:flex;
-
-flex-direction:column;
-
-gap:10px;
-
-}
-
-.faq-card{
-
-background:
-
-rgba(
-255,
-255,
-255,
-0.82
-);
-
-backdrop-filter:
-
-blur(12px);
-
-border-radius:18px;
-
-overflow:hidden;
-
-}
-
-.question{
-
-padding:15px;
-
-font-weight:700;
-
-cursor:pointer;
-
-display:flex;
-
-justify-content:
-
-space-between;
-
-}
-
-.answer{
-
-max-height:0;
-
-overflow:hidden;
-
-padding:0 15px;
-
-transition:.35s;
-
-font-size:14px;
-
-}
-
-.faq-card.open .answer{
-
-max-height:220px;
-
-padding:
-
-0 15px 15px;
 
 }
 
@@ -365,21 +189,21 @@ max-width:700px;
 
 padding:18px;
 
+border:none;
+
+border-radius:999px;
+
 background:
 
 linear-gradient(
 
 90deg,
 
-#FF75A8,
+#FF76A8,
 
 #FFA5C8
 
 );
-
-border:none;
-
-border-radius:999px;
 
 color:white;
 
@@ -434,18 +258,6 @@ padding:
 
 }
 
-#reviews{
-
-top:23%;
-
-}
-
-#faqBox{
-
-top:18%;
-
-}
-
 }
 
 </style>
@@ -456,16 +268,17 @@ top:18%;
 
 <div id="status">
 
-상담 상태 불러오는중...
+상담 상태 확인중...
 
 </div>
 
 <div class="section">
 
-<a href="https://open.kakao.com/me/DanahsTarot"
+<a
+href="https://open.kakao.com/me/DanahsTarot"
 target="_blank">
 
-<img src="images/main-cover.jpg">
+<img src="main-cover.jpg">
 
 </a>
 
@@ -473,274 +286,86 @@ target="_blank">
 
 <div class="section notice">
 
-<img src="images/info.png">
+<img src="info.png">
 
 </div>
 
 <div class="section">
 
-<img src="images/story.png">
+<img src="story.png">
 
 </div>
 
 <div class="section">
 
-<img src="images/process-bg.jpg">
+<img src="process-bg.jpg">
 
 </div>
 
 <div class="section">
 
-<a href="https://open.kakao.com/me/DanahsTarot"
+<a
+href="https://open.kakao.com/me/DanahsTarot"
 target="_blank">
 
-<img src="images/why-danah.jpg">
+<img src="why-danah.jpg">
 
 </a>
 
 </div>
 
-<div class="section review-wrap">
+<div class="section">
 
-<img src="images/review.png">
-
-<div id="reviews"></div>
+<img src="review.png">
 
 </div>
 
 <div class="section">
 
-<img src="images/guide.png">
+<img src="guide.png">
 
 </div>
 
 <div class="section">
 
-<a href="https://open.kakao.com/me/DanahsTarot"
+<a
+href="https://open.kakao.com/me/DanahsTarot"
 target="_blank">
 
-<img src="images/price.png">
+<img src="price.png">
 
 </a>
 
 </div>
 
-<div class="section faq-wrap">
+<div class="section">
 
-<img src="images/faq.png">
-
-<div id="faqBox"></div>
+<img src="faq.png">
 
 </div>
 
 <div class="section">
 
-<a href="https://open.kakao.com/me/DanahsTarot"
+<a
+href="https://open.kakao.com/me/DanahsTarot"
 target="_blank">
 
-<img src="images/cta.png">
+<img src="cta.png">
 
 </a>
 
 </div>
 
 <a
-
 class="reserve"
-
 href="https://open.kakao.com/me/DanahsTarot"
-
-target="_blank"
-
->
+target="_blank">
 
 💌 상담 예약하기
 
 </a>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script>
-
-const supabase=
-
-window.supabase.createClient(
-
-"https://fuwojigmgsvxennydcfz.supabase.co",
-
-"sb_publishable_rzsuJsbir1oa5-vIiE_z-A_f6THK57w"
-
-)
-
-const stateMap={
-
-open:
-
-"🟢 상담 가능",
-
-progress:
-
-"🟡 상담중",
-
-close:
-
-"🔴 예약마감"
-
-}
-
-function toggleFAQ(el){
-
-el.parentElement.classList.toggle("open")
-
-}
-
-async function loadStatus(){
-
-const {data}=
-
-await supabase
-
-.from("status")
-
-.select("*")
-
-.order("id",{ascending:false})
-
-.limit(1)
-
-.single()
-
-if(data){
-
-document
-
-.getElementById("status")
-
-.innerHTML=
-
-stateMap[data.state]
-
-}
-
-}
-
-async function loadReview(){
-
-const {data}=
-
-await supabase
-
-.from("reviews")
-
-.select("*")
-
-.order("id")
-
-if(!data)return
-
-document
-
-.getElementById("reviews")
-
-.innerHTML=
-
-data.map(
-
-x=>
-
-`
-
-<div class="review-card">
-
-💬 ${x.content}
-
-</div>
-
-`
-
-).join("")
-
-}
-
-async function loadFAQ(){
-
-const {data}=
-
-await supabase
-
-.from("faq")
-
-.select("*")
-
-.order("id")
-
-if(!data)return
-
-document
-
-.getElementById("faqBox")
-
-.innerHTML=
-
-data.map(
-
-x=>
-
-`
-
-<div class="faq-card">
-
-<div
-
-class="question"
-
-onclick="toggleFAQ(this)">
-
-${x.question}
-
-<span>
-
-▼
-
-</span>
-
-</div>
-
-<div class="answer">
-
-${x.answer}
-
-</div>
-
-</div>
-
-`
-
-).join("")
-
-}
-
-loadStatus()
-
-loadReview()
-
-loadFAQ()
-
-setInterval(
-
-()=>{
-
-loadStatus()
-
-loadReview()
-
-loadFAQ()
-
-},
-
-5000
-
-)
 
 const observer=
 
@@ -758,7 +383,15 @@ entry.isIntersecting
 
 ){
 
-entry.target.classList.add("show")
+entry.target
+
+.classList
+
+.add(
+
+"show"
+
+)
 
 }
 
@@ -770,16 +403,21 @@ entry.target.classList.add("show")
 
 document
 
-.querySelectorAll(".section")
+.querySelectorAll(
+
+".section"
+
+)
 
 .forEach(
 
-x=>observer.observe(x)
+x=>
+
+observer.observe(x)
 
 )
 
 </script>
 
 </body>
-
 </html>
