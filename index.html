@@ -45,7 +45,7 @@ margin:auto;
 
 overflow-x:hidden;
 
-padding-bottom:60px;
+padding-bottom:70px;
 
 }
 
@@ -53,9 +53,9 @@ padding-bottom:60px;
 
 position:fixed;
 
-right:16px;
+right:15px;
 
-top:16px;
+top:15px;
 
 z-index:999;
 
@@ -78,10 +78,6 @@ font-size:14px;
 
 font-weight:700;
 
-backdrop-filter:
-
-blur(12px);
-
 box-shadow:
 
 0 4px 18px
@@ -93,7 +89,11 @@ rgba(
 0.08
 );
 
-color:#D96B92;
+backdrop-filter:
+
+blur(10px);
+
+color:#D96892;
 
 }
 
@@ -101,7 +101,7 @@ color:#D96B92;
 
 padding:
 
-44px 18px;
+38px 18px;
 
 opacity:0;
 
@@ -157,9 +157,7 @@ padding:
 
 .notice-card{
 
-background:
-
-#fff;
+background:white;
 
 padding:18px;
 
@@ -190,7 +188,7 @@ rgba(
 255,
 255,
 255,
-0.85
+0.9
 );
 
 padding:18px;
@@ -222,7 +220,7 @@ rgba(
 255,
 255,
 255,
-0.9
+0.92
 );
 
 padding:18px;
@@ -275,7 +273,7 @@ padding:0 5px;
 .faq-card.open
 .answer{
 
-max-height:220px;
+max-height:300px;
 
 padding-top:14px;
 
@@ -289,7 +287,6 @@ padding-top:14px;
 
 <div
 class="status"
-
 id="status">
 
 🟢 상담 가능
@@ -310,13 +307,20 @@ target="_blank">
 
 <div class="section">
 
+<img src="main.png">
+
+</div>
+
+<div class="section">
+
 <img src="info.png">
 
 </div>
 
 <div class="noticeWrap">
 
-<div id="noticeBox">
+<div
+id="noticeBox">
 
 </div>
 
@@ -354,7 +358,8 @@ target="_blank">
 
 <div class="reviewWrap">
 
-<div id="reviews">
+<div
+id="reviews">
 
 </div>
 
@@ -386,7 +391,8 @@ target="_blank">
 
 <div class="faqWrap">
 
-<div id="faqBox">
+<div
+id="faqBox">
 
 </div>
 
@@ -417,7 +423,7 @@ window.supabase.createClient(
 
 "https://fuwojigmgsvxennydcfz.supabase.co",
 
-"sb_publishable_rzsuJsbir1oa5-vIiE_z-A_f6THK57w"
+"여기에_네_publishable_key"
 
 )
 
@@ -455,7 +461,7 @@ document
 
 )
 
-.innerText=
+innerText=
 
 data.status
 
@@ -600,9 +606,7 @@ x=>
 <div class="faq-card">
 
 <div
-
 class="question"
-
 onclick=
 
 "toggleFAQ(this)"
@@ -664,11 +668,11 @@ const observer=
 
 new IntersectionObserver(
 
-entries=>{
+(entries)=>{
 
 entries.forEach(
 
-entry=>{
+(entry)=>{
 
 if(
 
@@ -684,7 +688,9 @@ entry.target
 
 }
 
-})
+}
+
+)
 
 }
 
@@ -700,9 +706,11 @@ document
 
 .forEach(
 
-x=>
+el=>{
 
-observer.observe(x)
+observer.observe(el)
+
+}
 
 )
 
