@@ -1,210 +1,76 @@
-<script>
+<!DOCTYPE html>
+<html lang="ko">
 
-const supabase=
-window.supabase.createClient(
-"https://fuwojigmgsvxennydcfz.supabase.co",
-"sb_publishable_rzsuJsbir1oa5-vIiE_z-A_f6THK57w"
-)
+<head>
 
-function toggleFAQ(el){
+<meta charset="UTF-8">
 
-el.parentElement.classList.toggle("open")
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
 
-}
+<title>Danah Tarot</title>
 
-async function loadStatus(){
+<style>
 
-const {data}=await supabase
+*{
 
-.from("status")
-
-.select("*")
-
-.eq("id",1)
-
-.single()
-
-if(data){
-
-document.getElementById(
-"status"
-).innerText=data.status
+margin:0;
+padding:0;
+box-sizing:border-box;
 
 }
 
-}
+body{
 
-async function loadNotice(){
+background:#FFF8F8;
 
-const {data}=await supabase
+max-width:760px;
 
-.from("notice")
+margin:auto;
 
-.select("*")
-
-.order("id",{
-
-ascending:false
-
-})
-
-if(!data)return
-
-document.getElementById(
-"noticeBox"
-)
-
-.innerHTML=
-
-data.map(x=>`
-
-<div class="notice-card">
-
-📢 ${x.content}
-
-</div>
-
-`).join("")
+padding-bottom:40px;
 
 }
 
-async function loadReview(){
+img{
 
-const {data}=await supabase
+width:100%;
 
-.from("reviews")
+display:block;
 
-.select("*")
+margin-bottom:14px;
 
-.order("id",{
-
-ascending:false
-
-})
-
-if(!data)return
-
-document.getElementById(
-"reviews"
-)
-
-.innerHTML=
-
-data.map(x=>`
-
-<div class="review-card">
-
-💬 ${x.content}
-
-</div>
-
-`).join("")
+border-radius:0;
 
 }
 
-async function loadFAQ(){
+</style>
 
-const {data}=await supabase
+</head>
 
-.from("faq")
+<body>
 
-.select("*")
+<img src="main-cover.jpg">
 
-.order("id")
+<img src="main.png">
 
-if(!data)return
+<img src="info.png">
 
-document.getElementById(
-"faqBox"
-)
+<img src="story.png">
 
-.innerHTML=
+<img src="process-bg.jpg">
 
-data.map(x=>`
+<img src="why-danah.jpg">
 
-<div class="faq-card">
+<img src="review.png">
 
-<div
-class="question"
-onclick="toggleFAQ(this)">
+<img src="guide.png">
 
-${x.question}
+<img src="price.png">
 
-<span>▼</span>
+<img src="faq.png">
 
-</div>
-
-<div class="answer">
-
-${x.answer}
-
-</div>
-
-</div>
-
-`).join("")
-
-}
-
-loadStatus()
-loadNotice()
-loadReview()
-loadFAQ()
-
-setInterval(()=>{
-
-loadStatus()
-loadNotice()
-loadReview()
-loadFAQ()
-
-},5000)
-
-const observer=
-
-new IntersectionObserver(
-
-(entries)=>{
-
-entries.forEach(
-
-(entry)=>{
-
-if(
-entry.isIntersecting
-){
-
-entry.target.classList.add(
-"show"
-)
-
-}
-
-}
-
-)
-
-}
-
-)
-
-document
-
-.querySelectorAll(
-".section"
-)
-
-.forEach(
-
-(el)=>{
-
-observer.observe(el)
-
-}
-
-)
-
-</script>
+<img src="cta.png">
 
 </body>
 
