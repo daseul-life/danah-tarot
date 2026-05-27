@@ -45,7 +45,7 @@ margin:auto;
 
 overflow-x:hidden;
 
-padding-bottom:70px;
+padding-bottom:60px;
 
 }
 
@@ -53,9 +53,9 @@ padding-bottom:70px;
 
 position:fixed;
 
-right:15px;
-
 top:15px;
+
+right:15px;
 
 z-index:999;
 
@@ -65,7 +65,7 @@ rgba(
 255,
 255,
 255,
-0.92
+0.9
 );
 
 padding:
@@ -78,6 +78,10 @@ font-size:14px;
 
 font-weight:700;
 
+backdrop-filter:
+
+blur(10px);
+
 box-shadow:
 
 0 4px 18px
@@ -89,11 +93,7 @@ rgba(
 0.08
 );
 
-backdrop-filter:
-
-blur(10px);
-
-color:#D96892;
+color:#D86D93;
 
 }
 
@@ -101,13 +101,13 @@ color:#D96892;
 
 padding:
 
-38px 18px;
+40px 18px;
 
 opacity:0;
 
 transform:
 
-translateY(45px);
+translateY(40px);
 
 transition:1s;
 
@@ -133,7 +133,7 @@ border-radius:28px;
 
 box-shadow:
 
-0 8px 24px
+0 8px 25px
 
 rgba(
 0,
@@ -151,7 +151,7 @@ rgba(
 padding:
 
 0 18px
-40px;
+35px;
 
 }
 
@@ -176,20 +176,11 @@ rgba(
 0.05
 );
 
-line-height:1.6;
-
 }
 
 .review-card{
 
-background:
-
-rgba(
-255,
-255,
-255,
-0.9
-);
+background:white;
 
 padding:18px;
 
@@ -197,7 +188,7 @@ border-radius:22px;
 
 margin-bottom:12px;
 
-line-height:1.8;
+line-height:1.7;
 
 box-shadow:
 
@@ -214,14 +205,7 @@ rgba(
 
 .faq-card{
 
-background:
-
-rgba(
-255,
-255,
-255,
-0.92
-);
+background:white;
 
 padding:18px;
 
@@ -250,9 +234,9 @@ justify-content:
 
 space-between;
 
-font-weight:700;
-
 cursor:pointer;
+
+font-weight:700;
 
 }
 
@@ -262,18 +246,16 @@ max-height:0;
 
 overflow:hidden;
 
-transition:.35s;
+transition:.3s;
 
 line-height:1.7;
-
-padding:0 5px;
 
 }
 
 .faq-card.open
 .answer{
 
-max-height:300px;
+max-height:250px;
 
 padding-top:14px;
 
@@ -423,7 +405,7 @@ window.supabase.createClient(
 
 "https://fuwojigmgsvxennydcfz.supabase.co",
 
-"여기에_네_publishable_key"
+"sb_publishable_rzsuJsbir1oa5-vIiE_z-A_f6THK57w"
 
 )
 
@@ -456,12 +438,10 @@ if(data){
 document
 
 .getElementById(
-
 "status"
-
 )
 
-innerText=
+.innerText=
 
 data.status
 
@@ -479,26 +459,18 @@ await supabase
 
 .select("*")
 
-.order(
-
-"id",
-
-{
+.order("id",{
 
 ascending:false
 
-}
-
-)
+})
 
 if(!data)return
 
 document
 
 .getElementById(
-
 "noticeBox"
-
 )
 
 .innerHTML=
@@ -531,26 +503,18 @@ await supabase
 
 .select("*")
 
-.order(
-
-"id",
-
-{
+.order("id",{
 
 ascending:false
 
-}
-
-)
+})
 
 if(!data)return
 
 document
 
 .getElementById(
-
 "reviews"
-
 )
 
 .innerHTML=
@@ -590,9 +554,7 @@ if(!data)return
 document
 
 .getElementById(
-
 "faqBox"
-
 )
 
 .innerHTML=
@@ -606,10 +568,10 @@ x=>
 <div class="faq-card">
 
 <div
-class="question"
-onclick=
 
-"toggleFAQ(this)"
+class="question"
+
+onclick="toggleFAQ(this)"
 
 >
 
@@ -706,9 +668,9 @@ document
 
 .forEach(
 
-el=>{
+x=>{
 
-observer.observe(el)
+observer.observe(x)
 
 }
 
