@@ -1,364 +1,20 @@
-<!DOCTYPE html>
-<html lang="ko">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width,initial-scale=1">
-
-<title>Danah Tarot</title>
-
-<link
-href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
-rel="stylesheet">
-
-<style>
-
-*{
-
-margin:0;
-padding:0;
-box-sizing:border-box;
-
-}
-
-html{
-
-scroll-behavior:smooth;
-
-}
-
-body{
-
-font-family:
-'Noto Sans KR',
-sans-serif;
-
-background:#FFF8F8;
-
-max-width:760px;
-
-margin:auto;
-
-overflow-x:hidden;
-
-padding-bottom:70px;
-
-}
-
-.status{
-
-position:fixed;
-
-top:15px;
-
-right:15px;
-
-z-index:999;
-
-background:
-
-rgba(
-255,
-255,
-255,
-0.92
-);
-
-padding:
-
-10px 16px;
-
-border-radius:999px;
-
-font-size:14px;
-
-font-weight:700;
-
-backdrop-filter:
-
-blur(10px);
-
-box-shadow:
-
-0 4px 18px
-rgba(0,0,0,.08);
-
-color:#D96B92;
-
-}
-
-.section{
-
-padding:
-
-40px 18px;
-
-opacity:0;
-
-transform:
-
-translateY(40px);
-
-transition:1s;
-
-}
-
-.section.show{
-
-opacity:1;
-
-transform:
-
-translateY(0);
-
-}
-
-.section img{
-
-width:100%;
-
-display:block;
-
-border-radius:28px;
-
-box-shadow:
-
-0 8px 24px
-rgba(0,0,0,.08);
-
-}
-
-.noticeWrap,
-.reviewWrap,
-.faqWrap{
-
-padding:
-
-0 18px 35px;
-
-}
-
-.notice-card,
-.review-card,
-.faq-card{
-
-background:white;
-
-padding:18px;
-
-border-radius:22px;
-
-margin-bottom:12px;
-
-box-shadow:
-
-0 5px 18px
-rgba(0,0,0,.05);
-
-line-height:1.7;
-
-}
-
-.question{
-
-display:flex;
-
-justify-content:
-
-space-between;
-
-font-weight:700;
-
-cursor:pointer;
-
-}
-
-.answer{
-
-max-height:0;
-
-overflow:hidden;
-
-transition:.3s;
-
-line-height:1.7;
-
-}
-
-.faq-card.open
-.answer{
-
-max-height:250px;
-
-padding-top:14px;
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div
-class="status"
-id="status">
-
-🟢 상담 가능
-
-</div>
-
-<div class="section">
-
-<a
-href="https://open.kakao.com/me/DanahsTarot"
-target="_blank">
-
-<img src="main-cover.jpg">
-
-</a>
-
-</div>
-
-<div class="section">
-
-<img src="main.png">
-
-</div>
-
-<div class="section">
-
-<img src="info.png">
-
-</div>
-
-<div class="noticeWrap">
-
-<div
-id="noticeBox">
-
-</div>
-
-</div>
-
-<div class="section">
-
-<img src="story.png">
-
-</div>
-
-<div class="section">
-
-<img src="process-bg.jpg">
-
-</div>
-
-<div class="section">
-
-<a
-href="https://open.kakao.com/me/DanahsTarot"
-target="_blank">
-
-<img src="why-danah.jpg">
-
-</a>
-
-</div>
-
-<div class="section">
-
-<img src="review.png">
-
-</div>
-
-<div class="reviewWrap">
-
-<div
-id="reviews">
-
-</div>
-
-</div>
-
-<div class="section">
-
-<img src="guide.png">
-
-</div>
-
-<div class="section">
-
-<a
-href="https://open.kakao.com/me/DanahsTarot"
-target="_blank">
-
-<img src="price.png">
-
-</a>
-
-</div>
-
-<div class="section">
-
-<img src="faq.png">
-
-</div>
-
-<div class="faqWrap">
-
-<div
-id="faqBox">
-
-</div>
-
-</div>
-
-<div class="section">
-
-<a
-href="https://open.kakao.com/me/DanahsTarot"
-target="_blank">
-
-<img src="cta.png">
-
-</a>
-
-</div>
-
-<script
-src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
-
-</script>
-
 <script>
 
 const supabase=
-
 window.supabase.createClient(
-
 "https://fuwojigmgsvxennydcfz.supabase.co",
-
 "sb_publishable_rzsuJsbir1oa5-vIiE_z-A_f6THK57w"
-
 )
 
 function toggleFAQ(el){
 
-el.parentElement.classList.toggle(
-"open"
-)
+el.parentElement.classList.toggle("open")
 
 }
 
 async function loadStatus(){
 
-const {data}=
-
-await supabase
+const {data}=await supabase
 
 .from("status")
 
@@ -370,15 +26,9 @@ await supabase
 
 if(data){
 
-document
-
-.getElementById(
+document.getElementById(
 "status"
-)
-
-.innerText=
-
-data.status
+).innerText=data.status
 
 }
 
@@ -386,9 +36,7 @@ data.status
 
 async function loadNotice(){
 
-const {data}=
-
-await supabase
+const {data}=await supabase
 
 .from("notice")
 
@@ -402,17 +50,13 @@ ascending:false
 
 if(!data)return
 
-document
-
-.getElementById(
+document.getElementById(
 "noticeBox"
 )
 
 .innerHTML=
 
-data.map(
-
-x=>`
+data.map(x=>`
 
 <div class="notice-card">
 
@@ -420,17 +64,13 @@ x=>`
 
 </div>
 
-`
-
-).join("")
+`).join("")
 
 }
 
 async function loadReview(){
 
-const {data}=
-
-await supabase
+const {data}=await supabase
 
 .from("reviews")
 
@@ -444,17 +84,13 @@ ascending:false
 
 if(!data)return
 
-document
-
-.getElementById(
+document.getElementById(
 "reviews"
 )
 
 .innerHTML=
 
-data.map(
-
-x=>`
+data.map(x=>`
 
 <div class="review-card">
 
@@ -462,17 +98,13 @@ x=>`
 
 </div>
 
-`
-
-).join("")
+`).join("")
 
 }
 
 async function loadFAQ(){
 
-const {data}=
-
-await supabase
+const {data}=await supabase
 
 .from("faq")
 
@@ -482,17 +114,13 @@ await supabase
 
 if(!data)return
 
-document
-
-.getElementById(
+document.getElementById(
 "faqBox"
 )
 
 .innerHTML=
 
-data.map(
-
-x=>`
+data.map(x=>`
 
 <div class="faq-card">
 
@@ -502,16 +130,11 @@ onclick="toggleFAQ(this)">
 
 ${x.question}
 
-<span>
-
-▼
-
-</span>
+<span>▼</span>
 
 </div>
 
-<div
-class="answer">
+<div class="answer">
 
 ${x.answer}
 
@@ -519,34 +142,23 @@ ${x.answer}
 
 </div>
 
-`
-
-).join("")
+`).join("")
 
 }
 
 loadStatus()
-
 loadNotice()
-
 loadReview()
-
 loadFAQ()
 
-setInterval(
-
-()=>{
+setInterval(()=>{
 
 loadStatus()
 loadNotice()
 loadReview()
 loadFAQ()
 
-},
-
-5000
-
-)
+},5000)
 
 const observer=
 
@@ -559,14 +171,10 @@ entries.forEach(
 (entry)=>{
 
 if(
-
 entry.isIntersecting
-
 ){
 
-entry.target
-
-.classList.add(
+entry.target.classList.add(
 "show"
 )
 
