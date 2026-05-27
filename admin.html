@@ -18,11 +18,9 @@ rel="stylesheet">
 <style>
 
 *{
-
 margin:0;
 padding:0;
 box-sizing:border-box;
-
 }
 
 body{
@@ -31,9 +29,7 @@ font-family:
 'Noto Sans KR',
 sans-serif;
 
-background:
-
-#FFF8F8;
+background:#FFF8F8;
 
 padding:20px;
 
@@ -49,20 +45,14 @@ margin-top:100px;
 
 background:white;
 
-padding:25px;
+padding:28px;
 
 border-radius:28px;
 
 box-shadow:
 
 0 8px 25px
-
-rgba(
-0,
-0,
-0,
-0.08
-);
+rgba(0,0,0,.08);
 
 }
 
@@ -76,30 +66,24 @@ display:none;
 
 background:white;
 
-padding:20px;
+padding:22px;
 
 border-radius:24px;
 
-margin-bottom:20px;
+margin-bottom:18px;
 
 box-shadow:
 
 0 5px 18px
-
-rgba(
-0,
-0,
-0,
-0.06
-);
+rgba(0,0,0,.06);
 
 }
 
 h2{
 
-margin-bottom:15px;
+color:#D86D93;
 
-color:#D26A91;
+margin-bottom:16px;
 
 }
 
@@ -117,43 +101,45 @@ border:
 
 border-radius:16px;
 
-margin-top:8px;
-
 margin-bottom:12px;
 
 font-size:14px;
 
 }
 
+textarea{
+
+min-height:110px;
+
+resize:none;
+
+}
+
 button{
-
-background:
-
-#E57EA1;
-
-color:white;
-
-border:none;
-
-padding:
-
-14px 18px;
-
-border-radius:16px;
-
-font-size:14px;
-
-cursor:pointer;
 
 width:100%;
 
-margin-top:8px;
+padding:14px;
+
+border:none;
+
+border-radius:16px;
+
+background:#E57EA1;
+
+color:white;
+
+font-size:15px;
+
+font-weight:700;
+
+cursor:pointer;
 
 }
 
 button:hover{
 
-opacity:.9;
+opacity:.92;
 
 }
 
@@ -165,7 +151,6 @@ opacity:.9;
 
 <div
 class="login"
-
 id="loginBox">
 
 <h2>
@@ -175,23 +160,12 @@ Danah Admin
 </h2>
 
 <input
-
 id="pw"
-
 type="password"
-
-placeholder=
-
-"비밀번호"
-
->
+placeholder="비밀번호">
 
 <button
-onclick=
-
-"login()"
-
->
+onclick="login()">
 
 로그인
 
@@ -201,7 +175,6 @@ onclick=
 
 <div
 class="panel"
-
 id="panel">
 
 <div class="card">
@@ -236,11 +209,7 @@ id="status">
 </select>
 
 <button
-onclick=
-
-"saveStatus()"
-
->
+onclick="saveStatus()">
 
 저장
 
@@ -257,23 +226,13 @@ onclick=
 </h2>
 
 <textarea
-
 id="notice"
-
-placeholder=
-
-"공지 작성"
-
->
+placeholder="공지 작성">
 
 </textarea>
 
 <button
-onclick=
-
-"saveNotice()"
-
->
+onclick="saveNotice()">
 
 공지 저장
 
@@ -285,28 +244,18 @@ onclick=
 
 <h2>
 
-후기 추가
+후기 작성
 
 </h2>
 
 <textarea
-
 id="review"
-
-placeholder=
-
-"후기"
-
->
+placeholder="후기 작성">
 
 </textarea>
 
 <button
-onclick=
-
-"saveReview()"
-
->
+onclick="saveReview()">
 
 후기 저장
 
@@ -318,38 +267,22 @@ onclick=
 
 <h2>
 
-FAQ 추가
+FAQ 작성
 
 </h2>
 
 <input
-
 id="question"
-
-placeholder=
-
-"질문"
-
->
+placeholder="질문">
 
 <textarea
-
 id="answer"
-
-placeholder=
-
-"답변"
-
->
+placeholder="답변">
 
 </textarea>
 
 <button
-onclick=
-
-"saveFAQ()"
-
->
+onclick="saveFAQ()">
 
 FAQ 저장
 
@@ -360,11 +293,7 @@ FAQ 저장
 </div>
 
 <script
-src=
-
-"https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-
->
+src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
 
 </script>
 
@@ -385,14 +314,9 @@ function login(){
 const pw=
 
 document
-
-.getElementById(
-
-"pw"
-
-)
-
+.getElementById("pw")
 .value
+.trim()
 
 if(
 
@@ -401,40 +325,51 @@ pw==="danah1234"
 ){
 
 document
-
-.getElementById(
-
-"loginBox"
-
-)
-
-.style.display=
-
-"none"
+.getElementById("loginBox")
+.style.display="none"
 
 document
+.getElementById("panel")
+.style.display="block"
 
-.getElementById(
-
-"panel"
-
+localStorage
+.setItem(
+"admin",
+"yes"
 )
-
-.style.display=
-
-"block"
 
 }
 
 else{
 
 alert(
-
 "비밀번호 오류"
-
 )
 
 }
+
+}
+
+if(
+
+localStorage
+.getItem("admin")
+
+==="yes"
+
+){
+
+document
+.getElementById(
+"loginBox"
+)
+.style.display="none"
+
+document
+.getElementById(
+"panel"
+)
+.style.display="block"
 
 }
 
@@ -443,13 +378,9 @@ async function saveStatus(){
 const value=
 
 document
-
 .getElementById(
-
 "status"
-
 )
-
 .value
 
 await supabase
@@ -462,18 +393,10 @@ status:value
 
 })
 
-.eq(
-
-"id",
-
-1
-
-)
+.eq("id",1)
 
 alert(
-
-"저장 완료"
-
+"상담상태 저장 완료"
 )
 
 }
@@ -483,14 +406,12 @@ async function saveNotice(){
 const value=
 
 document
-
 .getElementById(
-
 "notice"
-
 )
-
 .value
+
+if(!value)return
 
 await supabase
 
@@ -503,9 +424,7 @@ content:value
 })
 
 alert(
-
-"공지 저장"
-
+"공지 저장 완료"
 )
 
 }
@@ -515,14 +434,12 @@ async function saveReview(){
 const value=
 
 document
-
 .getElementById(
-
 "review"
-
 )
-
 .value
+
+if(!value)return
 
 await supabase
 
@@ -535,14 +452,35 @@ content:value
 })
 
 alert(
-
-"후기 저장"
-
+"후기 저장 완료"
 )
 
 }
 
 async function saveFAQ(){
+
+const question=
+
+document
+.getElementById(
+"question"
+)
+.value
+
+const answer=
+
+document
+.getElementById(
+"answer"
+)
+.value
+
+if(
+
+!question||
+!answer
+
+)return
 
 await supabase
 
@@ -550,39 +488,42 @@ await supabase
 
 .insert({
 
-question:
-
-document
-
-.getElementById(
-
-"question"
-
-)
-
-.value,
-
-answer:
-
-document
-
-.getElementById(
-
-"answer"
-
-)
-
-.value
+question,
+answer
 
 })
 
 alert(
-
-"FAQ 저장"
-
+"FAQ 저장 완료"
 )
 
 }
+
+document
+
+.getElementById(
+"pw"
+)
+
+.addEventListener(
+
+"keydown",
+
+(e)=>{
+
+if(
+
+e.key==="Enter"
+
+){
+
+login()
+
+}
+
+}
+
+)
 
 </script>
 
