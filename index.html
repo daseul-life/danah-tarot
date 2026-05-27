@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 
 <meta charset="UTF-8">
@@ -17,13 +18,17 @@ rel="stylesheet">
 <style>
 
 *{
+
 margin:0;
 padding:0;
 box-sizing:border-box;
+
 }
 
 html{
+
 scroll-behavior:smooth;
+
 }
 
 body{
@@ -32,7 +37,7 @@ font-family:
 'Noto Sans KR',
 sans-serif;
 
-background:#FFF9F8;
+background:#FFF8F8;
 
 max-width:760px;
 
@@ -40,15 +45,19 @@ margin:auto;
 
 overflow-x:hidden;
 
-padding-bottom:120px;
+padding-bottom:60px;
 
 }
 
-#status{
+.status{
 
-position:sticky;
+position:fixed;
 
-top:0;
+right:16px;
+
+top:16px;
+
+z-index:999;
 
 background:
 
@@ -56,35 +65,35 @@ rgba(
 255,
 255,
 255,
-0.95
+0.92
 );
+
+padding:
+
+10px 16px;
+
+border-radius:999px;
+
+font-size:14px;
+
+font-weight:700;
 
 backdrop-filter:
 
 blur(12px);
 
-padding:16px;
-
-font-size:18px;
-
-font-weight:700;
-
-text-align:center;
-
-color:#D96C92;
-
-z-index:999;
-
 box-shadow:
 
-0 4px 12px
+0 4px 18px
 
 rgba(
 0,
 0,
 0,
-0.05
+0.08
 );
+
+color:#D96B92;
 
 }
 
@@ -92,7 +101,7 @@ rgba(
 
 padding:
 
-48px 18px;
+44px 18px;
 
 opacity:0;
 
@@ -100,9 +109,7 @@ transform:
 
 translateY(45px);
 
-transition:
-
-1s;
+transition:1s;
 
 }
 
@@ -124,11 +131,9 @@ display:block;
 
 border-radius:28px;
 
-height:auto;
-
 box-shadow:
 
-0 10px 30px
+0 8px 24px
 
 rgba(
 0,
@@ -137,126 +142,142 @@ rgba(
 0.08
 );
 
-transition:.35s;
-
 }
 
-.section img:hover{
-
-transform:
-
-translateY(-4px);
-
-}
-
-.notice img{
-
-animation:
-
-floating
-
-3s ease-in-out infinite;
-
-}
-
-@keyframes floating{
-
-50%{
-
-transform:
-
-translateY(-5px);
-
-}
-
-}
-
-.reserve{
-
-position:fixed;
-
-bottom:18px;
-
-left:50%;
-
-transform:
-
-translateX(-50%);
-
-width:92%;
-
-max-width:700px;
-
-padding:18px;
-
-border:none;
-
-border-radius:999px;
-
-background:
-
-linear-gradient(
-
-90deg,
-
-#FF76A8,
-
-#FFA5C8
-
-);
-
-color:white;
-
-font-size:19px;
-
-font-weight:700;
-
-text-decoration:none;
-
-text-align:center;
-
-box-shadow:
-
-0 8px 25px
-
-rgba(
-255,
-100,
-150,
-0.3
-);
-
-animation:
-
-pulse 2s infinite;
-
-z-index:999;
-
-}
-
-@keyframes pulse{
-
-50%{
-
-transform:
-
-translateX(-50%)
-
-scale(1.03);
-
-}
-
-}
-
-@media(max-width:600px){
-
-.section{
+.noticeWrap,
+.reviewWrap,
+.faqWrap{
 
 padding:
 
-40px 16px;
+0 18px
+40px;
 
 }
+
+.notice-card{
+
+background:
+
+#fff;
+
+padding:18px;
+
+border-radius:22px;
+
+margin-bottom:12px;
+
+box-shadow:
+
+0 5px 18px
+
+rgba(
+0,
+0,
+0,
+0.05
+);
+
+line-height:1.6;
+
+}
+
+.review-card{
+
+background:
+
+rgba(
+255,
+255,
+255,
+0.85
+);
+
+padding:18px;
+
+border-radius:22px;
+
+margin-bottom:12px;
+
+line-height:1.8;
+
+box-shadow:
+
+0 5px 18px
+
+rgba(
+0,
+0,
+0,
+0.05
+);
+
+}
+
+.faq-card{
+
+background:
+
+rgba(
+255,
+255,
+255,
+0.9
+);
+
+padding:18px;
+
+border-radius:22px;
+
+margin-bottom:12px;
+
+box-shadow:
+
+0 5px 18px
+
+rgba(
+0,
+0,
+0,
+0.05
+);
+
+}
+
+.question{
+
+display:flex;
+
+justify-content:
+
+space-between;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+.answer{
+
+max-height:0;
+
+overflow:hidden;
+
+transition:.35s;
+
+line-height:1.7;
+
+padding:0 5px;
+
+}
+
+.faq-card.open
+.answer{
+
+max-height:220px;
+
+padding-top:14px;
 
 }
 
@@ -266,9 +287,12 @@ padding:
 
 <body>
 
-<div id="status">
+<div
+class="status"
 
-상담 상태 확인중...
+id="status">
+
+🟢 상담 가능
 
 </div>
 
@@ -284,9 +308,17 @@ target="_blank">
 
 </div>
 
-<div class="section notice">
+<div class="section">
 
 <img src="info.png">
+
+</div>
+
+<div class="noticeWrap">
+
+<div id="noticeBox">
+
+</div>
 
 </div>
 
@@ -320,6 +352,14 @@ target="_blank">
 
 </div>
 
+<div class="reviewWrap">
+
+<div id="reviews">
+
+</div>
+
+</div>
+
 <div class="section">
 
 <img src="guide.png">
@@ -344,6 +384,14 @@ target="_blank">
 
 </div>
 
+<div class="faqWrap">
+
+<div id="faqBox">
+
+</div>
+
+</div>
+
 <div class="section">
 
 <a
@@ -356,16 +404,261 @@ target="_blank">
 
 </div>
 
-<a
-class="reserve"
-href="https://open.kakao.com/me/DanahsTarot"
-target="_blank">
+<script
+src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
 
-💌 상담 예약하기
-
-</a>
+</script>
 
 <script>
+
+const supabase=
+
+window.supabase.createClient(
+
+"https://fuwojigmgsvxennydcfz.supabase.co",
+
+"sb_publishable_rzsuJsbir1oa5-vIiE_z-A_f6THK57w"
+
+)
+
+function toggleFAQ(el){
+
+el.parentElement
+
+.classList
+
+.toggle("open")
+
+}
+
+async function loadStatus(){
+
+const {data}=
+
+await supabase
+
+.from("status")
+
+.select("*")
+
+.eq("id",1)
+
+.single()
+
+if(data){
+
+document
+
+.getElementById(
+
+"status"
+
+)
+
+.innerText=
+
+data.status
+
+}
+
+}
+
+async function loadNotice(){
+
+const {data}=
+
+await supabase
+
+.from("notice")
+
+.select("*")
+
+.order(
+
+"id",
+
+{
+
+ascending:false
+
+}
+
+)
+
+if(!data)return
+
+document
+
+.getElementById(
+
+"noticeBox"
+
+)
+
+.innerHTML=
+
+data.map(
+
+x=>
+
+`
+
+<div class="notice-card">
+
+📢 ${x.content}
+
+</div>
+
+`
+
+).join("")
+
+}
+
+async function loadReview(){
+
+const {data}=
+
+await supabase
+
+.from("reviews")
+
+.select("*")
+
+.order(
+
+"id",
+
+{
+
+ascending:false
+
+}
+
+)
+
+if(!data)return
+
+document
+
+.getElementById(
+
+"reviews"
+
+)
+
+.innerHTML=
+
+data.map(
+
+x=>
+
+`
+
+<div class="review-card">
+
+💬 ${x.content}
+
+</div>
+
+`
+
+).join("")
+
+}
+
+async function loadFAQ(){
+
+const {data}=
+
+await supabase
+
+.from("faq")
+
+.select("*")
+
+.order("id")
+
+if(!data)return
+
+document
+
+.getElementById(
+
+"faqBox"
+
+)
+
+.innerHTML=
+
+data.map(
+
+x=>
+
+`
+
+<div class="faq-card">
+
+<div
+
+class="question"
+
+onclick=
+
+"toggleFAQ(this)"
+
+>
+
+${x.question}
+
+<span>
+
+▼
+
+</span>
+
+</div>
+
+<div
+class="answer">
+
+${x.answer}
+
+</div>
+
+</div>
+
+`
+
+).join("")
+
+}
+
+loadStatus()
+
+loadNotice()
+
+loadReview()
+
+loadFAQ()
+
+setInterval(
+
+()=>{
+
+loadStatus()
+
+loadNotice()
+
+loadReview()
+
+loadFAQ()
+
+},
+
+5000
+
+)
 
 const observer=
 
@@ -387,11 +680,7 @@ entry.target
 
 .classList
 
-.add(
-
-"show"
-
-)
+.add("show")
 
 }
 
@@ -420,4 +709,5 @@ observer.observe(x)
 </script>
 
 </body>
+
 </html>
