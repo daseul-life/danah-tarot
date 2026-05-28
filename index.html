@@ -5,7 +5,8 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
+<meta
+name="viewport"
 content="width=device-width,initial-scale=1">
 
 <title>Danah Tarot</title>
@@ -40,19 +41,21 @@ margin:auto;
 
 overflow-x:hidden;
 
-padding-bottom:60px;
+padding-bottom:80px;
 
 }
 
+/* 상담 상태 */
+
 .status{
 
-position:fixed;
+position:absolute;
 
-top:15px;
+top:20px;
 
-right:15px;
+right:20px;
 
-z-index:999;
+z-index:10;
 
 background:
 rgba(255,255,255,.92);
@@ -76,6 +79,8 @@ color:#D96B92;
 
 }
 
+/* 섹션 */
+
 .section{
 
 padding:18px;
@@ -96,6 +101,8 @@ box-shadow:
 0 8px 24px rgba(0,0,0,.08);
 
 }
+
+/* 카드 */
 
 .noticeWrap,
 .reviewWrap,
@@ -123,6 +130,8 @@ box-shadow:
 0 5px 18px rgba(0,0,0,.05);
 
 }
+
+/* FAQ */
 
 .question{
 
@@ -157,11 +166,49 @@ padding-top:12px;
 
 }
 
+/* 음악 버튼 */
+
+.musicBtn{
+
+position:fixed;
+
+bottom:20px;
+
+right:20px;
+
+z-index:999;
+
+background:
+rgba(255,255,255,.92);
+
+padding:
+12px 18px;
+
+border-radius:999px;
+
+font-size:14px;
+
+font-weight:700;
+
+backdrop-filter:
+blur(10px);
+
+box-shadow:
+0 4px 18px rgba(0,0,0,.08);
+
+color:#D96B92;
+
+cursor:pointer;
+
+}
+
 </style>
 
 </head>
 
 <body>
+
+<!-- 상담 상태 -->
 
 <div
 class="status"
@@ -170,6 +217,8 @@ id="status">
 🟢 상담 가능
 
 </div>
+
+<!-- 메인 -->
 
 <div class="section">
 
@@ -183,11 +232,15 @@ target="_blank">
 
 </div>
 
+<!-- 소개 -->
+
 <div class="section">
 
 <img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/info.png">
 
 </div>
+
+<!-- 공지 -->
 
 <div class="noticeWrap">
 
@@ -195,17 +248,23 @@ target="_blank">
 
 </div>
 
+<!-- 스토리 -->
+
 <div class="section">
 
 <img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/story.png">
 
 </div>
 
+<!-- 상담 과정 -->
+
 <div class="section">
 
 <img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/process-bg.jpg">
 
 </div>
+
+<!-- 왜 다나 -->
 
 <div class="section">
 
@@ -219,6 +278,8 @@ target="_blank">
 
 </div>
 
+<!-- 리뷰 -->
+
 <div class="section">
 
 <img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/review.png">
@@ -231,11 +292,15 @@ target="_blank">
 
 </div>
 
+<!-- 가이드 -->
+
 <div class="section">
 
 <img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/guide.png">
 
 </div>
+
+<!-- 가격 -->
 
 <div class="section">
 
@@ -249,6 +314,8 @@ target="_blank">
 
 </div>
 
+<!-- FAQ -->
+
 <div class="section">
 
 <img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/faq.png">
@@ -260,6 +327,8 @@ target="_blank">
 <div id="faqBox"></div>
 
 </div>
+
+<!-- CTA -->
 
 <div class="section">
 
@@ -273,12 +342,39 @@ target="_blank">
 
 </div>
 
+<!-- 음악 버튼 -->
+
+<div
+class="musicBtn"
+onclick="toggleMusic()">
+
+🎵 Music
+
+</div>
+
+<!-- 음악 -->
+
+<audio
+id="bgm"
+loop
+playsinline>
+
+<source
+src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=relaxing-meditation-112191.mp3"
+type="audio/mpeg">
+
+</audio>
+
+<!-- Supabase -->
+
 <script
 src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
 
 </script>
 
 <script>
+
+/* Supabase */
 
 const supabase=
 
@@ -290,6 +386,8 @@ window.supabase.createClient(
 
 )
 
+/* FAQ */
+
 function toggleFAQ(el){
 
 el.parentElement.classList.toggle(
@@ -297,6 +395,8 @@ el.parentElement.classList.toggle(
 )
 
 }
+
+/* 상담 상태 */
 
 async function loadStatus(){
 
@@ -320,6 +420,8 @@ data.status
 }
 
 }
+
+/* 공지 */
 
 async function loadNotice(){
 
@@ -356,6 +458,8 @@ data.map(x=>`
 
 }
 
+/* 후기 */
+
 async function loadReview(){
 
 const {data}=await supabase
@@ -390,6 +494,8 @@ data.map(x=>`
 `).join("")
 
 }
+
+/* FAQ 불러오기 */
 
 async function loadFAQ(){
 
@@ -434,6 +540,46 @@ ${x.answer}
 `).join("")
 
 }
+
+/* 음악 */
+
+const bgm=
+document.getElementById(
+"bgm"
+)
+
+window.addEventListener(
+
+"load",
+
+()=>{
+
+bgm.volume=.35
+
+bgm.play().catch(()=>{})
+
+}
+
+)
+
+function toggleMusic(){
+
+if(
+bgm.paused
+){
+
+bgm.play()
+
+}
+else{
+
+bgm.pause()
+
+}
+
+}
+
+/* 실행 */
 
 loadStatus()
 loadNotice()
