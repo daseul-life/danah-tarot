@@ -53,7 +53,9 @@ right:20px;
 
 z-index:999;
 
-background:rgba(255,255,255,.45);
+background:rgba(255,255,255,.82);
+
+border:1px solid rgba(255,255,255,.7);
 
 padding:8px 14px;
 
@@ -61,7 +63,7 @@ border-radius:999px;
 
 font-size:12px;
 
-font-weight:600;
+font-weight:700;
 
 backdrop-filter:blur(8px);
 
@@ -105,7 +107,7 @@ padding:0 18px 35px;
 .review-card,
 .faq-card{
 
-background:rgba(255,255,255,.75);
+background:rgba(255,255,255,.78);
 
 padding:18px;
 
@@ -113,7 +115,7 @@ border-radius:22px;
 
 margin-bottom:14px;
 
-line-height:1.7;
+line-height:1.8;
 
 backdrop-filter:blur(10px);
 
@@ -135,6 +137,8 @@ font-weight:700;
 
 cursor:pointer;
 
+font-size:16px;
+
 }
 
 .answer{
@@ -145,7 +149,9 @@ overflow:hidden;
 
 transition:.35s;
 
-line-height:1.7;
+line-height:1.8;
+
+color:#555;
 
 }
 
@@ -153,7 +159,43 @@ line-height:1.7;
 
 max-height:300px;
 
-padding-top:12px;
+padding-top:14px;
+
+}
+
+/* 후기 */
+
+.review-card{
+
+font-size:15px;
+
+color:#444;
+
+}
+
+/* 공지 */
+
+.notice-card{
+
+font-size:15px;
+
+color:#444;
+
+}
+
+/* 모바일 */
+
+@media(max-width:600px){
+
+.status{
+
+top:16px;
+
+right:16px;
+
+font-size:12px;
+
+}
 
 }
 
@@ -188,7 +230,7 @@ src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/main-cover.j
 
 </div>
 
-<!-- 공지 이미지 -->
+<!-- 공지 -->
 
 <div class="section">
 
@@ -196,8 +238,6 @@ src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/main-cover.j
 src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/info.png">
 
 </div>
-
-<!-- 공지 카드 -->
 
 <div class="noticeWrap">
 
@@ -253,15 +293,6 @@ src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/review.png">
 
 </div>
 
-<!-- 가이드 -->
-
-<div class="section">
-
-<img
-src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/guide.png">
-
-</div>
-
 <!-- 가격 -->
 
 <div class="section">
@@ -307,7 +338,7 @@ src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/cta.png">
 
 </div>
 
-<!-- supabase -->
+<!-- Supabase -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -321,7 +352,7 @@ const supabase = window.supabase.createClient(
 
 )
 
-/* FAQ */
+/* FAQ 열기 */
 
 function toggleFAQ(el){
 
@@ -427,13 +458,21 @@ data.map(x => `
 
 <div class="faq-card">
 
-<div
-class="question"
-onclick="toggleFAQ(this)">
+<div class="question">
+
+<span>
 
 ${x.question}
 
-<span>▼</span>
+</span>
+
+<span
+onclick="toggleFAQ(this.parentElement)"
+style="cursor:pointer;">
+
+▼
+
+</span>
 
 </div>
 
