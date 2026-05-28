@@ -28,8 +28,6 @@ padding-bottom:80px;
 color:#444;
 }
 
-/* 공통 */
-
 .section{
 padding:18px;
 position:relative;
@@ -41,8 +39,6 @@ display:block;
 border-radius:20px;
 box-shadow:0 6px 20px rgba(0,0,0,.06);
 }
-
-/* 상담 상태 */
 
 .status{
 position:absolute;
@@ -57,8 +53,6 @@ color:#D96B92;
 box-shadow:0 4px 12px rgba(0,0,0,.08);
 z-index:10;
 }
-
-/* 후기 */
 
 .reviewWrap{
 padding:0 18px 40px;
@@ -99,8 +93,6 @@ line-height:1.8;
 color:#4B3434;
 word-break:keep-all;
 }
-
-/* FAQ */
 
 .faqWrap{
 padding:0 18px 40px;
@@ -177,8 +169,6 @@ display:block;
 
 <body>
 
-<!-- 메인 -->
-
 <div class="section">
 
 <div class="status" id="status">
@@ -189,55 +179,37 @@ display:block;
 
 </div>
 
-<!-- WHY -->
-
 <div class="section">
 <img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/why-danah.jpg">
 </div>
-
-<!-- 가격표 -->
 
 <div class="section">
 <img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/price.png">
 </div>
 
-<!-- 진행 안내 -->
-
 <div class="section">
 <img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/guide.png">
 </div>
-
-<!-- 후기 제목 -->
 
 <div class="section">
 <img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/review-title.png">
 </div>
 
-<!-- 후기 -->
-
 <div class="reviewWrap">
 <div id="reviews"></div>
 </div>
-
-<!-- FAQ 제목 -->
 
 <div class="section">
 <img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/faq-title.png">
 </div>
 
-<!-- FAQ -->
-
 <div class="faqWrap">
 <div id="faqBox"></div>
 </div>
 
-<!-- CTA -->
-
 <div class="section">
 <img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/cta.png">
 </div>
-
-<!-- Supabase -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -247,8 +219,6 @@ const supabase = window.supabase.createClient(
 "https://fuwojigmgsvxennydcfz.supabase.co",
 "sb_publishable_rzsuJsbir1oa5-vIiE_z-A_f6THK57w"
 )
-
-/* 상담 상태 */
 
 async function loadStatus(){
 
@@ -266,8 +236,6 @@ data.status
 }
 
 }
-
-/* 후기 */
 
 async function loadReview(){
 
@@ -303,8 +271,6 @@ ${x.content}
 `).join("")
 
 }
-
-/* FAQ */
 
 async function loadFAQ(){
 
@@ -371,8 +337,6 @@ document
 
 }
 
-/* 실행 */
-
 loadStatus()
 loadReview()
 loadFAQ()
@@ -380,4 +344,5 @@ loadFAQ()
 </script>
 
 </body>
+
 </html>
