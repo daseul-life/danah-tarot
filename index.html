@@ -144,6 +144,8 @@ display:flex;
 justify-content:
 space-between;
 
+align-items:center;
+
 font-weight:700;
 
 cursor:pointer;
@@ -319,6 +321,8 @@ src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
 
 <script>
 
+/* Supabase */
+
 const supabase=
 
 window.supabase.createClient(
@@ -329,11 +333,14 @@ window.supabase.createClient(
 
 )
 
-/* FAQ */
+/* FAQ 아코디언 */
 
 function toggleFAQ(el){
 
-el.parentElement.classList.toggle(
+const card =
+el.parentElement
+
+card.classList.toggle(
 "open"
 )
 
