@@ -39,6 +39,8 @@ overflow-x:hidden;
 
 padding-bottom:80px;
 
+color:#444;
+
 }
 
 /* 메인 */
@@ -93,7 +95,7 @@ color:#D96B92;
 
 }
 
-/* 일반 섹션 */
+/* 섹션 */
 
 .section{
 
@@ -113,37 +115,119 @@ box-shadow:0 8px 24px rgba(0,0,0,.08);
 
 }
 
-/* 카드 */
+/* 공지 */
 
 .noticeWrap,
 .reviewWrap,
 .faqWrap{
 
-padding:0 18px 35px;
+padding:0 18px 40px;
 
 }
 
-.notice-card,
-.review-card,
-.faq-card{
+.notice-card{
 
-background:rgba(255,255,255,.78);
+background:#FFFFFF;
+
+border:1px solid #F3DCE4;
+
+border-radius:14px;
 
 padding:18px;
 
-border-radius:18px;
-
-margin-bottom:14px;
+margin-bottom:12px;
 
 line-height:1.8;
 
-backdrop-filter:blur(10px);
+box-shadow:0 2px 10px rgba(0,0,0,.04);
 
-box-shadow:0 5px 18px rgba(0,0,0,.05);
+font-size:15px;
+
+}
+
+/* 리뷰 */
+
+.review-card{
+
+background:#FFFFFF;
+
+border:1px solid #F3DCE4;
+
+border-radius:14px;
+
+padding:18px;
+
+margin-bottom:12px;
+
+box-shadow:0 2px 10px rgba(0,0,0,.04);
+
+}
+
+.review-inner{
+
+display:flex;
+
+gap:12px;
+
+align-items:flex-start;
+
+}
+
+.review-badge{
+
+width:30px;
+
+height:30px;
+
+border-radius:999px;
+
+background:#F8E6EC;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:13px;
+
+font-weight:700;
+
+color:#D96B92;
+
+flex-shrink:0;
+
+}
+
+.review-text{
+
+line-height:1.8;
+
+font-size:15px;
+
+color:#555;
 
 }
 
 /* FAQ */
+
+.faq-card{
+
+background:#FFFFFF;
+
+border:1px solid #F3DCE4;
+
+border-radius:14px;
+
+padding:18px;
+
+margin-bottom:12px;
+
+box-shadow:0 2px 10px rgba(0,0,0,.04);
+
+transition:.25s;
+
+}
 
 .question{
 
@@ -153,11 +237,47 @@ justify-content:space-between;
 
 align-items:center;
 
-font-weight:700;
-
 cursor:pointer;
 
 font-size:16px;
+
+font-weight:700;
+
+color:#4B3434;
+
+}
+
+.question-left{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+.q-badge{
+
+width:28px;
+
+height:28px;
+
+border-radius:999px;
+
+background:#F8E6EC;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:13px;
+
+font-weight:700;
+
+color:#D96B92;
 
 }
 
@@ -165,11 +285,47 @@ font-size:16px;
 
 display:none;
 
-padding-top:14px;
+padding-top:18px;
 
 line-height:1.8;
 
-color:#555;
+font-size:15px;
+
+color:#666;
+
+}
+
+.answer-inner{
+
+display:flex;
+
+gap:10px;
+
+}
+
+.a-badge{
+
+width:28px;
+
+height:28px;
+
+border-radius:999px;
+
+background:#FFF1F5;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:13px;
+
+font-weight:700;
+
+color:#E47A9C;
+
+flex-shrink:0;
 
 }
 
@@ -272,14 +428,16 @@ src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/why-danah.jp
 
 </div>
 
-<!-- 후기 -->
+<!-- 후기 제목 -->
 
 <div class="section">
 
 <img
-src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/review.png">
+src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/review-title.png">
 
 </div>
+
+<!-- 후기 -->
 
 <div class="reviewWrap">
 
@@ -302,14 +460,16 @@ src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/price.png">
 
 </div>
 
-<!-- FAQ -->
+<!-- FAQ 제목 -->
 
 <div class="section">
 
 <img
-src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/faq.png">
+src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/faq-title.png">
 
 </div>
+
+<!-- FAQ -->
 
 <div class="faqWrap">
 
@@ -332,7 +492,7 @@ src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/cta.png">
 
 </div>
 
-<!-- supabase -->
+<!-- Supabase -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -417,7 +577,21 @@ data.map(x => `
 
 <div class="review-card">
 
-💬 ${x.content || ""}
+<div class="review-inner">
+
+<div class="review-badge">
+
+후기
+
+</div>
+
+<div class="review-text">
+
+${x.content}
+
+</div>
+
+</div>
 
 </div>
 
@@ -441,23 +615,55 @@ if(!data) return
 
 document.getElementById("faqBox").innerHTML =
 
-data.map((x,i) => `
+data.map((x,i)=>`
 
-<div class="faq-card" id="faq-card-${i}">
+<div class="faq-card" id="faq-${i}">
 
 <div
 class="question"
 onclick="toggleFAQ(${i})">
 
-<span>${x.question}</span>
+<div class="question-left">
 
-<span>▼</span>
+<div class="q-badge">
+
+Q
+
+</div>
+
+<span>
+
+${x.question}
+
+</span>
+
+</div>
+
+<span>
+
+▼
+
+</span>
 
 </div>
 
 <div class="answer">
 
+<div class="answer-inner">
+
+<div class="a-badge">
+
+A
+
+</div>
+
+<div>
+
 ${x.answer}
+
+</div>
+
+</div>
 
 </div>
 
@@ -471,12 +677,9 @@ ${x.answer}
 
 function toggleFAQ(i){
 
-const card =
-document.getElementById(
-`faq-card-${i}`
-)
-
-card.classList.toggle("open")
+document
+.getElementById(`faq-${i}`)
+.classList.toggle("open")
 
 }
 
