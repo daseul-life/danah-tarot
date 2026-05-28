@@ -17,13 +17,24 @@ padding:0;
 box-sizing:border-box;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 font-family:'Noto Sans KR',sans-serif;
 background:#f8f3f4;
 max-width:760px;
 margin:auto;
 overflow-x:hidden;
-padding-bottom:100px;
+padding-bottom:120px;
+}
+
+/* 링크 */
+
+a{
+display:block;
+text-decoration:none;
 }
 
 /* 공통 */
@@ -35,20 +46,48 @@ padding:18px;
 .section img{
 width:100%;
 display:block;
-border-radius:28px;
+border-radius:30px;
 }
 
-/* 링크 */
+/* 등장 애니메이션 */
 
-a{
-display:block;
-text-decoration:none;
+.fade-up{
+opacity:0;
+transform:translateY(40px);
+transition:all .9s ease;
+}
+
+.fade-up.show{
+opacity:1;
+transform:translateY(0);
 }
 
 /* 메인 */
 
 .main-section{
 position:relative;
+}
+
+/* 메인 float */
+
+.float{
+animation:float 3.5s ease-in-out infinite;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-8px);
+}
+
+100%{
+transform:translateY(0);
+}
+
 }
 
 /* 상담 가능 */
@@ -78,6 +117,29 @@ color:#d35d8b;
 backdrop-filter:blur(6px);
 }
 
+/* 공지사항 */
+
+.notice-wrap{
+display:flex;
+align-items:center;
+gap:10px;
+
+padding:0 22px 26px;
+}
+
+.notice-title{
+font-size:15px;
+font-weight:700;
+color:#d4547c;
+flex-shrink:0;
+}
+
+.notice-text{
+font-size:14px;
+color:#222;
+line-height:1.6;
+}
+
 /* 제목 */
 
 .title-image{
@@ -99,7 +161,7 @@ margin-bottom:10px;
 font-size:16px;
 color:#6b5a5a;
 text-align:center;
-margin-bottom:24px;
+margin-bottom:26px;
 }
 
 /* 후기 */
@@ -116,26 +178,15 @@ gap:16px;
 
 .review-card{
 background:white;
+
 padding:24px;
+
 border-radius:26px;
-box-shadow:0 10px 30px rgba(0,0,0,.05);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.05);
+
 border:1px solid #f7dce5;
-}
-
-.review-top{
-display:flex;
-align-items:center;
-gap:8px;
-margin-bottom:14px;
-}
-
-.review-badge{
-background:#ffe5ef;
-color:#d4547c;
-padding:7px 14px;
-border-radius:999px;
-font-size:12px;
-font-weight:700;
 }
 
 .review-text{
@@ -176,26 +227,6 @@ color:#4d3d3d;
 gap:10px;
 }
 
-.question-left{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.q-badge{
-width:30px;
-height:30px;
-border-radius:50%;
-background:#ffe5ef;
-color:#d4547c;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:13px;
-font-weight:700;
-flex-shrink:0;
-}
-
 .answer{
 display:none;
 padding-top:16px;
@@ -208,6 +239,14 @@ color:#666;
 display:block;
 }
 
+/* CTA glow */
+
+.cta{
+box-shadow:
+0 0 24px rgba(255,182,193,.5);
+border-radius:30px;
+}
+
 </style>
 
 </head>
@@ -216,7 +255,7 @@ display:block;
 
 <!-- 메인 -->
 
-<div class="section main-section">
+<div class="section main-section fade-up">
 
 <div class="status">
 🟢 상담 가능
@@ -224,15 +263,29 @@ display:block;
 
 <a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
 
-<img src="main-cover.jpg">
+<img src="main-cover.jpg" class="float">
 
 </a>
 
 </div>
 
+<!-- 공지사항 -->
+
+<div class="notice-wrap fade-up">
+
+<div class="notice-title">
+공지사항
+</div>
+
+<div class="notice-text" id="noticeText">
+로딩중...
+</div>
+
+</div>
+
 <!-- info -->
 
-<div class="section">
+<div class="section fade-up">
 
 <a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
 
@@ -244,7 +297,7 @@ display:block;
 
 <!-- story -->
 
-<div class="section">
+<div class="section fade-up">
 
 <a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
 
@@ -256,13 +309,15 @@ display:block;
 
 <!-- WHY -->
 
-<div class="section">
+<div class="section fade-up">
+
 <img src="why-danah.jpg">
+
 </div>
 
 <!-- 가격 -->
 
-<div class="section">
+<div class="section fade-up">
 
 <a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
 
@@ -274,13 +329,15 @@ display:block;
 
 <!-- 가이드 -->
 
-<div class="section">
+<div class="section fade-up">
+
 <img src="guide.png">
+
 </div>
 
 <!-- 후기 -->
 
-<section class="review-section">
+<section class="review-section fade-up">
 
 <img src="review-title.png" class="title-image">
 
@@ -298,7 +355,7 @@ display:block;
 
 <!-- FAQ -->
 
-<section class="faq-section">
+<section class="faq-section fade-up">
 
 <img src="faq-title.png" class="title-image">
 
@@ -316,11 +373,11 @@ display:block;
 
 <!-- CTA -->
 
-<div class="section">
+<div class="section fade-up">
 
 <a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
 
-<img src="cta.png">
+<img src="cta.png" class="cta">
 
 </a>
 
@@ -336,6 +393,26 @@ const supabase = window.supabase.createClient(
 "https://fuwojigmgsvxennydcfz.supabase.co",
 "sb_publishable_rzsuJsbir1oa5-vIiE_z-A_f6THK57w"
 )
+
+/* 공지사항 */
+
+async function loadNotice(){
+
+const { data, error } = await supabase
+.from("notice")
+.select("*")
+.eq("id",1)
+.single()
+
+if(error){
+console.log(error)
+return
+}
+
+document.getElementById("noticeText").innerText =
+data.content
+
+}
 
 /* 후기 */
 
@@ -357,14 +434,6 @@ data.map(item => `
 
 <div class="review-card">
 
-<div class="review-top">
-
-<div class="review-badge">
-상담 후기
-</div>
-
-</div>
-
 <div class="review-text">
 ${item.content}
 </div>
@@ -377,68 +446,4 @@ ${item.content}
 
 /* FAQ */
 
-async function loadFAQ(){
-
-const { data, error } = await supabase
-.from("faq")
-.select("*")
-.order("id",{ascending:true})
-
-if(error){
-console.log(error)
-return
-}
-
-document.getElementById("faq-list").innerHTML =
-
-data.map((item,index)=>`
-
-<div class="faq-card" onclick="toggleFAQ(${index})" id="faq-${index}">
-
-<div class="question">
-
-<div class="question-left">
-
-<div class="q-badge">
-Q
-</div>
-
-<span>
-${item.question}
-</span>
-
-</div>
-
-<div>⌄</div>
-
-</div>
-
-<div class="answer">
-${item.answer}
-</div>
-
-</div>
-
-`).join("")
-
-}
-
-/* FAQ 토글 */
-
-function toggleFAQ(index){
-
-document
-.getElementById(`faq-${index}`)
-.classList.toggle("active")
-
-}
-
-/* 실행 */
-
-loadReviews()
-loadFAQ()
-
-</script>
-
-</body>
-</html>
+async
