@@ -2,10 +2,10 @@
 <html lang="ko">
 
 <head>
+
 <meta charset="UTF-8">
 
-<meta
-name="viewport"
+<meta name="viewport"
 content="width=device-width,initial-scale=1">
 
 <title>Danah Tarot</title>
@@ -80,21 +80,7 @@ color:#D96B92;
 
 padding:18px;
 
-opacity:0;
-
-transform:
-translateY(40px);
-
 transition:1s;
-
-}
-
-.section.show{
-
-opacity:1;
-
-transform:
-translateY(0);
 
 }
 
@@ -462,50 +448,6 @@ loadReview()
 loadFAQ()
 
 },5000)
-
-const observer=
-
-new IntersectionObserver(
-
-(entries)=>{
-
-entries.forEach(
-
-(entry)=>{
-
-if(
-entry.isIntersecting
-){
-
-entry.target.classList.add(
-"show"
-)
-
-}
-
-}
-
-)
-
-}
-
-)
-
-document
-
-.querySelectorAll(
-".section"
-)
-
-.forEach(
-
-(el)=>{
-
-observer.observe(el)
-
-}
-
-)
 
 </script>
 
