@@ -5,8 +5,7 @@
 
 <meta charset="UTF-8">
 
-<meta
-name="viewport"
+<meta name="viewport"
 content="width=device-width,initial-scale=1">
 
 <title>Danah Tarot</title>
@@ -233,3 +232,283 @@ target="_blank">
 </a>
 
 </div>
+
+<div class="section">
+
+<img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/review.png">
+
+</div>
+
+<div class="reviewWrap">
+
+<div id="reviews"></div>
+
+</div>
+
+<div class="section">
+
+<img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/guide.png">
+
+</div>
+
+<div class="section">
+
+<a
+href="https://open.kakao.com/me/DanahsTarot"
+target="_blank">
+
+<img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/price.png">
+
+</a>
+
+</div>
+
+<div class="section">
+
+<img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/faq.png">
+
+</div>
+
+<div class="faqWrap">
+
+<div id="faqBox"></div>
+
+</div>
+
+<div class="section">
+
+<a
+href="https://open.kakao.com/me/DanahsTarot"
+target="_blank">
+
+<img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/cta.png">
+
+</a>
+
+</div>
+
+<script
+src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+
+</script>
+
+<script>
+
+const supabase=
+
+window.supabase.createClient(
+
+"https://fuwojigmgsvxennydcfz.supabase.co",
+
+"sb_publishable_rzsuJsbir1oa5-vIiE_z-A_f6THK57w"
+
+)
+
+function toggleFAQ(el){
+
+el.parentElement.classList.toggle(
+"open"
+)
+
+}
+
+async function loadStatus(){
+
+const {data}=await supabase
+
+.from("status")
+
+.select("*")
+
+.eq("id",1)
+
+.single()
+
+if(data){
+
+document.getElementById(
+"status"
+).innerText=
+data.status
+
+}
+
+}
+
+async function loadNotice(){
+
+const {data}=await supabase
+
+.from("notice")
+
+.select("*")
+
+.order(
+"id",
+{
+ascending:false
+}
+)
+
+if(!data)return
+
+document.getElementById(
+"noticeBox"
+)
+
+.innerHTML=
+
+data.map(x=>`
+
+<div class="notice-card">
+
+📢 ${x.content}
+
+</div>
+
+`).join("")
+
+}
+
+async function loadReview(){
+
+const {data}=await supabase
+
+.from("reviews")
+
+.select("*")
+
+.order(
+"id",
+{
+ascending:false
+}
+)
+
+if(!data)return
+
+document.getElementById(
+"reviews"
+)
+
+.innerHTML=
+
+data.map(x=>`
+
+<div class="review-card">
+
+💬 ${x.content}
+
+</div>
+
+`).join("")
+
+}
+
+async function loadFAQ(){
+
+const {data}=await supabase
+
+.from("faq")
+
+.select("*")
+
+.order("id")
+
+if(!data)return
+
+document.getElementById(
+"faqBox"
+)
+
+.innerHTML=
+
+data.map(x=>`
+
+<div class="faq-card">
+
+<div
+class="question"
+onclick="toggleFAQ(this)">
+
+${x.question}
+
+<span>▼</span>
+
+</div>
+
+<div class="answer">
+
+${x.answer}
+
+</div>
+
+</div>
+
+`).join("")
+
+}
+
+loadStatus()
+loadNotice()
+loadReview()
+loadFAQ()
+
+setInterval(()=>{
+
+loadStatus()
+loadNotice()
+loadReview()
+loadFAQ()
+
+},5000)
+
+const observer=
+
+new IntersectionObserver(
+
+(entries)=>{
+
+entries.forEach(
+
+(entry)=>{
+
+if(
+entry.isIntersecting
+){
+
+entry.target.classList.add(
+"show"
+)
+
+}
+
+}
+
+)
+
+}
+
+)
+
+document
+
+.querySelectorAll(
+".section"
+)
+
+.forEach(
+
+(el)=>{
+
+observer.observe(el)
+
+}
+
+)
+
+</script>
+
+</body>
+
+</html>
