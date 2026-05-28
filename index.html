@@ -87,8 +87,6 @@ opacity:.9;
 
 padding:18px;
 
-transition:1s;
-
 }
 
 .section img{
@@ -118,7 +116,8 @@ padding:0 18px 35px;
 .review-card,
 .faq-card{
 
-background:white;
+background:
+rgba(255,255,255,.75);
 
 padding:18px;
 
@@ -127,6 +126,9 @@ border-radius:22px;
 margin-bottom:12px;
 
 line-height:1.7;
+
+backdrop-filter:
+blur(10px);
 
 box-shadow:
 0 5px 18px rgba(0,0,0,.05);
@@ -198,7 +200,7 @@ target="_blank">
 
 </div>
 
-<!-- 소개 -->
+<!-- 공지 이미지 -->
 
 <div class="section">
 
@@ -206,7 +208,7 @@ target="_blank">
 
 </div>
 
-<!-- 공지 -->
+<!-- 공지 카드 -->
 
 <div class="noticeWrap">
 
@@ -230,7 +232,7 @@ target="_blank">
 
 </div>
 
-<!-- 왜 다나 -->
+<!-- Why Danah -->
 
 <div class="section">
 
@@ -316,8 +318,6 @@ src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
 </script>
 
 <script>
-
-/* Supabase */
 
 const supabase=
 
