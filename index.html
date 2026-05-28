@@ -1,584 +1,25 @@
-<!DOCTYPE html>
-<html lang="ko">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Danah Tarot</title>
-
-<link
-href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
-rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-
-font-family:'Noto Sans KR',sans-serif;
-
-background:#FFF8F8;
-
-max-width:760px;
-
-margin:auto;
-
-overflow-x:hidden;
-
-padding-bottom:80px;
-
-color:#444;
-
-}
-
-/* 메인 */
-
-.mainWrap{
-
-position:relative;
-
-padding:18px;
-
-}
-
-.mainWrap img{
-
-width:100%;
-
-display:block;
-
-border-radius:18px;
-
-box-shadow:0 8px 24px rgba(0,0,0,.08);
-
-}
-
-/* 상담 가능 */
-
-.status{
-
-position:absolute;
-
-top:28px;
-
-right:28px;
-
-background:rgba(255,255,255,.95);
-
-padding:8px 14px;
-
-border-radius:999px;
-
-font-size:12px;
-
-font-weight:700;
-
-color:#D96B92;
-
-box-shadow:0 8px 20px rgba(0,0,0,.12);
-
-z-index:10;
-
-}
-
-/* 섹션 */
-
-.section{
-
-padding:18px;
-
-}
-
-.section img{
-
-width:100%;
-
-display:block;
-
-border-radius:18px;
-
-box-shadow:0 8px 24px rgba(0,0,0,.08);
-
-}
-
-/* 공지 */
-
-.noticeWrap,
-.reviewWrap,
-.faqWrap{
-
-padding:0 18px 40px;
-
-}
-
-.notice-card{
-
-background:#fff;
-
-border:1px solid #F3DCE4;
-
-border-radius:14px;
-
-padding:18px;
-
-margin-bottom:12px;
-
-line-height:1.8;
-
-box-shadow:0 2px 10px rgba(0,0,0,.04);
-
-}
-
-/* 후기 */
-
-.review-card{
-
-position:relative;
-
-overflow:hidden;
-
-border-radius:18px;
-
-margin-bottom:16px;
-
-background:#fff;
-
-box-shadow:0 6px 20px rgba(0,0,0,.06);
-
-}
-
-.review-bg{
-
-position:absolute;
-
-inset:0;
-
-background-image:url('https://raw.githubusercontent.com/daseul-life/danah-tarot/main/review-title.png');
-
-background-size:cover;
-
-background-position:center;
-
-opacity:.12;
-
-}
-
-.review-overlay{
-
-position:relative;
-
-z-index:2;
-
-padding:22px;
-
-background:rgba(255,255,255,.78);
-
-backdrop-filter:blur(2px);
-
-}
-
-.review-inner{
-
-display:flex;
-
-gap:12px;
-
-align-items:flex-start;
-
-}
-
-.review-badge{
-
-width:32px;
-
-height:32px;
-
-border-radius:999px;
-
-background:#F8E6EC;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-size:13px;
-
-font-weight:700;
-
-color:#D96B92;
-
-flex-shrink:0;
-
-}
-
-.review-text{
-
-line-height:1.9;
-
-font-size:15px;
-
-color:#4B3434;
-
-word-break:keep-all;
-
-}
-
-/* FAQ */
-
-.faq-card{
-
-background:#fff;
-
-border:1px solid #F3DCE4;
-
-border-radius:14px;
-
-padding:18px;
-
-margin-bottom:12px;
-
-box-shadow:0 2px 10px rgba(0,0,0,.04);
-
-}
-
-.question{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-cursor:pointer;
-
-font-size:16px;
-
-font-weight:700;
-
-color:#4B3434;
-
-}
-
-.question-left{
-
-display:flex;
-
-align-items:center;
-
-gap:10px;
-
-}
-
-.q-badge,
-.a-badge{
-
-width:28px;
-
-height:28px;
-
-border-radius:999px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-size:13px;
-
-font-weight:700;
-
-flex-shrink:0;
-
-}
-
-.q-badge{
-
-background:#F8E6EC;
-
-color:#D96B92;
-
-}
-
-.a-badge{
-
-background:#FFF1F5;
-
-color:#E47A9C;
-
-}
-
-.answer{
-
-display:none;
-
-padding-top:18px;
-
-line-height:1.8;
-
-font-size:15px;
-
-color:#666;
-
-}
-
-.answer-inner{
-
-display:flex;
-
-gap:10px;
-
-}
-
-.faq-card.open .answer{
-
-display:block;
-
-}
-
-/* 모바일 */
-
-@media(max-width:600px){
-
-.status{
-
-top:22px;
-
-right:22px;
-
-font-size:11px;
-
-}
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<!-- 메인 -->
-
-<div class="mainWrap">
-
-<div
-class="status"
-id="status">
-
-🟢 상담 가능
-
-</div>
-
-<a
-href="https://open.kakao.com/me/DanahsTarot"
-target="_blank">
-
-<img
-src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/main-cover.jpg">
-
-</a>
-
-</div>
-
-<!-- 공지 -->
-
-<div class="section">
-
-<img
-src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/info.png">
-
-</div>
-
-<div class="noticeWrap">
-
-<div id="noticeBox"></div>
-
-</div>
-
-<!-- 스토리 -->
-
-<div class="section">
-
-<img
-src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/story.png">
-
-</div>
-
-<!-- 상담 과정 -->
-
-<div class="section">
-
-<img
-src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/process-bg.jpg">
-
-</div>
-
-<!-- WHY -->
-
-<div class="section">
-
-<a
-href="https://open.kakao.com/me/DanahsTarot"
-target="_blank">
-
-<img
-src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/why-danah.jpg">
-
-</a>
-
-</div>
-
-<!-- 후기 제목 -->
-
-<div class="section">
-
-<img
-src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/review-title.png">
-
-</div>
-
-<!-- 후기 -->
-
-<div class="reviewWrap">
-
-<div id="reviews"></div>
-
-</div>
-
-<!-- 가격 -->
-
-<div class="section">
-
-<a
-href="https://open.kakao.com/me/DanahsTarot"
-target="_blank">
-
-<img
-src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/price.png">
-
-</a>
-
-</div>
-
-<!-- FAQ 제목 -->
-
-<div class="section">
-
-<img
-src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/faq-title.png">
-
-</div>
-
-<!-- FAQ -->
-
-<div class="faqWrap">
-
-<div id="faqBox"></div>
-
-</div>
-
-<!-- CTA -->
-
-<div class="section">
-
-<a
-href="https://open.kakao.com/me/DanahsTarot"
-target="_blank">
-
-<img
-src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/cta.png">
-
-</a>
-
-</div>
-
-<!-- Supabase -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
 const supabase = window.supabase.createClient(
-
 "https://fuwojigmgsvxennydcfz.supabase.co",
-
 "sb_publishable_rzsuJsbir1oa5-vIiE_z-A_f6THK57w"
-
 )
-
-/* 상담 상태 */
-
-async function loadStatus(){
-
-const { data } = await supabase
-
-.from("status")
-
-.select("*")
-
-.eq("id",1)
-
-.single()
-
-if(data){
-
-document.getElementById("status").innerText =
-data.status
-
-}
-
-}
-
-/* 공지 */
-
-async function loadNotice(){
-
-const { data } = await supabase
-
-.from("notice")
-
-.select("*")
-
-.order("id",{ascending:false})
-
-if(!data) return
-
-document.getElementById("noticeBox").innerHTML =
-
-data.map(x => `
-
-<div class="notice-card">
-
-📢 ${x.content}
-
-</div>
-
-`).join("")
-
-}
 
 /* 후기 */
 
 async function loadReview(){
 
-const { data } = await supabase
+const { data,error } = await supabase
 
 .from("reviews")
 
 .select("*")
 
 .order("id",{ascending:false})
+
+console.log(data,error)
 
 if(!data) return
 
@@ -587,8 +28,6 @@ document.getElementById("reviews").innerHTML =
 data.map(x => `
 
 <div class="review-card">
-
-<div class="review-bg"></div>
 
 <div class="review-overlay">
 
@@ -620,13 +59,15 @@ ${x.content}
 
 async function loadFAQ(){
 
-const { data } = await supabase
+const { data,error } = await supabase
 
 .from("faq")
 
 .select("*")
 
 .order("id",{ascending:true})
+
+console.log(data,error)
 
 if(!data) return
 
@@ -690,8 +131,6 @@ ${x.answer}
 
 }
 
-/* FAQ 토글 */
-
 function toggleFAQ(i){
 
 document
@@ -702,16 +141,8 @@ document
 
 /* 실행 */
 
-loadStatus()
-
-loadNotice()
-
 loadReview()
 
 loadFAQ()
 
 </script>
-
-</body>
-
-</html>
