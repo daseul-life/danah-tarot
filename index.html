@@ -20,91 +20,70 @@ box-sizing:border-box;
 
 body{
 font-family:'Noto Sans KR',sans-serif;
-background:#FFF8F8;
+background:#f8f3f4;
 max-width:760px;
 margin:auto;
 overflow-x:hidden;
 padding-bottom:80px;
-color:#444;
 }
 
 .section{
 padding:18px;
-position:relative;
 }
 
 .section img{
 width:100%;
 display:block;
-border-radius:20px;
-box-shadow:0 6px 20px rgba(0,0,0,.06);
+border-radius:24px;
 }
 
-.status{
-position:absolute;
-top:32px;
-right:32px;
-background:rgba(255,255,255,.95);
-padding:8px 14px;
-border-radius:999px;
-font-size:12px;
-font-weight:700;
-color:#D96B92;
-box-shadow:0 4px 12px rgba(0,0,0,.08);
-z-index:10;
-}
-
-.reviewWrap{
-padding:0 18px 40px;
+.review-wrap{
+padding:0 18px 30px;
 }
 
 .review-card{
-background:#fff;
-border-radius:18px;
+background:white;
 padding:22px;
+border-radius:20px;
 margin-bottom:14px;
-box-shadow:0 6px 18px rgba(0,0,0,.05);
-border:1px solid #F5E3EA;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+border:1px solid #f6dbe5;
 }
 
-.review-inner{
+.review-top{
 display:flex;
-gap:12px;
-align-items:flex-start;
+align-items:center;
+gap:10px;
+margin-bottom:10px;
 }
 
 .review-badge{
-width:34px;
-height:34px;
+background:#ffe5ef;
+color:#d35d8b;
+padding:6px 12px;
 border-radius:999px;
-background:#FFE8EF;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:13px;
+font-size:12px;
 font-weight:700;
-color:#D96B92;
-flex-shrink:0;
 }
 
 .review-text{
 font-size:15px;
 line-height:1.8;
-color:#4B3434;
+color:#4a3b3b;
 word-break:keep-all;
 }
 
-.faqWrap{
+.faq-wrap{
 padding:0 18px 40px;
 }
 
 .faq-card{
-background:#fff;
-border-radius:18px;
-padding:18px;
+background:white;
+border-radius:20px;
 margin-bottom:12px;
-box-shadow:0 6px 18px rgba(0,0,0,.05);
-border:1px solid #F5E3EA;
+padding:18px;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+border:1px solid #f6dbe5;
 }
 
 .question{
@@ -112,9 +91,10 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 cursor:pointer;
-font-size:16px;
 font-weight:700;
-color:#4B3434;
+font-size:16px;
+color:#4a3b3b;
+gap:10px;
 }
 
 .question-left{
@@ -123,44 +103,44 @@ align-items:center;
 gap:10px;
 }
 
-.q-badge,
-.a-badge{
+.q{
+background:#ffe5ef;
+color:#d35d8b;
 width:28px;
 height:28px;
-border-radius:999px;
 display:flex;
 align-items:center;
 justify-content:center;
+border-radius:50%;
 font-size:13px;
 font-weight:700;
 flex-shrink:0;
 }
 
-.q-badge{
-background:#FFE8EF;
-color:#D96B92;
-}
-
-.a-badge{
-background:#FFF1F5;
-color:#D96B92;
-}
-
 .answer{
 display:none;
-padding-top:18px;
-line-height:1.8;
+padding-top:16px;
 font-size:15px;
+line-height:1.8;
 color:#666;
 }
 
-.answer-inner{
-display:flex;
-gap:10px;
+.faq-card.active .answer{
+display:block;
 }
 
-.faq-card.open .answer{
-display:block;
+.status{
+position:fixed;
+top:18px;
+right:18px;
+z-index:999;
+background:white;
+padding:10px 16px;
+border-radius:999px;
+font-size:13px;
+font-weight:700;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+color:#d35d8b;
 }
 
 </style>
@@ -169,46 +149,44 @@ display:block;
 
 <body>
 
-<div class="section">
-
 <div class="status" id="status">
 🟢 상담 가능
 </div>
 
-<img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/main-cover.jpg">
-
+<div class="section">
+<img src="main-cover.jpg">
 </div>
 
 <div class="section">
-<img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/why-danah.jpg">
+<img src="why-danah.jpg">
 </div>
 
 <div class="section">
-<img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/price.png">
+<img src="price.png">
 </div>
 
 <div class="section">
-<img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/guide.png">
+<img src="guide.png">
 </div>
 
 <div class="section">
-<img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/review-title.png">
+<img src="review-title.png">
 </div>
 
-<div class="reviewWrap">
+<div class="review-wrap">
 <div id="reviews"></div>
 </div>
 
 <div class="section">
-<img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/faq-title.png">
+<img src="faq-title.png">
 </div>
 
-<div class="faqWrap">
-<div id="faqBox"></div>
+<div class="faq-wrap">
+<div id="faq-list"></div>
 </div>
 
 <div class="section">
-<img src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/cta.png">
+<img src="cta.png">
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -220,50 +198,29 @@ const supabase = window.supabase.createClient(
 "sb_publishable_rzsuJsbir1oa5-vIiE_z-A_f6THK57w"
 )
 
-async function loadStatus(){
+async function loadReviews(){
 
-const { data } = await supabase
-.from("status")
-.select("*")
-.eq("id",1)
-.single()
-
-if(data){
-
-document.getElementById("status").innerText =
-data.status
-
-}
-
-}
-
-async function loadReview(){
-
-const { data,error } = await supabase
+const { data, error } = await supabase
 .from("reviews")
 .select("*")
 .order("id",{ascending:false})
 
-console.log(data,error)
+console.log("reviews",data,error)
 
 if(!data) return
 
 document.getElementById("reviews").innerHTML =
 
-data.map(x => `
+data.map(item => `
 
 <div class="review-card">
 
-<div class="review-inner">
-
-<div class="review-badge">
-후기
+<div class="review-top">
+<div class="review-badge">상담 후기</div>
 </div>
 
 <div class="review-text">
-${x.content}
-</div>
-
+${item.content}
 </div>
 
 </div>
@@ -274,53 +231,37 @@ ${x.content}
 
 async function loadFAQ(){
 
-const { data,error } = await supabase
+const { data, error } = await supabase
 .from("faq")
 .select("*")
 .order("id",{ascending:true})
 
-console.log(data,error)
+console.log("faq",data,error)
 
 if(!data) return
 
-document.getElementById("faqBox").innerHTML =
+document.getElementById("faq-list").innerHTML =
 
-data.map((x,i)=>`
+data.map((item,index)=>`
 
-<div class="faq-card" id="faq-${i}">
+<div class="faq-card" onclick="toggleFAQ(${index})" id="faq-${index}">
 
-<div class="question" onclick="toggleFAQ(${i})">
+<div class="question">
 
 <div class="question-left">
 
-<div class="q-badge">
-Q
-</div>
+<div class="q">Q</div>
 
-<span>
-${x.question}
-</span>
+<span>${item.question}</span>
 
 </div>
 
-<span>▼</span>
+<div>⌄</div>
 
 </div>
 
 <div class="answer">
-
-<div class="answer-inner">
-
-<div class="a-badge">
-A
-</div>
-
-<div>
-${x.answer}
-</div>
-
-</div>
-
+${item.answer}
 </div>
 
 </div>
@@ -329,16 +270,15 @@ ${x.answer}
 
 }
 
-function toggleFAQ(i){
+function toggleFAQ(index){
 
 document
-.getElementById(`faq-${i}`)
-.classList.toggle("open")
+.getElementById(`faq-${index}`)
+.classList.toggle("active")
 
 }
 
-loadStatus()
-loadReview()
+loadReviews()
 loadFAQ()
 
 </script>
