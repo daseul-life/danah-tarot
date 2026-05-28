@@ -53,9 +53,9 @@ right:20px;
 
 z-index:999;
 
-background:rgba(255,255,255,.82);
+background:rgba(255,255,255,.96);
 
-border:1px solid rgba(255,255,255,.7);
+border:1px solid rgba(255,255,255,.9);
 
 padding:8px 14px;
 
@@ -65,9 +65,9 @@ font-size:12px;
 
 font-weight:700;
 
-backdrop-filter:blur(8px);
+backdrop-filter:blur(10px);
 
-box-shadow:0 4px 15px rgba(0,0,0,.08);
+box-shadow:0 8px 24px rgba(0,0,0,.16);
 
 color:#D96B92;
 
@@ -152,14 +152,6 @@ transition:.35s;
 line-height:1.8;
 
 color:#555;
-
-}
-
-.faq-card.open .answer{
-
-max-height:300px;
-
-padding-top:14px;
 
 }
 
@@ -352,14 +344,6 @@ const supabase = window.supabase.createClient(
 
 )
 
-/* FAQ 열기 */
-
-function toggleFAQ(el){
-
-el.parentElement.classList.toggle("open")
-
-}
-
 /* 상담 상태 */
 
 async function loadStatus(){
@@ -376,7 +360,8 @@ const { data } = await supabase
 
 if(data){
 
-document.getElementById("status").innerText = data.status
+document.getElementById("status").innerText =
+data.status
 
 }
 
@@ -386,7 +371,7 @@ document.getElementById("status").innerText = data.status
 
 async function loadNotice(){
 
-const { data } = await supabase
+const { data, error } = await supabase
 
 .from("notice")
 
@@ -394,7 +379,13 @@ const { data } = await supabase
 
 .order("id",{ascending:false})
 
-if(!data) return
+if(error){
+
+console.log(error)
+
+return
+
+}
 
 document.getElementById("noticeBox").innerHTML =
 
@@ -414,7 +405,7 @@ data.map(x => `
 
 async function loadReview(){
 
-const { data } = await supabase
+const { data, error } = await supabase
 
 .from("reviews")
 
@@ -422,7 +413,13 @@ const { data } = await supabase
 
 .order("id",{ascending:false})
 
-if(!data) return
+if(error){
+
+console.log(error)
+
+return
+
+}
 
 document.getElementById("reviews").innerHTML =
 
@@ -442,7 +439,7 @@ data.map(x => `
 
 async function loadFAQ(){
 
-const { data } = await supabase
+const { data, error } = await supabase
 
 .from("faq")
 
@@ -450,15 +447,23 @@ const { data } = await supabase
 
 .order("id")
 
-if(!data) return
+if(error){
+
+console.log(error)
+
+return
+
+}
 
 document.getElementById("faqBox").innerHTML =
 
-data.map(x => `
+data.map((x,i) => `
 
 <div class="faq-card">
 
-<div class="question">
+<div
+class="question"
+onclick="toggleFAQ(${i})">
 
 <span>
 
@@ -466,17 +471,13 @@ ${x.question}
 
 </span>
 
-<span
-onclick="toggleFAQ(this.parentElement)"
-style="cursor:pointer;">
-
-▼
-
-</span>
+<span>▼</span>
 
 </div>
 
-<div class="answer">
+<div
+class="answer"
+id="faq-${i}">
 
 ${x.answer}
 
@@ -485,6 +486,29 @@ ${x.answer}
 </div>
 
 `).join("")
+
+}
+
+/* FAQ 토글 */
+
+function toggleFAQ(i){
+
+const answer =
+document.getElementById(`faq-${i}`)
+
+if(answer.style.maxHeight){
+
+answer.style.maxHeight = null
+
+answer.style.paddingTop = null
+
+}else{
+
+answer.style.maxHeight = "300px"
+
+answer.style.paddingTop = "14px"
+
+}
 
 }
 
