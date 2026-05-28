@@ -41,21 +41,41 @@ padding-bottom:80px;
 
 }
 
+/* 메인 */
+
+.mainWrap{
+
+position:relative;
+
+padding:18px;
+
+}
+
+.mainWrap img{
+
+width:100%;
+
+display:block;
+
+border-radius:18px;
+
+box-shadow:0 8px 24px rgba(0,0,0,.08);
+
+}
+
 /* 상담 가능 */
 
 .status{
 
-position:fixed;
+position:absolute;
 
-top:20px;
+top:34px;
 
-right:20px;
+right:34px;
 
-z-index:999;
+z-index:10;
 
 background:rgba(255,255,255,.96);
-
-border:1px solid rgba(255,255,255,.9);
 
 padding:8px 14px;
 
@@ -73,7 +93,7 @@ color:#D96B92;
 
 }
 
-/* 섹션 */
+/* 일반 섹션 */
 
 .section{
 
@@ -87,7 +107,7 @@ width:100%;
 
 display:block;
 
-border-radius:28px;
+border-radius:18px;
 
 box-shadow:0 8px 24px rgba(0,0,0,.08);
 
@@ -111,7 +131,7 @@ background:rgba(255,255,255,.78);
 
 padding:18px;
 
-border-radius:22px;
+border-radius:18px;
 
 margin-bottom:14px;
 
@@ -143,11 +163,9 @@ font-size:16px;
 
 .answer{
 
-max-height:0;
+display:none;
 
-overflow:hidden;
-
-transition:.35s;
+padding-top:14px;
 
 line-height:1.8;
 
@@ -155,23 +173,9 @@ color:#555;
 
 }
 
-/* 후기 */
+.faq-card.open .answer{
 
-.review-card{
-
-font-size:15px;
-
-color:#444;
-
-}
-
-/* 공지 */
-
-.notice-card{
-
-font-size:15px;
-
-color:#444;
+display:block;
 
 }
 
@@ -181,11 +185,11 @@ color:#444;
 
 .status{
 
-top:16px;
+top:28px;
 
-right:16px;
+right:28px;
 
-font-size:12px;
+font-size:11px;
 
 }
 
@@ -197,7 +201,9 @@ font-size:12px;
 
 <body>
 
-<!-- 상담 가능 -->
+<!-- 메인 -->
+
+<div class="mainWrap">
 
 <div
 class="status"
@@ -206,10 +212,6 @@ id="status">
 🟢 상담 가능
 
 </div>
-
-<!-- 메인 -->
-
-<div class="section">
 
 <a
 href="https://open.kakao.com/me/DanahsTarot"
@@ -330,7 +332,7 @@ src="https://raw.githubusercontent.com/daseul-life/danah-tarot/main/cta.png">
 
 </div>
 
-<!-- Supabase -->
+<!-- supabase -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -371,7 +373,7 @@ data.status
 
 async function loadNotice(){
 
-const { data, error } = await supabase
+const { data } = await supabase
 
 .from("notice")
 
@@ -379,13 +381,7 @@ const { data, error } = await supabase
 
 .order("id",{ascending:false})
 
-if(error){
-
-console.log(error)
-
-return
-
-}
+if(!data) return
 
 document.getElementById("noticeBox").innerHTML =
 
@@ -405,21 +401,15 @@ data.map(x => `
 
 async function loadReview(){
 
-const { data, error } = await supabase
+const { data } = await supabase
 
 .from("reviews")
 
-.select("*")
+.select("content")
 
 .order("id",{ascending:false})
 
-if(error){
-
-console.log(error)
-
-return
-
-}
+if(!data) return
 
 document.getElementById("reviews").innerHTML =
 
@@ -427,7 +417,7 @@ data.map(x => `
 
 <div class="review-card">
 
-💬 ${x.content}
+💬 ${x.content || ""}
 
 </div>
 
@@ -439,45 +429,33 @@ data.map(x => `
 
 async function loadFAQ(){
 
-const { data, error } = await supabase
+const { data } = await supabase
 
 .from("faq")
 
-.select("*")
+.select("question,answer")
 
-.order("id")
+.order("id",{ascending:true})
 
-if(error){
-
-console.log(error)
-
-return
-
-}
+if(!data) return
 
 document.getElementById("faqBox").innerHTML =
 
 data.map((x,i) => `
 
-<div class="faq-card">
+<div class="faq-card" id="faq-card-${i}">
 
 <div
 class="question"
 onclick="toggleFAQ(${i})">
 
-<span>
-
-${x.question}
-
-</span>
+<span>${x.question}</span>
 
 <span>▼</span>
 
 </div>
 
-<div
-class="answer"
-id="faq-${i}">
+<div class="answer">
 
 ${x.answer}
 
@@ -493,22 +471,12 @@ ${x.answer}
 
 function toggleFAQ(i){
 
-const answer =
-document.getElementById(`faq-${i}`)
+const card =
+document.getElementById(
+`faq-card-${i}`
+)
 
-if(answer.style.maxHeight){
-
-answer.style.maxHeight = null
-
-answer.style.paddingTop = null
-
-}else{
-
-answer.style.maxHeight = "300px"
-
-answer.style.paddingTop = "14px"
-
-}
+card.classList.toggle("open")
 
 }
 
@@ -521,18 +489,6 @@ loadNotice()
 loadReview()
 
 loadFAQ()
-
-setInterval(()=>{
-
-loadStatus()
-
-loadNotice()
-
-loadReview()
-
-loadFAQ()
-
-},5000)
 
 </script>
 
