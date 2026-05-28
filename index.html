@@ -38,73 +38,68 @@ display:block;
 border-radius:28px;
 }
 
+/* 링크 */
+
+a{
+display:block;
+text-decoration:none;
+}
+
+/* 메인 */
+
+.main-section{
+position:relative;
+}
+
 /* 상담 가능 */
 
 .status{
-position:fixed;
-top:18px;
-right:18px;
-z-index:999;
-background:white;
+position:absolute;
+top:34px;
+right:34px;
+
+z-index:10;
+
+background:rgba(255,255,255,.92);
+
 padding:10px 16px;
+
 border-radius:999px;
+
 font-size:13px;
+
 font-weight:700;
-box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+box-shadow:
+0 5px 15px rgba(0,0,0,.08);
+
 color:#d35d8b;
+
+backdrop-filter:blur(6px);
 }
 
-/* 타이틀 */
+/* 제목 */
 
-.title-wrap{
-position:relative;
-margin-bottom:14px;
-}
-
-.title-bg{
+.title-image{
 width:100%;
 display:block;
 border-radius:28px;
+margin-bottom:18px;
 }
 
-/* 이미지 위 글씨 */
-
-.title-overlay{
-position:absolute;
-left:50%;
-bottom:24px;
-transform:translateX(-50%);
-text-align:center;
-width:100%;
-padding:0 20px;
-}
-
-.title-overlay h2{
-font-size:38px;
+.section-title{
+font-size:42px;
 font-weight:700;
 color:#c84f77;
-
-text-shadow:
-0 2px 8px rgba(255,255,255,.8),
-0 4px 15px rgba(0,0,0,.08);
-
+text-align:center;
 margin-bottom:10px;
 }
 
-.title-overlay p{
-font-size:15px;
+.section-subtitle{
+font-size:16px;
 color:#6b5a5a;
-font-weight:500;
-
-background:rgba(255,255,255,.55);
-
-display:inline-block;
-
-padding:7px 16px;
-
-border-radius:999px;
-
-backdrop-filter:blur(4px);
+text-align:center;
+margin-bottom:24px;
 }
 
 /* 후기 */
@@ -219,28 +214,44 @@ display:block;
 
 <body>
 
-<!-- 상담 가능 -->
+<!-- 메인 -->
+
+<div class="section main-section">
 
 <div class="status">
 🟢 상담 가능
 </div>
 
-<!-- 메인 -->
+<a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
 
-<div class="section">
 <img src="main-cover.jpg">
+
+</a>
+
 </div>
 
 <!-- info -->
 
 <div class="section">
+
+<a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
+
 <img src="info.png">
+
+</a>
+
 </div>
 
 <!-- story -->
 
 <div class="section">
+
+<a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
+
 <img src="story.png">
+
+</a>
+
 </div>
 
 <!-- WHY -->
@@ -252,7 +263,13 @@ display:block;
 <!-- 가격 -->
 
 <div class="section">
+
+<a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
+
 <img src="price.png">
+
+</a>
+
 </div>
 
 <!-- 가이드 -->
@@ -265,20 +282,14 @@ display:block;
 
 <section class="review-section">
 
-<div class="title-wrap">
+<img src="review-title.png" class="title-image">
 
-<img src="review-title.png" class="title-bg">
-
-<div class="title-overlay">
-
-<h2>상담 후기</h2>
-
-<p>
-마음이 편안해지는 시간이 되었어요 🩷
-</p>
-
+<div class="section-title">
+상담 후기
 </div>
 
+<div class="section-subtitle">
+마음이 편안해지는 시간이 되었어요 🩷
 </div>
 
 <div id="reviews" class="review-cards"></div>
@@ -289,20 +300,14 @@ display:block;
 
 <section class="faq-section">
 
-<div class="title-wrap">
+<img src="faq-title.png" class="title-image">
 
-<img src="faq-title.png" class="title-bg">
-
-<div class="title-overlay">
-
-<h2>자주 묻는 질문</h2>
-
-<p>
-궁금한 내용을 확인해보세요 ✨
-</p>
-
+<div class="section-title">
+자주 묻는 질문
 </div>
 
+<div class="section-subtitle">
+궁금한 내용을 확인해보세요 ✨
 </div>
 
 <div id="faq-list" class="faq-list"></div>
@@ -312,7 +317,13 @@ display:block;
 <!-- CTA -->
 
 <div class="section">
+
+<a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
+
 <img src="cta.png">
+
+</a>
+
 </div>
 
 <!-- Supabase -->
