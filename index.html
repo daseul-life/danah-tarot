@@ -2,6 +2,7 @@
 <html lang="ko">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -31,6 +32,7 @@ color:#444;
 
 .section{
 padding:18px;
+position:relative;
 }
 
 .section img{
@@ -38,6 +40,22 @@ width:100%;
 display:block;
 border-radius:20px;
 box-shadow:0 6px 20px rgba(0,0,0,.06);
+}
+
+/* 상담 상태 */
+
+.status{
+position:absolute;
+top:32px;
+right:32px;
+background:rgba(255,255,255,.95);
+padding:8px 14px;
+border-radius:999px;
+font-size:12px;
+font-weight:700;
+color:#D96B92;
+box-shadow:0 4px 12px rgba(0,0,0,.08);
+z-index:10;
 }
 
 /* 후기 */
@@ -154,6 +172,7 @@ display:block;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -161,7 +180,13 @@ display:block;
 <!-- 메인 -->
 
 <div class="section">
+
+<div class="status" id="status">
+🟢 상담 가능
+</div>
+
 <img src="main-cover.jpg">
+
 </div>
 
 <!-- WHY -->
@@ -210,6 +235,25 @@ const supabase = window.supabase.createClient(
 "https://fuwojigmgsvxennydcfz.supabase.co",
 "sb_publishable_rzsuJsbir1oa5-vIiE_z-A_f6THK57w"
 )
+
+/* 상담 상태 */
+
+async function loadStatus(){
+
+const { data } = await supabase
+.from("status")
+.select("*")
+.eq("id",1)
+.single()
+
+if(data){
+
+document.getElementById("status").innerText =
+data.status
+
+}
+
+}
 
 /* 후기 */
 
@@ -317,10 +361,12 @@ document
 
 /* 실행 */
 
+loadStatus()
 loadReview()
 loadFAQ()
 
 </script>
 
 </body>
+
 </html>
