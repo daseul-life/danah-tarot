@@ -1,3 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>다나 타로</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Noto Sans KR',sans-serif;
+background:#FFF8F8;
+max-width:760px;
+margin:auto;
+overflow-x:hidden;
+padding-bottom:80px;
+color:#444;
+}
+
+/* 공통 */
+
+.section{
+padding:18px;
+}
+
+.section img{
+width:100%;
+display:block;
+border-radius:20px;
+box-shadow:0 6px 20px rgba(0,0,0,.06);
+}
+
+/* 후기 */
+
+.reviewWrap{
+padding:0 18px 40px;
+}
+
+.review-card{
+background:#fff;
+border-radius:18px;
+padding:22px;
+margin-bottom:14px;
+box-shadow:0 6px 18px rgba(0,0,0,.05);
+border:1px solid #F5E3EA;
+}
+
+.review-inner{
+display:flex;
+gap:12px;
+align-items:flex-start;
+}
+
+.review-badge{
+width:34px;
+height:34px;
+border-radius:999px;
+background:#FFE8EF;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:13px;
+font-weight:700;
+color:#D96B92;
+flex-shrink:0;
+}
+
+.review-text{
+font-size:15px;
+line-height:1.8;
+color:#4B3434;
+word-break:keep-all;
+}
+
+/* FAQ */
+
+.faqWrap{
+padding:0 18px 40px;
+}
+
+.faq-card{
+background:#fff;
+border-radius:18px;
+padding:18px;
+margin-bottom:12px;
+box-shadow:0 6px 18px rgba(0,0,0,.05);
+border:1px solid #F5E3EA;
+}
+
+.question{
+display:flex;
+justify-content:space-between;
+align-items:center;
+cursor:pointer;
+font-size:16px;
+font-weight:700;
+color:#4B3434;
+}
+
+.question-left{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.q-badge,
+.a-badge{
+width:28px;
+height:28px;
+border-radius:999px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:13px;
+font-weight:700;
+flex-shrink:0;
+}
+
+.q-badge{
+background:#FFE8EF;
+color:#D96B92;
+}
+
+.a-badge{
+background:#FFF1F5;
+color:#D96B92;
+}
+
+.answer{
+display:none;
+padding-top:18px;
+line-height:1.8;
+font-size:15px;
+color:#666;
+}
+
+.answer-inner{
+display:flex;
+gap:10px;
+}
+
+.faq-card.open .answer{
+display:block;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- 메인 -->
+
+<div class="section">
+<img src="main-cover.jpg">
+</div>
+
+<!-- WHY -->
+
+<div class="section">
+<img src="why-danah.jpg">
+</div>
+
+<!-- 후기 제목 -->
+
+<div class="section">
+<img src="review-title.png">
+</div>
+
+<!-- 후기 -->
+
+<div class="reviewWrap">
+<div id="reviews"></div>
+</div>
+
+<!-- FAQ 제목 -->
+
+<div class="section">
+<img src="faq-title.png">
+</div>
+
+<!-- FAQ -->
+
+<div class="faqWrap">
+<div id="faqBox"></div>
+</div>
+
+<!-- CTA -->
+
+<div class="section">
+<img src="cta.png">
+</div>
+
+<!-- Supabase -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
@@ -12,11 +216,8 @@ const supabase = window.supabase.createClient(
 async function loadReview(){
 
 const { data,error } = await supabase
-
 .from("reviews")
-
 .select("*")
-
 .order("id",{ascending:false})
 
 console.log(data,error)
@@ -29,22 +230,14 @@ data.map(x => `
 
 <div class="review-card">
 
-<div class="review-overlay">
-
 <div class="review-inner">
 
 <div class="review-badge">
-
 후기
-
 </div>
 
 <div class="review-text">
-
 ${x.content}
-
-</div>
-
 </div>
 
 </div>
@@ -60,11 +253,8 @@ ${x.content}
 async function loadFAQ(){
 
 const { data,error } = await supabase
-
 .from("faq")
-
 .select("*")
-
 .order("id",{ascending:true})
 
 console.log(data,error)
@@ -77,31 +267,21 @@ data.map((x,i)=>`
 
 <div class="faq-card" id="faq-${i}">
 
-<div
-class="question"
-onclick="toggleFAQ(${i})">
+<div class="question" onclick="toggleFAQ(${i})">
 
 <div class="question-left">
 
 <div class="q-badge">
-
 Q
-
 </div>
 
 <span>
-
 ${x.question}
-
 </span>
 
 </div>
 
-<span>
-
-▼
-
-</span>
+<span>▼</span>
 
 </div>
 
@@ -110,15 +290,11 @@ ${x.question}
 <div class="answer-inner">
 
 <div class="a-badge">
-
 A
-
 </div>
 
 <div>
-
 ${x.answer}
-
 </div>
 
 </div>
@@ -142,7 +318,9 @@ document
 /* 실행 */
 
 loadReview()
-
 loadFAQ()
 
 </script>
+
+</body>
+</html>
