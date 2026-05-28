@@ -5,22 +5,33 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
+<meta
+name="viewport"
 content="width=device-width,initial-scale=1">
 
 <title>Danah Tarot</title>
 
+<link
+href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+rel="stylesheet">
+
 <style>
 
 *{
-
 margin:0;
 padding:0;
 box-sizing:border-box;
+}
 
+html{
+scroll-behavior:smooth;
 }
 
 body{
+
+font-family:
+'Noto Sans KR',
+sans-serif;
 
 background:#FFF8F8;
 
@@ -28,19 +39,136 @@ max-width:760px;
 
 margin:auto;
 
-padding-bottom:40px;
+overflow-x:hidden;
+
+padding-bottom:60px;
 
 }
 
-img{
+.status{
+
+position:fixed;
+
+top:15px;
+
+right:15px;
+
+z-index:999;
+
+background:
+rgba(255,255,255,.92);
+
+padding:
+10px 16px;
+
+border-radius:999px;
+
+font-size:14px;
+
+font-weight:700;
+
+backdrop-filter:
+blur(10px);
+
+box-shadow:
+0 4px 18px rgba(0,0,0,.08);
+
+color:#D96B92;
+
+}
+
+.section{
+
+padding:18px;
+
+opacity:0;
+
+transform:
+translateY(40px);
+
+transition:1s;
+
+}
+
+.section.show{
+
+opacity:1;
+
+transform:
+translateY(0);
+
+}
+
+.section img{
 
 width:100%;
 
 display:block;
 
-margin-bottom:14px;
+border-radius:26px;
 
-border-radius:0;
+box-shadow:
+0 8px 24px rgba(0,0,0,.08);
+
+}
+
+.noticeWrap,
+.reviewWrap,
+.faqWrap{
+
+padding:0 18px 35px;
+
+}
+
+.notice-card,
+.review-card,
+.faq-card{
+
+background:white;
+
+padding:18px;
+
+border-radius:22px;
+
+margin-bottom:12px;
+
+line-height:1.7;
+
+box-shadow:
+0 5px 18px rgba(0,0,0,.05);
+
+}
+
+.question{
+
+display:flex;
+
+justify-content:
+space-between;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+.answer{
+
+max-height:0;
+
+overflow:hidden;
+
+transition:.35s;
+
+line-height:1.7;
+
+}
+
+.faq-card.open .answer{
+
+max-height:300px;
+
+padding-top:12px;
 
 }
 
@@ -50,27 +178,342 @@ border-radius:0;
 
 <body>
 
-<img src="main-cover.jpg">
+<div
+class="status"
+id="status">
 
-<img src="main.png">
+🟢 상담 가능
 
-<img src="info.png">
+</div>
 
-<img src="story.png">
+<div class="section">
 
-<img src="process-bg.jpg">
+<a
+href="https://open.kakao.com/me/DanahsTarot"
+target="_blank">
 
-<img src="why-danah.jpg">
+<img src="/danah-tarot/main-cover.jpg">
 
-<img src="review.png">
+</a>
 
-<img src="guide.png">
+</div>
 
-<img src="price.png">
+<div class="section">
 
-<img src="faq.png">
+<img src="/danah-tarot/info.png">
 
-<img src="cta.png">
+</div>
+
+<div class="noticeWrap">
+
+<div id="noticeBox"></div>
+
+</div>
+
+<div class="section">
+
+<img src="/danah-tarot/story.png">
+
+</div>
+
+<div class="section">
+
+<img src="/danah-tarot/process-bg.jpg">
+
+</div>
+
+<div class="section">
+
+<a
+href="https://open.kakao.com/me/DanahsTarot"
+target="_blank">
+
+<img src="/danah-tarot/why-danah.jpg">
+
+</a>
+
+</div>
+
+<div class="section">
+
+<img src="/danah-tarot/review.png">
+
+</div>
+
+<div class="reviewWrap">
+
+<div id="reviews"></div>
+
+</div>
+
+<div class="section">
+
+<img src="/danah-tarot/guide.png">
+
+</div>
+
+<div class="section">
+
+<a
+href="https://open.kakao.com/me/DanahsTarot"
+target="_blank">
+
+<img src="/danah-tarot/price.png">
+
+</a>
+
+</div>
+
+<div class="section">
+
+<img src="/danah-tarot/faq.png">
+
+</div>
+
+<div class="faqWrap">
+
+<div id="faqBox"></div>
+
+</div>
+
+<div class="section">
+
+<a
+href="https://open.kakao.com/me/DanahsTarot"
+target="_blank">
+
+<img src="/danah-tarot/cta.png">
+
+</a>
+
+</div>
+
+<script
+src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+
+</script>
+
+<script>
+
+const supabase=
+
+window.supabase.createClient(
+
+"https://fuwojigmgsvxennydcfz.supabase.co",
+
+"sb_publishable_rzsuJsbir1oa5-vIiE_z-A_f6THK57w"
+
+)
+
+function toggleFAQ(el){
+
+el.parentElement.classList.toggle(
+"open"
+)
+
+}
+
+async function loadStatus(){
+
+const {data}=await supabase
+
+.from("status")
+
+.select("*")
+
+.eq("id",1)
+
+.single()
+
+if(data){
+
+document.getElementById(
+"status"
+).innerText=
+data.status
+
+}
+
+}
+
+async function loadNotice(){
+
+const {data}=await supabase
+
+.from("notice")
+
+.select("*")
+
+.order(
+"id",
+{
+ascending:false
+}
+)
+
+if(!data)return
+
+document.getElementById(
+"noticeBox"
+)
+
+.innerHTML=
+
+data.map(x=>`
+
+<div class="notice-card">
+
+📢 ${x.content}
+
+</div>
+
+`).join("")
+
+}
+
+async function loadReview(){
+
+const {data}=await supabase
+
+.from("reviews")
+
+.select("*")
+
+.order(
+"id",
+{
+ascending:false
+}
+)
+
+if(!data)return
+
+document.getElementById(
+"reviews"
+)
+
+.innerHTML=
+
+data.map(x=>`
+
+<div class="review-card">
+
+💬 ${x.content}
+
+</div>
+
+`).join("")
+
+}
+
+async function loadFAQ(){
+
+const {data}=await supabase
+
+.from("faq")
+
+.select("*")
+
+.order("id")
+
+if(!data)return
+
+document.getElementById(
+"faqBox"
+)
+
+.innerHTML=
+
+data.map(x=>`
+
+<div class="faq-card">
+
+<div
+class="question"
+onclick="toggleFAQ(this)">
+
+${x.question}
+
+<span>
+
+▼
+
+</span>
+
+</div>
+
+<div
+class="answer">
+
+${x.answer}
+
+</div>
+
+</div>
+
+`).join("")
+
+}
+
+loadStatus()
+loadNotice()
+loadReview()
+loadFAQ()
+
+setInterval(()=>{
+
+loadStatus()
+loadNotice()
+loadReview()
+loadFAQ()
+
+},5000)
+
+const observer=
+
+new IntersectionObserver(
+
+(entries)=>{
+
+entries.forEach(
+
+(entry)=>{
+
+if(
+entry.isIntersecting
+){
+
+entry.target.classList.add(
+"show"
+)
+
+}
+
+}
+
+)
+
+}
+
+)
+
+document
+
+.querySelectorAll(
+".section"
+)
+
+.forEach(
+
+(el)=>{
+
+observer.observe(el)
+
+}
+
+)
+
+</script>
 
 </body>
 
