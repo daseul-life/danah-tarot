@@ -1,449 +1,68 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>다나 타로</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
 body{
-font-family:'Noto Sans KR',sans-serif;
+margin:0;
 background:#f8f3f4;
 max-width:760px;
 margin:auto;
-overflow-x:hidden;
-padding-bottom:120px;
 }
 
-/* 링크 */
-
-a{
+img{
+width:100%;
 display:block;
-text-decoration:none;
 }
-
-/* 공통 */
 
 .section{
-padding:18px;
+padding:16px;
 }
-
-.section img{
-width:100%;
-display:block;
-border-radius:30px;
-}
-
-/* 등장 애니메이션 */
-
-.fade-up{
-opacity:0;
-transform:translateY(40px);
-transition:all .9s ease;
-}
-
-.fade-up.show{
-opacity:1;
-transform:translateY(0);
-}
-
-/* 메인 */
-
-.main-section{
-position:relative;
-}
-
-/* 메인 float */
-
-.float{
-animation:float 3.5s ease-in-out infinite;
-}
-
-@keyframes float{
-
-0%{
-transform:translateY(0);
-}
-
-50%{
-transform:translateY(-8px);
-}
-
-100%{
-transform:translateY(0);
-}
-
-}
-
-/* 상담 가능 */
-
-.status{
-position:absolute;
-top:34px;
-right:34px;
-
-z-index:10;
-
-background:rgba(255,255,255,.92);
-
-padding:10px 16px;
-
-border-radius:999px;
-
-font-size:13px;
-
-font-weight:700;
-
-box-shadow:
-0 5px 15px rgba(0,0,0,.08);
-
-color:#d35d8b;
-
-backdrop-filter:blur(6px);
-}
-
-/* 공지사항 */
-
-.notice-wrap{
-display:flex;
-align-items:center;
-gap:10px;
-
-padding:0 22px 26px;
-}
-
-.notice-title{
-font-size:15px;
-font-weight:700;
-color:#d4547c;
-flex-shrink:0;
-}
-
-.notice-text{
-font-size:14px;
-color:#222;
-line-height:1.6;
-}
-
-/* 제목 */
-
-.title-image{
-width:100%;
-display:block;
-border-radius:28px;
-margin-bottom:18px;
-}
-
-.section-title{
-font-size:42px;
-font-weight:700;
-color:#c84f77;
-text-align:center;
-margin-bottom:10px;
-}
-
-.section-subtitle{
-font-size:16px;
-color:#6b5a5a;
-text-align:center;
-margin-bottom:26px;
-}
-
-/* 후기 */
-
-.review-section{
-padding:10px 18px 40px;
-}
-
-.review-cards{
-display:flex;
-flex-direction:column;
-gap:16px;
-}
-
-.review-card{
-background:white;
-
-padding:24px;
-
-border-radius:26px;
-
-box-shadow:
-0 10px 30px rgba(0,0,0,.05);
-
-border:1px solid #f7dce5;
-}
-
-.review-text{
-font-size:16px;
-line-height:1.9;
-color:#4d3d3d;
-word-break:keep-all;
-}
-
-/* FAQ */
-
-.faq-section{
-padding:10px 18px 40px;
-}
-
-.faq-list{
-display:flex;
-flex-direction:column;
-gap:14px;
-}
-
-.faq-card{
-background:white;
-border-radius:24px;
-padding:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.05);
-border:1px solid #f7dce5;
-}
-
-.question{
-display:flex;
-justify-content:space-between;
-align-items:center;
-cursor:pointer;
-font-size:16px;
-font-weight:700;
-color:#4d3d3d;
-gap:10px;
-}
-
-.answer{
-display:none;
-padding-top:16px;
-font-size:15px;
-line-height:1.8;
-color:#666;
-}
-
-.faq-card.active .answer{
-display:block;
-}
-
-/* CTA glow */
-
-.cta{
-box-shadow:
-0 0 24px rgba(255,182,193,.5);
-border-radius:30px;
-}
-
 </style>
 
 </head>
-
 <body>
 
-<!-- 메인 -->
-
-<div class="section main-section fade-up">
-
-<div class="status">
-🟢 상담 가능
+<div class="section">
+<img src="main-cover.jpg">
 </div>
 
-<a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
-
-<img src="main-cover.jpg" class="float">
-
-</a>
-
-</div>
-
-<!-- 공지사항 -->
-
-<div class="notice-wrap fade-up">
-
-<div class="notice-title">
-공지사항
-</div>
-
-<div class="notice-text" id="noticeText">
-로딩중...
-</div>
-
-</div>
-
-<!-- info -->
-
-<div class="section fade-up">
-
-<a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
-
+<div class="section">
 <img src="info.png">
-
-</a>
-
 </div>
 
-<!-- story -->
-
-<div class="section fade-up">
-
-<a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
-
+<div class="section">
 <img src="story.png">
-
-</a>
-
 </div>
 
-<!-- WHY -->
-
-<div class="section fade-up">
-
+<div class="section">
 <img src="why-danah.jpg">
-
 </div>
 
-<!-- 가격 -->
-
-<div class="section fade-up">
-
-<a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
-
+<div class="section">
 <img src="price.png">
-
-</a>
-
 </div>
 
-<!-- 가이드 -->
-
-<div class="section fade-up">
-
+<div class="section">
 <img src="guide.png">
-
 </div>
 
-<!-- 후기 -->
-
-<section class="review-section fade-up">
-
-<img src="review-title.png" class="title-image">
-
-<div class="section-title">
-상담 후기
+<div class="section">
+<img src="review-title.png">
 </div>
 
-<div class="section-subtitle">
-마음이 편안해지는 시간이 되었어요 🩷
+<div class="section">
+<img src="faq-title.png">
 </div>
 
-<div id="reviews" class="review-cards"></div>
-
-</section>
-
-<!-- FAQ -->
-
-<section class="faq-section fade-up">
-
-<img src="faq-title.png" class="title-image">
-
-<div class="section-title">
-자주 묻는 질문
-</div>
-
-<div class="section-subtitle">
-궁금한 내용을 확인해보세요 ✨
-</div>
-
-<div id="faq-list" class="faq-list"></div>
-
-</section>
-
-<!-- CTA -->
-
-<div class="section fade-up">
-
+<div class="section">
 <a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
-
-<img src="cta.png" class="cta">
-
+<img src="cta.png">
 </a>
-
 </div>
 
-<!-- Supabase -->
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-
-const supabase = window.supabase.createClient(
-"https://fuwojigmgsvxennydcfz.supabase.co",
-"sb_publishable_rzsuJsbir1oa5-vIiE_z-A_f6THK57w"
-)
-
-/* 공지사항 */
-
-async function loadNotice(){
-
-const { data, error } = await supabase
-.from("notice")
-.select("*")
-.eq("id",1)
-.single()
-
-if(error){
-console.log(error)
-return
-}
-
-document.getElementById("noticeText").innerText =
-data.content
-
-}
-
-/* 후기 */
-
-async function loadReviews(){
-
-const { data, error } = await supabase
-.from("reviews")
-.select("*")
-.order("id",{ascending:false})
-
-if(error){
-console.log(error)
-return
-}
-
-document.getElementById("reviews").innerHTML =
-
-data.map(item => `
-
-<div class="review-card">
-
-<div class="review-text">
-${item.content}
-</div>
-
-</div>
-
-`).join("")
-
-}
-
-/* FAQ */
-
-async
+</body>
+</html>
