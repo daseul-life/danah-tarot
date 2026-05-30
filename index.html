@@ -54,9 +54,8 @@ animation:pulse 2s infinite;
 
 .section{
 padding:28px 18px;
-opacity:0;
-transform:translateY(40px);
-transition:all .8s ease;
+opacity:1;
+transform:none;
 }
 
 .section.show{
@@ -366,26 +365,7 @@ loadFAQ()
 
 },5000)
 
-const observer = new IntersectionObserver(
 
-(entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.classList.add("show")
-
-}
-
-})
-
-}
-
-)
-
-document.querySelectorAll(".section")
-.forEach(x=>observer.observe(x))
 
 </script>
 
