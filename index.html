@@ -1,373 +1,115 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>단아의 타로</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<title>다나 타로</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-font-family:'Noto Sans KR',sans-serif;
-background:#FFF8F8;
-max-width:760px;
-margin:auto;
-overflow-x:hidden;
-padding-bottom:80px;
-}
-
-.status{
-position:fixed;
-top:15px;
-right:15px;
-z-index:999;
-background:rgba(255,255,255,.95);
-padding:12px 18px;
-border-radius:999px;
-font-size:14px;
-font-weight:700;
-color:#D86D93;
-backdrop-filter:blur(10px);
-box-shadow:0 8px 25px rgba(216,109,147,.15);
-animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.05);}
-100%{transform:scale(1);}
-}
-
-.section{
-padding:28px 18px;
-opacity:1;
-transform:none;
-}
-
-.section.show{
-opacity:1;
-transform:translateY(0);
-}
-
-.section img{
-width:100%;
-display:block;
-border-radius:28px;
-box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
-
-.noticeWrap,
-.reviewWrap,
-.faqWrap{
-padding:0 18px 40px;
-}
-
-.notice-card{
-background:#fff;
-padding:20px;
-border-radius:24px;
-margin-bottom:14px;
-border-left:5px solid #D86D93;
-box-shadow:0 8px 24px rgba(216,109,147,.08);
-line-height:1.8;
-}
-
-.review-card{
-background:white;
-padding:24px;
-border-radius:24px;
-margin-bottom:16px;
-box-shadow:0 8px 24px rgba(216,109,147,.08);
-line-height:1.9;
-font-size:15px;
-}
-
-.review-card::before{
-content:"✦ 상담 후기";
-display:block;
-font-size:12px;
-font-weight:700;
-color:#D86D93;
-margin-bottom:12px;
-}
-
-.faq-card{
-background:white;
-padding:18px;
-border-radius:22px;
-margin-bottom:12px;
-box-shadow:0 6px 18px rgba(0,0,0,.05);
-}
-
-.question{
-display:flex;
-justify-content:space-between;
-align-items:center;
-cursor:pointer;
-font-weight:700;
-}
-
-.answer{
-max-height:0;
-overflow:hidden;
-transition:.4s;
-line-height:1.8;
-color:#666;
-}
-
-.faq-card.open .answer{
-max-height:300px;
-padding-top:14px;
-}
-
-.arrow{
-transition:.3s;
-}
-
-.faq-card.open .arrow{
-transform:rotate(180deg);
-}
-
-.cta img{
-animation:float 3s ease-in-out infinite;
-}
-
-@keyframes float{
-0%{transform:translateY(0);}
-50%{transform:translateY(-8px);}
-100%{transform:translateY(0);}
-}
-
-</style>
-
+  <link rel="stylesheet" href="./assets/styles.css">
 </head>
 
 <body>
 
-<div class="status" id="status">
-🟢 상담 가능
+  <!-- HERO -->
+ <section class="hero">
+
+  <a href="#" data-reserve class="hero-link">
+    <img
+      class="hero-image"
+      src="./images/main-cover.jpg"
+      alt="단아의 타로">
+  </a>
+
+  <div class="status-badge">
+  <span data-status-label>🟢상담 가능</span>
 </div>
 
-<!-- 메인 -->
+  
+    <!-- NOTICE -->
+<section class="section info-section">
 
-<div class="section">
-<a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
-<img src="main-cover.jpg">
-</a>
-</div>
+  <div class="notice-card">
 
-<!-- 공지 제목 -->
+    <div class="notice-title">
+      공지사항🔮
+    </div>
 
-<div class="section">
-<img src="info.png">
-</div>
+    <div class="notice-box" data-notice></div>
 
-<!-- 공지 내용 -->
+  </div>
 
-<div class="noticeWrap">
-<div id="noticeBox"></div>
-</div>
+</section>
 
-<!-- 스토리 -->
+  <!-- STORY -->
+  <section class="section">
+    <img src="./images/story.png" alt="story">
+  </section>
 
-<div class="section">
-<a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
-<img src="story.png">
-</a>
-</div>
+  <!-- PROCESS -->
+  <section class="section">
+    <img src="./images/process-bg.jpg" alt="process">
+  </section>
 
-<!-- 프로세스 -->
+  <!-- GUIDE -->
+  <section class="section">
+    <img src="./images/guide.png" alt="guide">
+  </section>
 
-<div class="section">
-<img src="process-bg.jpg">
-</div>
+  <!-- WHY -->
+  <section class="section">
 
-<!-- 가이드 -->
+  <a href="https://open.kakao.com/me/DanahsTarot"
+     target="_blank"
+     rel="noopener noreferrer">
 
-<div class="section">
-<img src="guide.png">
-</div>
+    <img src="./images/why-danah.jpg" alt="why">
 
-<!-- 왜 다나타로 -->
+  </a>
 
-<div class="section">
-<a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
-<img src="why-danah.jpg">
-</a>
-</div>
+</section>
 
-<!-- 가격 -->
+  <!-- PRICE -->
+  <section class="section">
 
-<div class="section">
-<a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
-<img src="price.png">
-</a>
-</div>
+    <a href="#" data-reserve class="price-link">
+      <img src="./images/price.png" alt="price">
+    </a>
 
-<!-- 후기 제목 -->
+  </section>
 
-<div class="section">
-<img src="review-title.png">
-</div>
+  <!-- REVIEW -->
+  <section class="section">
 
-<div class="reviewWrap">
-<div id="reviews"></div>
-</div>
+    <img src="./images/review-title.png" alt="후기">
 
-<!-- FAQ 제목 -->
+    <div class="review-grid" data-review-list></div>
 
-<div class="section">
-<img src="faq-title.png">
-</div>
+  </section>
 
-<div class="faqWrap">
-<div id="faqBox"></div>
-</div>
+  <!-- FAQ -->
+  <section class="section">
 
-<!-- CTA -->
+    <img src="./images/faq-title.png" alt="FAQ">
 
-<div class="section cta">
-<a href="https://open.kakao.com/me/DanahsTarot" target="_blank">
-<img src="cta.png">
-</a>
-</div>
+    <div class="faq-wrap"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </section>
 
-<script>
+  <!-- CTA -->
+  <section class="section cta-section">
 
-const supabase =
-window.supabase.createClient(
-"https://fuwojigmgsvxennydcfz.supabase.co",
-"sb_publishable_rzsuJsbir1oa5-vIiE_z-A_f6THK57w"
-)
+    <a href="#" data-reserve class="cta-link">
+      <img src="./images/cta.png" alt="예약">
+    </a>
 
-function toggleFAQ(el){
-el.parentElement.classList.toggle("open")
-}
+  </section>
 
-async function loadStatus(){
-
-const {data}=await supabase
-.from("status")
-.select("*")
-.eq("id",1)
-.single()
-
-if(data){
-document.getElementById("status").innerText =
-data.status
-}
-
-}
-
-async function loadNotice(){
-
-const {data}=await supabase
-.from("notice")
-.select("*")
-.order("id",{ascending:false})
-
-if(!data)return
-
-document.getElementById("noticeBox").innerHTML =
-
-data.map(x=>`
-
-<div class="notice-card">
-📢 ${x.content}
-</div>
-
-`).join("")
-
-}
-
-async function loadReview(){
-
-const {data}=await supabase
-.from("reviews")
-.select("*")
-.order("id",{ascending:false})
-
-if(!data)return
-
-document.getElementById("reviews").innerHTML =
-
-data.map(x=>`
-
-<div class="review-card">
-${x.content}
-</div>
-
-`).join("")
-
-}
-
-async function loadFAQ(){
-
-const {data}=await supabase
-.from("faq")
-.select("*")
-.order("id")
-
-if(!data)return
-
-document.getElementById("faqBox").innerHTML =
-
-data.map(x=>`
-
-<div class="faq-card">
-
-<div class="question"
-onclick="toggleFAQ(this)">
-
-<span>${x.question}</span>
-
-<span class="arrow">▼</span>
-
-</div>
-
-<div class="answer">
-${x.answer}
-</div>
-
-</div>
-
-`).join("")
-
-}
-
-loadStatus()
-loadNotice()
-loadReview()
-loadFAQ()
-
-setInterval(()=>{
-
-loadStatus()
-loadNotice()
-loadReview()
-loadFAQ()
-
-},5000)
-
-
-
-</script>
+  <script type="module" src="./assets/app.js"></script>
 
 </body>
 </html>
