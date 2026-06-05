@@ -1143,3 +1143,7 @@ img[alt="why"]{
         transform:translateY(0);
     }
 }
+
+.status-dot {
+    display: none !important;
+}
