@@ -1,0 +1,15 @@
+{
+"name":"Danah Tarot",
+"short_name":"Danah",
+"start_url":"/danah-tarot/",
+"display":"standalone",
+"background_color":"#FFF9F7",
+"theme_color":"#F7DCE3",
+"icons":[
+{
+"src":"main.png",
+"sizes":"512x512",
+"type":"image/png"
+}
+]
+}
