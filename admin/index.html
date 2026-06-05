@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>단아의 타로 관리자</title>
+
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <div id="login-panel" class="card">
+
+    <h1>🌙 단아의 타로</h1>
+    <h2>관리자 로그인</h2>
+
+    <input
+      type="email"
+      id="email"
+      placeholder="이메일">
+
+    <input
+      type="password"
+      id="password"
+      placeholder="비밀번호">
+
+    <button id="loginBtn">
+      로그인
+    </button>
+
+    <p id="message"></p>
+
+  </div>
+
+  <div id="admin-panel" class="card hidden">
+
+    <h1>🌙 단아의 타로 관리자</h1>
+
+    <section>
+
+      <h3>상담 상태</h3>
+
+      <select id="statusSelect">
+        <option>🟢 상담 가능</option>
+        <option>🌙 상담중</option>
+        <option>🔴 상담 종료</option>
+      </select>
+
+      <button id="saveStatusBtn">
+        상태 저장
+      </button>
+
+    </section>
+
+    <hr>
+
+    <section>
+
+      <h3>공지사항</h3>
+
+      <textarea
+        id="noticeInput"
+        rows="5"
+        placeholder="공지사항을 입력하세요"></textarea>
+
+      <button id="saveNoticeBtn">
+        공지 저장
+      </button>
+
+    </section>
+
+    <hr>
+
+    <section>
+
+      <h3>후기 추가</h3>
+
+      <textarea
+        id="reviewInput"
+        rows="4"
+        placeholder="후기를 입력하세요"></textarea>
+
+      <button id="addReviewBtn">
+        후기 추가
+      </button>
+
+    </section>
+
+    <hr>
+
+    <section>
+
+      <h3>후기 목록</h3>
+
+      <div id="reviewList"></div>
+
+    </section>
+
+    <button id="logoutBtn">
+      로그아웃
+    </button>
+
+  </div>
+
+  <script type="module" src="admin.js"></script>
+
+</body>
+</html>
