@@ -186,18 +186,29 @@ saveNoticeBtn.addEventListener(
 addReviewBtn.addEventListener(
   "click",
   async () => {
+
     const content =
       reviewInput.value.trim();
 
     if (!content) return;
 
-    await supabase
+    const { data, error } = await supabase
       .from("reviews")
       .insert([
         {
           content,
         },
       ]);
+
+    console.log("DATA", data);
+    console.log("ERROR", error);
+
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    alert("후기 저장 완료");
 
     reviewInput.value = "";
 
