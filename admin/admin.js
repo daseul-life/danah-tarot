@@ -95,6 +95,31 @@ async function loadReviews() {
 
 const editBtn = item.querySelector(".edit-btn");
 const deleteBtn = item.querySelector(".delete-btn");
+editBtn.addEventListener("click", async () => {
+  const newContent = prompt("후기를 수정하세요.", review.content);
+
+  if (newContent === null) return;
+
+  if (!newContent.trim()) {
+    alert("후기를 입력해주세요.");
+    return;
+  }
+
+  const { error } = await supabase
+    .from("reviews")
+    .update({
+      content: newContent.trim()
+    })
+    .eq("id", review.id);
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
+  alert("수정 완료");
+  loadReviews();
+});
 
 
     deleteBtn.addEventListener(
