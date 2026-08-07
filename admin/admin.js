@@ -82,14 +82,20 @@ async function loadReviews() {
     item.className = "review-item";
 
     item.innerHTML = `
-      <p>${review.content}</p>
-      <button data-id="${review.id}">
-        삭제
-      </button>
-    `;
+  <p>${review.content}</p>
 
-    const deleteBtn =
-      item.querySelector("button");
+  <button class="edit-btn">
+    수정
+  </button>
+
+  <button class="delete-btn">
+    삭제
+  </button>
+`;
+
+const editBtn = item.querySelector(".edit-btn");
+const deleteBtn = item.querySelector(".delete-btn");
+
 
     deleteBtn.addEventListener(
       "click",
