@@ -1,156 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>단아의 타로</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="./assets/styles.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #fff5f8;
+      font-family: 'Apple SD Gothic Neo', sans-serif;
+    }
+    .section {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px 16px;
+    }
+    .price-link img {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+    }
+  </style>
 </head>
-
 <body>
 
-  <!-- HERO -->
- <section class="hero">
-
-  <a href="#" data-reserve class="hero-link">
-    <img
-      class="hero-image"
-      src="./images/main-cover.jpg"
-      alt="단아의 타로">
-  </a>
-
-  <div class="status-badge">
-  <span data-status-dot class="status-dot open"></span>
-  <span data-status-label>🟢 상담 가능</span>
-</div>
-  
-    <!-- NOTICE -->
-<section class="section info-section">
-
-  <div class="notice-card">
-
-    <div class="notice-title">
-      공지사항🔮
-    </div>
-
-    <div class="notice-box" data-notice></div>
-
-  </div>
-
-</section>
-
-  <!-- STORY -->
+  <!-- PRICE (원본 요금표 이미지 100% 보존 - 오버레이 및 추가 텍스트 없음) -->
   <section class="section">
-    <img src="./images/story.png" alt="story">
-  </section>
-
-  <!-- PROCESS -->
-  <section class="section">
-    <img src="./images/process-bg.jpg" alt="process">
-  </section>
-
-  <!-- GUIDE -->
-  <section class="section">
-    <img src="./images/guide.png" alt="guide">
-  </section>
-
-  <!-- WHY -->
-  <section class="section">
-
-  <a href="https://open.kakao.com/me/DanahsTarot"
-     target="_blank"
-     rel="noopener noreferrer">
-
-    <img src="./images/why-danah.jpg" alt="why">
-
-  </a>
-
-</section>
-
-  <!-- PRICE (30분 주력 상품 후킹 및 순서 재배치 적용) -->
-  <section class="section">
-
-    <!-- 기존 이미지 대신, 30분이 가장 돋보이도록 구성한 HTML 요금표 영역 -->
-    <div class="price-container" style="padding: 20px; max-width: 500px; margin: 0 auto;">
-      <div style="text-align: center; margin-bottom: 15px;">
-        <h3 style="color: #6a4c41; font-size: 18px; font-weight: bold;">✨ 상담 요금 안내</h3>
-      </div>
-
-      <div style="background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(214, 51, 132, 0.08); border: 1px solid #fce4ec;">
-        
-        <!-- 1. 가벼운 진입 (Yes or No) -->
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; border-bottom: 1px solid #fce4ec;">
-          <span style="font-size: 14px; color: #555;">Yes or No (빠른 답변)</span>
-          <span style="font-size: 14px; font-weight: bold; color: #d63384;">2,000원</span>
-        </div>
-
-        <!-- 2. 핵심 주력 상품 (30분 - 베스트 강조 및 배경 포인트) -->
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background-color: #fff0f3; border-bottom: 1px solid #fce4ec;">
-          <span style="font-size: 15px; color: #333; font-weight: bold;">
-            30분 채팅 / 전화 상담 
-            <span style="background: #ff4d6d; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px; margin-left: 6px; vertical-align: middle;">🔥 베스트</span>
-          </span>
-          <span style="font-size: 15px; font-weight: bold; color: #d63384;">30,000원</span>
-        </div>
-
-        <!-- 3. 깊은 상담 (60분) -->
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; border-bottom: 1px solid #fce4ec;">
-          <span style="font-size: 14px; color: #555;">60분 채팅 / 전화 상담</span>
-          <span style="font-size: 14px; font-weight: bold; color: #d63384;">60,000원</span>
-        </div>
-
-        <!-- 4. 15분 상담 -->
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 20px;">
-          <span style="font-size: 14px; color: #555;">15분 채팅 / 전화 상담</span>
-          <span style="font-size: 14px; font-weight: bold; color: #d63384;">15,000원</span>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- 하단 예약 링크 버튼 (기존 기능 유지) -->
-    <div style="text-align: center; margin-top: 15px;">
-      <a href="#" data-reserve class="price-link">
-        <img src="./images/price.png" alt="price" style="max-width: 100%; display: block; margin: 0 auto;">
-      </a>
-    </div>
-
-  </section>
-
-  <!-- REVIEW -->
-  <section class="section">
-
-    <img src="./images/review-title.png" alt="후기">
-
-    <div class="review-grid" data-review-list></div>
-
-  </section>
-
-  <!-- FAQ -->
-  <section class="section">
-
-    <img src="./images/faq-title.png" alt="FAQ">
-
-    <div class="faq-wrap"></div>
-
-  </section>
-
-  <!-- CTA -->
-  <section class="section cta-section">
-
-    <a href="#" data-reserve class="cta-link">
-      <img src="./images/cta.png" alt="예약">
+    <a href="#" data-reserve class="price-link" style="display: block;">
+      <img src="./images/price.png" alt="단아의 타로 상담 요금 안내">
     </a>
-
   </section>
-
-  <script type="module" src="./assets/app.js"></script>
 
 </body>
 </html>
