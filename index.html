@@ -16,7 +16,7 @@
       margin: 0 auto;
       padding: 20px 16px;
     }
-    .price-link img {
+    .content-img {
       width: 100%;
       display: block;
       border-radius: 12px;
@@ -25,11 +25,23 @@
 </head>
 <body>
 
-  <!-- PRICE (원본 요금표 이미지 100% 보존 - 오버레이 및 추가 텍스트 없음) -->
-  <section class="section">
-    <a href="#" data-reserve class="price-link" style="display: block;">
-      <img src="./images/price.png" alt="단아의 타로 상담 요금 안내">
+  <!-- 상단 예약 버튼 영역 -->
+  <section class="section" style="text-align: center;">
+    <a href="#" data-reserve style="display: block;">
+      <img src="./images/top_banner.png" alt="상담 예약하기" class="content-img">
     </a>
+  </section>
+
+  <!-- PRICE (원본 요금표 이미지 100% 보존 - 맨 처음 상태) -->
+  <section class="section">
+    <a href="#" data-reserve style="display: block;">
+      <img src="./images/price.png" alt="단아의 타로 상담 요금 안내" class="content-img">
+    </a>
+  </section>
+
+  <!-- 하단 후기 영역 -->
+  <section class="section" style="text-align: center;">
+    <img src="./images/review.png" alt="상담 후기" class="content-img">
   </section>
 
 </body>
