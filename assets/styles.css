@@ -99,7 +99,9 @@ img {
 .hero-image {
   display: block;
   width: 100%;
-  height: auto;
+  max-height: 78vh;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .hero-content {
