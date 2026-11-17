@@ -1234,34 +1234,7 @@ img[alt="why"]{
   }
 }
 
-/* =========================
-   표지 아래 바로가기 버튼
-========================= */
-.hero-cta {
-  display: block;
-  width: calc(100% - 32px);
-  max-width: 420px;
-  margin: -42px auto 0;
-  position: relative;
-  z-index: 5;
-  padding: 15px 18px;
-  border-radius: 999px;
-  text-align: center;
-  font-size: 17px;
-  font-weight: 800;
-  color: #fff;
-  text-decoration: none;
-  letter-spacing: -.01em;
-  background: linear-gradient(135deg, #d9788a, #b9576e);
-  box-shadow: 0 10px 22px -10px rgba(150, 60, 80, .8);
-}
-
 @media (max-width: 768px) {
-  .hero-cta {
-    margin-top: -34px;
-    padding: 14px 16px;
-    font-size: 16px;
-  }
   .section {
     padding: 20px 12px;
   }
