@@ -99,7 +99,9 @@ img {
 .hero-image {
   display: block;
   width: 100%;
-  height: auto;
+  max-height: 92vh;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .hero-content {
@@ -1063,7 +1065,7 @@ body {
 .info-section{
     width:100%;
     max-width:1200px;
-    margin:20px auto 30px;
+    margin:6px auto 24px;
     padding:0 12px;
 
     display:flex;
