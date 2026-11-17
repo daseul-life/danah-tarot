@@ -44,6 +44,7 @@ a {
 img {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 .site-header {
@@ -431,6 +432,7 @@ h3 {
 .section img{
   display:block;
   width:100%;
+  height:auto;
 }
 
 
@@ -438,6 +440,7 @@ h3 {
 .section img{
   display:block;
   width:100%;
+  height:auto;
 }
 
 .faq-wrap{
@@ -758,6 +761,7 @@ body {
 
 .section img {
   width: 100%;
+  height: auto;
   display: block;
   border-radius: 18px;
 }
