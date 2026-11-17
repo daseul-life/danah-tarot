@@ -62,8 +62,33 @@ async function loadReviews() {
   }
 
   wrap.innerHTML = data.map(review => `
-    <div class="review-card">
-      <p>${escapeHtml(review.content || "")}</p>
+    <div style="
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 12px rgba(214, 51, 132, 0.06);
+      border: 1px solid #fce4ec;
+      position: relative;
+    ">
+      <div style="display: flex; align-items: center; margin-bottom: 8px;">
+        <span style="
+          font-size: 11px;
+          font-weight: 700;
+          color: #d63384;
+          background: #fff0f3;
+          padding: 3px 8px;
+          border-radius: 6px;
+          letter-spacing: -0.3px;
+        ">실제 내담자 후기 ✨</span>
+      </div>
+      <p style="
+        margin: 0;
+        font-size: 14px;
+        color: #444;
+        line-height: 1.6;
+        white-space: pre-wrap;
+      ">${escapeHtml(review.content || "")}</p>
     </div>
   `).join("");
 }
