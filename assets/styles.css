@@ -1147,3 +1147,93 @@ img[alt="why"]{
 .status-dot {
     display: none !important;
 }
+/* ===== 추가: 후기 카드 (인라인 스타일 대체) ===== */
+.review-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  border: 1px solid #fce4ec;
+  box-shadow: 0 4px 12px rgba(214, 51, 132, 0.06);
+}
+.review-card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #444;
+  white-space: pre-wrap;
+}
+
+/* ===== 추가: 움직임 최소화 설정 존중 ===== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fade-up { opacity: 1 !important; transform: none !important; }
+}
+
+/* ===== 추가: 로딩 전 상태 배지 흔들림 방지 ===== */
+.status-badge { min-width: 108px; }
+
+/* ===== 공지사항: 잘림 방지 + 여백 정리 ===== */
+.notice-box {
+  display: block;
+  white-space: pre-wrap;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  text-align: center;
+  line-height: 1.95;
+}
+
+.notice-card {
+  animation: none;
+}
+
+@media (max-width: 760px) {
+  .info-section {
+    margin: 14px auto 22px;
+    padding: 0 10px;
+  }
+  .notice-card {
+    width: 100%;
+    padding: 16px 14px;
+    border-radius: 20px;
+  }
+  .notice-title {
+    font-size: 19px;
+    margin-bottom: 10px;
+  }
+  .notice-box {
+    padding: 16px 14px;
+    font-size: 16px;
+    line-height: 1.9;
+    border-radius: 14px;
+    letter-spacing: -0.2px;
+  }
+
+  /* 글자 블록 사이 여백 (따닥따닥 방지) */
+  .section {
+    padding: 28px 16px;
+  }
+  .review-card {
+    padding: 20px 18px;
+  }
+  .review-card p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+  .faq-wrap {
+    display: grid;
+    gap: 12px;
+    margin-top: 6px;
+  }
+  .faq-question {
+    padding: 18px 16px;
+    font-size: 17px;
+    line-height: 1.5;
+  }
+  .faq-answer p {
+    padding: 0 16px 20px;
+    font-size: 16px;
+    line-height: 1.85;
+  }
+}

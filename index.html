@@ -1,229 +1,108 @@
 <!doctype html>
-
 <html lang="ko">
-
 <head>
-
   <meta charset="utf-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>단아의 타로 | 따뜻한 타로 상담</title>
 
-  <title>단아의 타로</title>
+  <meta name="description" content="단아의 타로. 손님이 직접 세 장을 뽑는 타로 상담. 카카오톡으로 편하게 예약하세요.">
+  <meta name="theme-color" content="#fff8f0">
 
-
+  <!-- 링크 공유할 때 미리보기 -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="단아의 타로">
+  <meta property="og:description" content="따뜻한 목소리로, 천천히. 카드 세 장이 답을 알려줍니다.">
+  <meta property="og:image" content="./images/main-cover.webp">
+  <meta property="og:url" content="https://danah-tarot.vercel.app/">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
 
-
-
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
-
-
+  <link rel="preload" as="image" href="./images/main-cover.webp" fetchpriority="high">
 
   <link rel="stylesheet" href="./assets/styles.css">
-
 </head>
-
-
 
 <body>
 
-
-
   <!-- HERO -->
+  <section class="hero">
 
- <section class="hero">
+    <a href="https://open.kakao.com/me/DanahsTarot" target="_blank" rel="noopener noreferrer" class="hero-link">
+      <img
+        class="hero-image"
+        src="./images/main-cover.webp"
+        width="1024" height="1536"
+        fetchpriority="high"
+        alt="단아의 타로">
+    </a>
 
-
-
-  <a href="#" data-reserve class="hero-link">
-
-    <img
-
-      class="hero-image"
-
-      src="./images/main-cover.jpg"
-
-      alt="단아의 타로">
-
-  </a>
-
-
-
-  <div class="status-badge">
-
-  <span data-status-dot class="status-dot open"></span>
-
-  <span data-status-label>🟢 상담 가능</span>
-
-</div>
-
-  
-
-    <!-- NOTICE -->
-
-<section class="section info-section">
-
-
-
-  <div class="notice-card">
-
-
-
-    <div class="notice-title">
-
-      공지사항🔮
-
+    <div class="status-badge">
+      <span data-status-dot class="status-dot open"></span>
+      <span data-status-label>상담 시간 확인 중</span>
     </div>
 
+  </section>
 
-
-    <div class="notice-box" data-notice></div>
-
-
-
-  </div>
-
-
-
-</section>
-
-
+  <!-- NOTICE -->
+  <section class="section info-section">
+    <div class="notice-card">
+      <div class="notice-title">공지사항🔮</div>
+      <div class="notice-box" data-notice></div>
+    </div>
+  </section>
 
   <!-- STORY -->
-
   <section class="section">
-
-    <img src="./images/story.png" alt="story">
-
+    <img src="./images/story.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="단아의 타로 소개">
   </section>
-
-
 
   <!-- PROCESS -->
-
   <section class="section">
-
-    <img src="./images/process-bg.jpg" alt="process">
-
+    <img src="./images/process-bg.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="상담 진행 순서">
   </section>
-
-
 
   <!-- GUIDE -->
-
   <section class="section">
-
-    <img src="./images/guide.png" alt="guide">
-
+    <img src="./images/guide.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="상담 안내">
   </section>
-
-
 
   <!-- WHY -->
-
   <section class="section">
-
-
-
-  <a href="https://open.kakao.com/me/DanahsTarot"
-
-     target="_blank"
-
-     rel="noopener noreferrer">
-
-
-
-    <img src="./images/why-danah.jpg" alt="why">
-
-
-
-  </a>
-
-
-
-</section>
-
-
+    <a href="https://open.kakao.com/me/DanahsTarot" target="_blank" rel="noopener noreferrer">
+      <img src="./images/why-danah.webp" width="941" height="1672" loading="lazy" decoding="async" alt="단아의 타로를 찾는 이유">
+    </a>
+  </section>
 
   <!-- PRICE -->
-
   <section class="section">
-
-
-
-    <a href="#" data-reserve class="price-link">
-
-      <img src="./images/price.png" alt="price">
-
+    <a href="https://open.kakao.com/me/DanahsTarot" target="_blank" rel="noopener noreferrer" class="price-link">
+      <img src="./images/price.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="상담 가격">
     </a>
-
-
-
   </section>
-
-
 
   <!-- REVIEW -->
-
   <section class="section">
-
-
-
-    <img src="./images/review-title.png" alt="후기">
-
-
-
+    <img src="./images/review-title.webp" width="1080" height="394" loading="lazy" decoding="async" alt="후기">
     <div class="review-grid" data-review-list></div>
-
-
-
   </section>
-
-
 
   <!-- FAQ -->
-
   <section class="section">
-
-
-
-    <img src="./images/faq-title.png" alt="FAQ">
-
-
-
+    <img src="./images/faq-title.webp" width="1024" height="505" loading="lazy" decoding="async" alt="자주 묻는 질문">
     <div class="faq-wrap"></div>
-
-
-
   </section>
-
-
 
   <!-- CTA -->
-
   <section class="section cta-section">
-
-
-
-    <a href="#" data-reserve class="cta-link">
-
-      <img src="./images/cta.png" alt="예약">
-
+    <a href="https://open.kakao.com/me/DanahsTarot" target="_blank" rel="noopener noreferrer" class="cta-link">
+      <img src="./images/cta.webp" width="1024" height="1536" loading="lazy" decoding="async" alt="카카오톡으로 예약하기">
     </a>
-
-
-
   </section>
-
-
 
   <script type="module" src="./assets/app.js"></script>
 
-
-
 </body>
-
 </html>
