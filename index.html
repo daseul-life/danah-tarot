@@ -1,48 +1,229 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="ko">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>단아의 타로</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #fff5f8;
-      font-family: 'Apple SD Gothic Neo', sans-serif;
-    }
-    .section {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px 16px;
-    }
-    .content-img {
-      width: 100%;
-      display: block;
-      border-radius: 12px;
-    }
-  </style>
+
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+
+
+  <link rel="stylesheet" href="./assets/styles.css">
+
 </head>
+
+
+
 <body>
 
-  <!-- 상단 예약 버튼 영역 -->
-  <section class="section" style="text-align: center;">
-    <a href="#" data-reserve style="display: block;">
-      <img src="./images/top_banner.png" alt="상담 예약하기" class="content-img">
-    </a>
-  </section>
 
-  <!-- PRICE (원본 요금표 이미지 100% 보존 - 맨 처음 상태) -->
+
+  <!-- HERO -->
+
+ <section class="hero">
+
+
+
+  <a href="#" data-reserve class="hero-link">
+
+    <img
+
+      class="hero-image"
+
+      src="./images/main-cover.jpg"
+
+      alt="단아의 타로">
+
+  </a>
+
+
+
+  <div class="status-badge">
+
+  <span data-status-dot class="status-dot open"></span>
+
+  <span data-status-label>🟢 상담 가능</span>
+
+</div>
+
+  
+
+    <!-- NOTICE -->
+
+<section class="section info-section">
+
+
+
+  <div class="notice-card">
+
+
+
+    <div class="notice-title">
+
+      공지사항🔮
+
+    </div>
+
+
+
+    <div class="notice-box" data-notice></div>
+
+
+
+  </div>
+
+
+
+</section>
+
+
+
+  <!-- STORY -->
+
   <section class="section">
-    <a href="#" data-reserve style="display: block;">
-      <img src="./images/price.png" alt="단아의 타로 상담 요금 안내" class="content-img">
-    </a>
+
+    <img src="./images/story.png" alt="story">
+
   </section>
 
-  <!-- 하단 후기 영역 -->
-  <section class="section" style="text-align: center;">
-    <img src="./images/review.png" alt="상담 후기" class="content-img">
+
+
+  <!-- PROCESS -->
+
+  <section class="section">
+
+    <img src="./images/process-bg.jpg" alt="process">
+
   </section>
+
+
+
+  <!-- GUIDE -->
+
+  <section class="section">
+
+    <img src="./images/guide.png" alt="guide">
+
+  </section>
+
+
+
+  <!-- WHY -->
+
+  <section class="section">
+
+
+
+  <a href="https://open.kakao.com/me/DanahsTarot"
+
+     target="_blank"
+
+     rel="noopener noreferrer">
+
+
+
+    <img src="./images/why-danah.jpg" alt="why">
+
+
+
+  </a>
+
+
+
+</section>
+
+
+
+  <!-- PRICE -->
+
+  <section class="section">
+
+
+
+    <a href="#" data-reserve class="price-link">
+
+      <img src="./images/price.png" alt="price">
+
+    </a>
+
+
+
+  </section>
+
+
+
+  <!-- REVIEW -->
+
+  <section class="section">
+
+
+
+    <img src="./images/review-title.png" alt="후기">
+
+
+
+    <div class="review-grid" data-review-list></div>
+
+
+
+  </section>
+
+
+
+  <!-- FAQ -->
+
+  <section class="section">
+
+
+
+    <img src="./images/faq-title.png" alt="FAQ">
+
+
+
+    <div class="faq-wrap"></div>
+
+
+
+  </section>
+
+
+
+  <!-- CTA -->
+
+  <section class="section cta-section">
+
+
+
+    <a href="#" data-reserve class="cta-link">
+
+      <img src="./images/cta.png" alt="예약">
+
+    </a>
+
+
+
+  </section>
+
+
+
+  <script type="module" src="./assets/app.js"></script>
+
+
 
 </body>
+
 </html>
