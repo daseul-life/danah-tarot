@@ -320,6 +320,59 @@ function setupApply() {
   concernInput.addEventListener("input", updateCount);
   updateCount();
 
+  /* =====================
+     상담 종류 ↔ 상담 시간 연동
+     - '신년 타로'를 고르면 30분·1시간(60분)·미정만 남깁니다.
+     - 다른 종류를 고르면 원래 시간 옵션이 모두 돌아옵니다.
+  ===================== */
+
+  const NEWYEAR_TYPE = "신년 타로";
+  const NEWYEAR_HIDDEN_DURATIONS = [
+    "15분 (15,000원)",
+    "Yes or No (2,000원)",
+    "Yes or No + 조언카드 (3,000원)"
+  ];
+
+  const allDurationOptions = durationInput
+    ? Array.from(durationInput.options).map(option => ({
+        value: option.value,
+        label: option.textContent
+      }))
+    : [];
+  const placeholderOption = allDurationOptions.find(option => option.value === "") || {
+    value: "",
+    label: "선택해 주세요"
+  };
+  const durationChoices = allDurationOptions.filter(option => option.value !== "");
+
+  const syncDurationOptions = () => {
+    if (!durationInput || !durationChoices.length) return;
+
+    const isNewYear = typeInput.value === NEWYEAR_TYPE;
+    const keptValue = durationInput.value;
+    const visibleOptions = durationChoices.filter(
+      option => !isNewYear || !NEWYEAR_HIDDEN_DURATIONS.includes(option.value)
+    );
+
+    durationInput.replaceChildren();
+
+    const addOption = (value, label) => {
+      const option = document.createElement("option");
+      option.value = value;
+      option.textContent = label;
+      durationInput.appendChild(option);
+    };
+
+    addOption(placeholderOption.value, placeholderOption.label);
+    visibleOptions.forEach(option => addOption(option.value, option.label));
+
+    const stillAvailable = visibleOptions.some(option => option.value === keptValue);
+    durationInput.value = stillAvailable ? keptValue : "";
+  };
+
+  syncDurationOptions();
+  typeInput.addEventListener("change", syncDurationOptions);
+
   form.addEventListener("submit", async event => {
     event.preventDefault();
     hideWarn();
