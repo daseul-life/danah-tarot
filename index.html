@@ -102,14 +102,14 @@
       </p>
 
       <form class="apply-form" data-apply-form novalidate>
-        <label class="apply-field">
-          <span class="apply-label">이름 또는 닉네임</span>
-          <input type="text" name="name" data-apply-name maxlength="20" autocomplete="nickname" placeholder="예) 별빛">
-        </label>
+        <div class="apply-field">
+          <label class="apply-label" for="apply-name">이름 또는 닉네임</label>
+          <input id="apply-name" type="text" name="name" data-apply-name maxlength="20" autocomplete="nickname" placeholder="예) 별빛">
+        </div>
 
-        <label class="apply-field">
-          <span class="apply-label">상담 종류</span>
-          <select name="type" data-apply-type>
+        <div class="apply-field">
+          <label class="apply-label" for="apply-type">상담 종류</label>
+          <select id="apply-type" name="type" data-apply-type>
             <option value="" selected>선택해 주세요</option>
             <option>신년타로</option>
             <option>연애·재회 상담</option>
@@ -119,13 +119,13 @@
             <option>Yes or No</option>
             <option>종합 상담 / 기타</option>
           </select>
-        </label>
+        </div>
 
-        <label class="apply-field">
-          <span class="apply-label">고민 내용</span>
-          <textarea name="concern" data-apply-concern rows="5" maxlength="800" placeholder="지금 마음에 있는 고민을 편하게 적어 주세요."></textarea>
+        <div class="apply-field">
+          <label class="apply-label" for="apply-concern">고민 내용</label>
+          <textarea id="apply-concern" name="concern" data-apply-concern rows="5" maxlength="800" placeholder="지금 마음에 있는 고민을 편하게 적어 주세요."></textarea>
           <span class="apply-count" data-apply-count>0 / 800</span>
-        </label>
+        </div>
 
         <div class="apply-field">
           <span class="apply-label">희망 날짜 및 시간</span>
