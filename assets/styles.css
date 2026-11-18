@@ -1243,3 +1243,285 @@ img[alt="why"]{
     padding: 20px 12px;
   }
 }
+
+/* =========================
+   APPLY (상담 신청서)
+========================= */
+
+.apply-section {
+  padding-top: 4px;
+}
+
+.apply-card {
+  width: 95%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 30px 26px 26px;
+  background: #f7dbe6;
+  border-radius: 28px;
+  box-shadow: 0 8px 24px rgba(201, 79, 112, 0.08);
+}
+
+.apply-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 800;
+  color: #c95d84;
+  margin-bottom: 10px;
+}
+
+.apply-lead {
+  margin: 0 0 22px;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #8a5f6c;
+  word-break: keep-all;
+}
+
+.apply-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+}
+
+.apply-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.apply-label {
+  font-size: 15px;
+  font-weight: 800;
+  color: #a2486a;
+  letter-spacing: -0.2px;
+}
+
+.apply-field input,
+.apply-field select,
+.apply-field textarea {
+  width: 100%;
+  min-height: 52px;
+  padding: 13px 14px;
+  border: 1px solid #f0c3d4;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #4a3038;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+  box-shadow: 0 2px 6px rgba(201, 79, 112, 0.04);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.apply-field select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c95d84' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+.apply-field textarea {
+  min-height: 130px;
+  resize: vertical;
+  white-space: pre-wrap;
+}
+
+.apply-field input::placeholder,
+.apply-field textarea::placeholder {
+  color: #b9a0a8;
+}
+
+.apply-field input:focus,
+.apply-field select:focus,
+.apply-field textarea:focus {
+  outline: none;
+  border-color: #d9739a;
+  box-shadow: 0 0 0 3px rgba(217, 115, 154, 0.16);
+}
+
+.apply-count {
+  align-self: flex-end;
+  font-size: 12px;
+  color: #ab8492;
+  letter-spacing: 0.2px;
+}
+
+.apply-datetime {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.apply-help {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: #ab8492;
+  word-break: keep-all;
+}
+
+.apply-warn {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #fff3f6;
+  color: #c0395c;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.apply-submit {
+  width: 100%;
+  min-height: 56px;
+  margin-top: 2px;
+  padding: 16px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #d95778, #b73558);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  cursor: pointer;
+  box-shadow: 0 12px 26px rgba(159, 47, 77, 0.24);
+}
+
+.apply-submit:active {
+  transform: translateY(1px);
+}
+
+.apply-result {
+  margin-top: 20px;
+  padding: 18px 16px 16px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(201, 79, 112, 0.06);
+}
+
+.apply-result-head {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.apply-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #fff0f4;
+  color: #d63384;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+}
+
+.apply-result-note {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #8a5f6c;
+  word-break: keep-all;
+}
+
+.apply-preview {
+  margin: 0 0 14px;
+  padding: 14px;
+  border-radius: 14px;
+  background: #fff8fa;
+  border: 1px dashed #f0c3d4;
+  color: #4a3038;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  -webkit-user-select: all;
+  user-select: all;
+}
+
+.apply-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.apply-open {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #fee500;
+  color: #3c1e1e;
+  font-size: 16px;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 8px 18px rgba(201, 178, 0, 0.18);
+}
+
+.apply-copy {
+  min-height: 46px;
+  border: 1px solid #f0c3d4;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #a2486a;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.apply-manual {
+  margin: 10px 0 0;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #c0395c;
+  word-break: keep-all;
+}
+
+@media (max-width: 760px) {
+  .apply-section {
+    padding: 8px 12px 20px;
+  }
+
+  .apply-card {
+    width: 100%;
+    padding: 20px 16px 18px;
+    border-radius: 20px;
+  }
+
+  .apply-title {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .apply-lead {
+    font-size: 14px;
+    margin-bottom: 18px;
+  }
+
+  .apply-form {
+    gap: 14px;
+  }
+
+  .apply-field input,
+  .apply-field select,
+  .apply-field textarea {
+    font-size: 16px;
+  }
+
+  .apply-datetime {
+    grid-template-columns: 1fr;
+  }
+
+  .apply-submit {
+    font-size: 16px;
+  }
+}

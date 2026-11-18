@@ -31,7 +31,7 @@
 
   <link rel="preload" as="image" href="./images/main-cover.webp" fetchpriority="high">
 
-  <link rel="stylesheet" href="./assets/styles.css?v=1711e">
+  <link rel="stylesheet" href="./assets/styles.css?v=1711f">
 </head>
 
 <body>
@@ -92,6 +92,70 @@
     </a>
   </section>
 
+  <!-- APPLY -->
+  <section class="section apply-section" id="apply">
+    <div class="apply-card">
+      <div class="apply-title">상담 신청서 🔮</div>
+      <p class="apply-lead">
+        아래에 적어 주시면 상담 내용을 정리해 드려요.<br>
+        버튼을 누르면 정리된 내용이 복사되고, 오픈채팅에 붙여넣어 보내실 수 있어요.
+      </p>
+
+      <form class="apply-form" data-apply-form novalidate>
+        <label class="apply-field">
+          <span class="apply-label">이름 또는 닉네임</span>
+          <input type="text" name="name" data-apply-name maxlength="20" autocomplete="nickname" placeholder="예) 별빛">
+        </label>
+
+        <label class="apply-field">
+          <span class="apply-label">상담 종류</span>
+          <select name="type" data-apply-type>
+            <option value="" selected>선택해 주세요</option>
+            <option>신년타로</option>
+            <option>연애·재회 상담</option>
+            <option>사업·진로 상담</option>
+            <option>금전운 상담</option>
+            <option>미래 흐름 리딩</option>
+            <option>Yes or No</option>
+            <option>종합 상담 / 기타</option>
+          </select>
+        </label>
+
+        <label class="apply-field">
+          <span class="apply-label">고민 내용</span>
+          <textarea name="concern" data-apply-concern rows="5" maxlength="800" placeholder="지금 마음에 있는 고민을 편하게 적어 주세요."></textarea>
+          <span class="apply-count" data-apply-count>0 / 800</span>
+        </label>
+
+        <div class="apply-field">
+          <span class="apply-label">희망 날짜 및 시간</span>
+          <div class="apply-datetime">
+            <input type="date" name="date" data-apply-date aria-label="희망 날짜">
+            <input type="time" name="time" data-apply-time aria-label="희망 시간">
+          </div>
+          <span class="apply-help">비워 두셔도 괜찮아요. 오픈채팅에서 함께 조율할 수 있어요.</span>
+        </div>
+
+        <p class="apply-warn" data-apply-warn hidden></p>
+
+        <button type="submit" class="apply-submit">신청 내용 복사하고 카카오톡 열기</button>
+      </form>
+
+      <div class="apply-result" data-apply-result hidden>
+        <div class="apply-result-head">
+          <span class="apply-badge" data-apply-badge>신청 내용이 복사되었어요 ✓</span>
+          <p class="apply-result-note">복사된 내용을 오픈채팅에 붙여넣어 보내주세요 🙂</p>
+        </div>
+        <pre class="apply-preview" data-apply-preview></pre>
+        <div class="apply-actions">
+          <a class="apply-open" href="https://open.kakao.com/me/DanahsTarot" target="_blank" rel="noopener noreferrer">오픈채팅 열기</a>
+          <button type="button" class="apply-copy" data-apply-copy>문구 다시 복사</button>
+        </div>
+        <p class="apply-manual" data-apply-manual hidden>자동 복사가 되지 않았어요. 위 문구를 길게 눌러 직접 복사해 주세요.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- REVIEW -->
   <section class="section">
     <img src="./images/review-title.webp" width="1080" height="394" loading="lazy" decoding="async" alt="후기">
@@ -111,7 +175,7 @@
     </a>
   </section>
 
-  <script type="module" src="./assets/app.js?v=1711f"></script>
+  <script type="module" src="./assets/app.js?v=1711g"></script>
 
 </body>
 </html>
