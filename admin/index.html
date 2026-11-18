@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>단아의 타로 관리자</title>
 
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="admin.css?v=2">
 </head>
 <body>
 
@@ -35,6 +35,32 @@
   <div id="admin-panel" class="card hidden">
 
     <h1>🌙 단아의 타로 관리자</h1>
+
+    <section id="applications-section">
+
+      <div class="section-head">
+
+        <h3>
+          📩 상담 신청 내역
+          <span id="applicationCount" class="count-badge hidden"></span>
+        </h3>
+
+        <button
+          id="refreshApplicationsBtn"
+          class="ghost-btn"
+          type="button">
+          새로고침
+        </button>
+
+      </div>
+
+      <p id="applicationsNotice" class="notice-text" hidden></p>
+
+      <div id="applicationList" class="application-list"></div>
+
+    </section>
+
+    <hr>
 
     <section>
 
@@ -102,7 +128,7 @@
 
   </div>
 
-  <script type="module" src="admin.js"></script>
+  <script type="module" src="admin.js?v=2"></script>
 
 </body>
 </html>

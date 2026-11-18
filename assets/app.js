@@ -185,12 +185,37 @@ function buildApplyText(data) {
     "",
     `· 이름: ${data.name}`,
     `· 상담 종류: ${data.type}`,
+    `· 상담 시간: ${data.duration}`,
     `· 희망 날짜: ${formatApplyDate(data.date)}`,
     `· 희망 시간: ${formatApplyTime(data.time)}`,
     "",
     "· 고민 내용:",
     data.concern
   ].join("\n");
+}
+
+/* =====================
+   APPLICATIONS (Supabase 저장)
+   - 복사·오픈채팅 흐름과 무관하게 조용히 시도합니다.
+   - 실패해도 신청 화면에는 아무 영향이 없습니다.
+===================== */
+
+async function saveApplication(data) {
+  const payload = {
+    name: data.name,
+    category: data.type,
+    duration: data.duration || null,
+    concern: data.concern || null,
+    preferred_date: data.date || null,
+    preferred_time: data.time || null
+  };
+
+  try {
+    const { error } = await supabase.from("applications").insert([payload]);
+    if (error) console.warn("[applications] 저장하지 못했습니다.", error.message);
+  } catch (error) {
+    console.warn("[applications] 저장하지 못했습니다.", error);
+  }
 }
 
 async function copyToClipboard(text) {
@@ -227,6 +252,7 @@ function setupApply() {
 
   const nameInput = form.querySelector("[data-apply-name]");
   const typeInput = form.querySelector("[data-apply-type]");
+  const durationInput = form.querySelector("[data-apply-duration]");
   const concernInput = form.querySelector("[data-apply-concern]");
   const dateInput = form.querySelector("[data-apply-date]");
   const timeInput = form.querySelector("[data-apply-time]");
@@ -265,10 +291,12 @@ function setupApply() {
     const data = {
       name: nameInput.value.trim(),
       type: typeInput.value,
+      duration: durationInput ? durationInput.value.trim() : "",
       concern: concernInput.value.trim(),
       date: dateInput.value,
       time: timeInput.value
     };
+    if (!data.duration) data.duration = "미정";
     if (!data.concern) data.concern = "(오픈채팅에서 말씀드릴게요)";
     return data;
   };
@@ -312,6 +340,16 @@ function setupApply() {
     paintResult(text, copied);
 
     if (openLink) openLink.setAttribute("href", KAKAO_CHAT_URL);
+
+    // 기다리지 않고 저장을 시도합니다. 실패해도 위의 복사·오픈채팅 흐름은 그대로입니다.
+    saveApplication({
+      name: data.name,
+      type: data.type,
+      duration: data.duration,
+      concern: concernInput.value.trim(),
+      date: dateInput.value,
+      time: timeInput.value
+    });
   });
 
   if (copyBtn) {
