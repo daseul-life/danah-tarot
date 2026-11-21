@@ -212,9 +212,14 @@ async function saveApplication(data) {
 
   try {
     const { error } = await supabase.from("applications").insert([payload]);
-    if (error) console.warn("[applications] 저장하지 못했습니다.", error.message);
+    if (error) {
+      console.warn("[applications] 저장하지 못했습니다.", error.message);
+      return false;
+    }
+    return true;
   } catch (error) {
     console.warn("[applications] 저장하지 못했습니다.", error);
+    return false;
   }
 }
 
@@ -394,15 +399,31 @@ function setupApply() {
 
     if (openLink) openLink.setAttribute("href", KAKAO_CHAT_URL);
 
-    // 기다리지 않고 저장을 시도합니다. 실패해도 위의 복사·오픈채팅 흐름은 그대로입니다.
-    saveApplication({
+    // 신청서 저장에 성공한 경우에만 Gmail 알림을 요청합니다.
+    const applicationData = {
       name: data.name,
       type: data.type,
       duration: data.duration,
       concern: concernInput.value.trim(),
       date: dateInput.value,
       time: timeInput.value
-    });
+    };
+
+    const saved = await saveApplication(applicationData);
+    if (saved) {
+      try {
+        const response = await fetch("/api/notify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(applicationData)
+        });
+        if (!response.ok) {
+          console.warn("[email] 알림 전송에 실패했습니다.");
+        }
+      } catch (error) {
+        console.warn("[email] 알림 요청에 실패했습니다.", error);
+      }
+    }
   });
 
   if (copyBtn) {
