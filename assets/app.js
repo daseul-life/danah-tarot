@@ -399,31 +399,15 @@ function setupApply() {
 
     if (openLink) openLink.setAttribute("href", KAKAO_CHAT_URL);
 
-    // 신청서 저장에 성공한 경우에만 Gmail 알림을 요청합니다.
-    const applicationData = {
+    // 상담 신청 내역을 기존 방식대로 Supabase에 저장합니다.
+    saveApplication({
       name: data.name,
       type: data.type,
       duration: data.duration,
       concern: concernInput.value.trim(),
       date: dateInput.value,
       time: timeInput.value
-    };
-
-    const saved = await saveApplication(applicationData);
-    if (saved) {
-      try {
-        const response = await fetch("/api/notify", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(applicationData)
-        });
-        if (!response.ok) {
-          console.warn("[email] 알림 전송에 실패했습니다.");
-        }
-      } catch (error) {
-        console.warn("[email] 알림 요청에 실패했습니다.", error);
-      }
-    }
+    });
   });
 
   if (copyBtn) {
